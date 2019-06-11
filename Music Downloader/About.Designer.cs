@@ -134,6 +134,7 @@
             this.Controls.Add(this.linkLabel2);
             this.MaximizeBox = false;
             this.Name = "About";
+            this.Resizable = false;
             this.ShadowType = MetroFramework.Forms.MetroFormShadowType.AeroShadow;
             this.Style = MetroFramework.MetroColorStyle.Lime;
             this.Text = "About";

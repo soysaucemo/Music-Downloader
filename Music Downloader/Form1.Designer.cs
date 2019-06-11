@@ -118,6 +118,7 @@
             this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.contextMenuStrip3.SuspendLayout();
@@ -742,10 +743,18 @@
             resources.ApplyResources(this.toolStripMenuItem17, "toolStripMenuItem17");
             this.toolStripMenuItem17.Click += new System.EventHandler(this.ToolStripMenuItem17_Click);
             // 
+            // checkBox3
+            // 
+            resources.ApplyResources(this.checkBox3, "checkBox3");
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.axWindowsMediaPlayer1);
+            this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.metroTrackBar1);
             this.Controls.Add(this.pictureBox3);
@@ -780,7 +789,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.IDtextBox);
             this.Controls.Add(this.skinTabControl1);
-            this.Controls.Add(this.axWindowsMediaPlayer1);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Resizable = false;
@@ -902,6 +910,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem16;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem17;
+        private System.Windows.Forms.CheckBox checkBox3;
     }
 }
 
