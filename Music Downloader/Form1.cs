@@ -30,6 +30,8 @@ namespace Music_Downloader
         private List<PlayList> pl = new List<PlayList>();
         private string playmode = "shunxu";
         private LrcDetails lrcd = new LrcDetails();
+        public string latestversion = "获取中";
+        string ver = "1.3.3";
         public List<SearchResult> GetMusiclistJson(string id, int musicapicode)
         {
             string url = null;
@@ -889,11 +891,11 @@ namespace Music_Downloader
         {
             try
             {
-                string ver = "1.3.3";
                 WebClient wb = new WebClient();
                 Stream webdata = wb.OpenRead("https://raw.githubusercontent.com/NiTian1207/Music-Downloader/master/Version");
                 StreamReader sr = new StreamReader(webdata);
                 string data = sr.ReadToEnd();
+                latestversion = data.Replace("\n", "");
                 if (ver != data && ver + "\n" != data)
                 {
                     if (MessageBox.Show("检测到新版本，是否打开更新页面？", caption: "提示：", buttons: MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -904,7 +906,7 @@ namespace Music_Downloader
             }
             catch
             {
-                //MessageBox.Show("检查更新失败", caption: "警告: ");
+                latestversion = "获取错误";
             }
         }
         public ArrayList GetListViewSelectedIndices()
@@ -920,10 +922,6 @@ namespace Music_Downloader
                 mes += i.ToString();
             }
             return a;
-        }
-        private void 停止下载ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            a.Abort();
         }
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -1262,7 +1260,7 @@ namespace Music_Downloader
         }
         private void LinkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            About aboutform = new About();
+            About aboutform = new About(ver, latestversion);
             aboutform.Show();
         }
         private void ListView2_DoubleClick(object sender, EventArgs e)
@@ -1293,7 +1291,6 @@ namespace Music_Downloader
             catch
             {
             }
-            //MessageBox.Show(axWindowsMediaPlayer1.currentPlaylist.count.ToString());
         }
         public LrcDetails LrcReader(string url)
         {
@@ -1362,7 +1359,6 @@ namespace Music_Downloader
             }
             return lrcd;
         }
-
         private static string SplitInfo(string line)
         {
             return line.Substring(line.IndexOf(":") + 1).TrimEnd(']');
@@ -1473,7 +1469,6 @@ namespace Music_Downloader
         }
         private void AxWindowsMediaPlayer1_MediaChange(object sender, AxWMPLib._WMPOCXEvents_MediaChangeEvent e)
         {
-            //MessageBox.Show("MediaChange");
             for (int i = 0; i < pl.Count; i++)
             {
                 if (axWindowsMediaPlayer1.currentMedia.sourceURL == pl[i].Url)
@@ -1498,5 +1493,40 @@ namespace Music_Downloader
             info.ID3v2Info.SetTextFrame("TALB", ablum);
             info.Save();
         }
+        private void MultiFilesDownload()
+        {
+
+        }
+        private void ToolStripMenuItem12_Click(object sender, EventArgs e)
+        {
+            ArrayList a = GetListViewSelectedIndices();
+            Clipboard.SetText(listView1.Items[(int)a[0]].Text);
+        }
+        private void ToolStripMenuItem13_Click(object sender, EventArgs e)
+        {
+            ArrayList a = GetListViewSelectedIndices();
+            Clipboard.SetText(listView1.Items[(int)a[0]].SubItems[1].Text);
+        }
+        private void ToolStripMenuItem14_Click(object sender, EventArgs e)
+        {
+            ArrayList a = GetListViewSelectedIndices();
+            Clipboard.SetText(listView1.Items[(int)a[0]].SubItems[2].Text);
+        }
+        private void ToolStripMenuItem15_Click(object sender, EventArgs e)
+        {
+            ArrayList a = GetListViewSelectedIndices_musiclist();
+            Clipboard.SetText(listView2.Items[(int)a[0]].Text);
+        }
+        private void ToolStripMenuItem16_Click(object sender, EventArgs e)
+        {
+            ArrayList a = GetListViewSelectedIndices_musiclist();
+            Clipboard.SetText(listView2.Items[(int)a[0]].SubItems[1].Text);
+        }
+        private void ToolStripMenuItem17_Click(object sender, EventArgs e)
+        {
+            ArrayList a = GetListViewSelectedIndices_musiclist();
+            Clipboard.SetText(listView2.Items[(int)a[0]].SubItems[2].Text);
+        }
     }
 }
+//TODO:多线程下载
