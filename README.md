@@ -16,7 +16,7 @@
 <img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/%E6%88%AA%E5%9B%BE1.png" width="212" height="352.5‬"><img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/%E6%88%AA%E5%9B%BE2.png" width="212" height="352.5‬">
 
 ## 捐助
-<img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/IMG_0019.JPG" width="300" height="450"><img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/IMG_0020.JPG" width="300" height="450">
+<img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/%E6%8D%90%E5%8A%A9.png" width="512" height="256">
 
 ## 更新日志: 
    * 1.3.3(2019年6月9日)：
