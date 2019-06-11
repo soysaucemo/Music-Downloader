@@ -16,7 +16,7 @@
 <img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/%E6%88%AA%E5%9B%BE1.png" width="212" height="352.5‬"><img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/%E6%88%AA%E5%9B%BE2.png" width="212" height="352.5‬">
 
 ## API来源
-https://api.itooi.cn
+https://github.com/messoer
 
 ## 捐助
 <img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/%E6%8D%90%E5%8A%A9.png" width="512" height="256">
