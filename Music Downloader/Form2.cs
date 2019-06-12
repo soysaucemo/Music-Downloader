@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.IO;
 using System.Windows.Forms;
-
 namespace Music_Downloader
 {
     public partial class Form2 : MetroFramework.Forms.MetroForm
@@ -41,9 +39,8 @@ namespace Music_Downloader
                         f.MoveTo(dir + "\\" + newname);
                     }
                 }
-                catch (Exception e)
+                catch
                 {
-
                 }
             }
         }
@@ -85,9 +82,8 @@ namespace Music_Downloader
                         f.MoveTo(newdir + "\\" + filesname[i].ToString());
                     }
                 }
-                catch (Exception e)
+                catch
                 {
-
                 }
             }
         }

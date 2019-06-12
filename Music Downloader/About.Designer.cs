@@ -35,6 +35,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel6 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +75,7 @@
             this.linkLabel3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.linkLabel3.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel3.LinkColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.linkLabel3.Location = new System.Drawing.Point(23, 146);
+            this.linkLabel3.Location = new System.Drawing.Point(23, 245);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(44, 17);
             this.linkLabel3.TabIndex = 46;
@@ -84,7 +85,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(26, 166);
+            this.pictureBox1.Location = new System.Drawing.Point(23, 265);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(460, 235);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -121,15 +122,31 @@
             this.linkLabel5.TabStop = true;
             this.linkLabel5.Text = "最新版本：*.*.*";
             // 
+            // linkLabel6
+            // 
+            this.linkLabel6.AutoSize = true;
+            this.linkLabel6.Font = new System.Drawing.Font("微软雅黑", 8.5F);
+            this.linkLabel6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.linkLabel6.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabel6.LinkColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.linkLabel6.Location = new System.Drawing.Point(23, 148);
+            this.linkLabel6.Name = "linkLabel6";
+            this.linkLabel6.Size = new System.Drawing.Size(272, 85);
+            this.linkLabel6.TabIndex = 50;
+            this.linkLabel6.TabStop = true;
+            this.linkLabel6.Text = "免责声明：\r\n此程序为开源项目，仅供学习交流，请勿非法商用\r\n程序发布地址：\r\nhttps://www.52pojie.cn/?471913\r\nhttps://w" +
+    "ww.github.com/NiTian1207";
+            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(512, 412);
+            this.ClientSize = new System.Drawing.Size(512, 511);
+            this.Controls.Add(this.linkLabel3);
+            this.Controls.Add(this.linkLabel6);
             this.Controls.Add(this.linkLabel5);
             this.Controls.Add(this.linkLabel4);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.linkLabel2);
             this.MaximizeBox = false;
@@ -152,5 +169,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.LinkLabel linkLabel4;
         private System.Windows.Forms.LinkLabel linkLabel5;
+        private System.Windows.Forms.LinkLabel linkLabel6;
     }
 }

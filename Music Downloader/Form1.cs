@@ -347,7 +347,7 @@ namespace Music_Downloader
         {
             metroButton2.Enabled = false;
             listView1.Items.Clear();
-            listView1.Items.Add("搜索中...");
+            //listView1.Items.Add("搜索中...");
             skinTabControl1.SelectedIndex = 0;
             a = new Thread(new ParameterizedThreadStart(GetMusicListThread));
             a.Start(IDtextBox.Text);
@@ -377,17 +377,6 @@ namespace Music_Downloader
             string downloadpath = "";
             List<DownloadList> dl = (List<DownloadList>)o;
             int listviewindicesnum = listView3.Items.Count;
-            //ArrayList a = new ArrayList();
-            /*
-            for (int i = 0; i < dl.Count; i++)
-            {
-                //a.Add(listView3.Items.Count);
-                listView3.Items.Add(dl[i].Songname);
-                listView3.Items[listviewindicesnum + i].SubItems.Add(dl[i].Singername);
-                listView3.Items[listviewindicesnum + i].SubItems.Add("准备下载");
-                dl[i].index = listView3.Items.Count;
-            }
-            */
             for (int i = 0; i < dl.Count; i++)
             {
                 songname = NameCheck(dl[i].Songname);
@@ -415,7 +404,6 @@ namespace Music_Downloader
                     url = "https://v1.itooi.cn/baidu/url?id=" + ID + "&quality=" + dl[i].DownloadQuality;
                 }
                 WebClient wb = new WebClient();
-                //listView3.Items[i].SubItems[2].Text = "正在下载";
                 try
                 {
                     if (dl[i].IfDownloadSong)
@@ -424,11 +412,12 @@ namespace Music_Downloader
                         if (!File.Exists(downloadpath + "\\" + songname + " - " + singername + ".mp3"))
                         {
                             wb.DownloadFile(url, downloadpath + "\\" + songname + " - " + singername + ".mp3");
+                            AddMusicDetails(downloadpath + "\\" + songname + " - " + singername + ".mp3", dl[i].Songname, dl[i].Singername, dl[i].Album);
                         }
                     }
                     if (dl[i].IfDownloadlrc)
                     {
-                        listView3.Items[listviewindicesnum + i].SubItems[2].Text = "下载歌词中";
+                        listView3.Items[dl[i].index].SubItems[2].Text = "下载歌词中";
                         if (!File.Exists(downloadpath + "\\" + songname + " - " + singername + ".lrc"))
                         {
                             lrcurl = dl[i].LrcUrl;
@@ -437,12 +426,14 @@ namespace Music_Downloader
                             File.WriteAllText(downloadpath + "\\" + songname + " - " + singername + ".lrc", sr.ReadToEnd(), Encoding.Default);
                         }
                     }
-                    AddMusicDetails(downloadpath + "\\" + songname + " - " + singername + ".mp3", dl[i].Songname, dl[i].Singername, dl[i].Album);
                     listView3.Items[dl[i].index].SubItems[2].Text = "下载完成";
                 }
                 catch
                 {
-                    //MessageBox.Show(e.Message, caption: "警告：");
+                    if (File.Exists(downloadpath + "\\" + songname + " - " + singername + ".mp3"))
+                    {
+                        File.Delete(downloadpath + "\\" + songname + " - " + singername + ".mp3");
+                    }
                     listView3.Items[dl[i].index].SubItems[2].Text = "下载错误";
                 }
             }
@@ -455,39 +446,46 @@ namespace Music_Downloader
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Thread a = new Thread(update);
-            a.Start();
-            skinTabControl1.ItemSize = new Size(0, 1);
-            axWindowsMediaPlayer1.settings.volume = 50;
-            string settingpath = Environment.CurrentDirectory + "\\Setting.json";
-            axWindowsMediaPlayer1.settings.setMode("shuffle", false);
-            if (File.Exists(settingpath))
+            try
             {
-                StreamReader sr = new StreamReader(settingpath);
-                Setting s = JsonConvert.DeserializeObject<Music_Downloader.Setting>(sr.ReadToEnd());
-                pl = s.PlayList;
-                metroTrackBar2.Value = s.Volume;
-                sr.Close();
-                DownloadPathtextBox.Text = s.SavePath;
-                metroComboBox1.SelectedIndex = s.DownloadQuality;
-                IWMPPlaylist l = axWindowsMediaPlayer1.currentPlaylist;
-                for (int i = 0; i < s.PlayList.Count; i++)
+                Thread a = new Thread(update);
+                a.Start();
+                skinTabControl1.ItemSize = new Size(0, 1);
+                axWindowsMediaPlayer1.settings.volume = 50;
+                string settingpath = Environment.CurrentDirectory + "\\Setting.json";
+                axWindowsMediaPlayer1.settings.setMode("shuffle", false);
+                if (File.Exists(settingpath))
                 {
-                    IWMPMedia media = axWindowsMediaPlayer1.newMedia(s.PlayList[i].Url);
-                    l.appendItem(media);
-                    listView2.Items.Add(s.PlayList[i].SongName);
-                    listView2.Items[i].SubItems.Add(s.PlayList[i].SingerName);
-                    listView2.Items[i].SubItems.Add(s.PlayList[i].Album);
+                    StreamReader sr = new StreamReader(settingpath);
+                    Setting s = JsonConvert.DeserializeObject<Music_Downloader.Setting>(sr.ReadToEnd());
+                    pl = s.PlayList;
+                    metroTrackBar2.Value = s.Volume;
+                    sr.Close();
+                    DownloadPathtextBox.Text = s.SavePath;
+                    metroComboBox1.SelectedIndex = s.DownloadQuality;
+                    metroComboBox2.SelectedIndex = s.MultiDownload;
+                    IWMPPlaylist l = axWindowsMediaPlayer1.currentPlaylist;
+                    for (int i = 0; i < s.PlayList.Count; i++)
+                    {
+                        IWMPMedia media = axWindowsMediaPlayer1.newMedia(s.PlayList[i].Url);
+                        l.appendItem(media);
+                        listView2.Items.Add(s.PlayList[i].SongName);
+                        listView2.Items[i].SubItems.Add(s.PlayList[i].SingerName);
+                        listView2.Items[i].SubItems.Add(s.PlayList[i].Album);
+                    }
+                    axWindowsMediaPlayer1.currentPlaylist = l;
+                    axWindowsMediaPlayer1.Ctlcontrols.stop();
                 }
-                axWindowsMediaPlayer1.currentPlaylist = l;
-                axWindowsMediaPlayer1.Ctlcontrols.stop();
+                else
+                {
+                    DownloadPathtextBox.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
+                    metroComboBox1.SelectedIndex = 4;
+                    metroComboBox2.SelectedIndex = 0;
+                }
             }
-            else
+            catch
             {
-                DownloadPathtextBox.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
-                metroComboBox1.SelectedIndex = 4;
             }
-            //MessageBox.Show(axWindowsMediaPlayer1.currentPlaylist.count.ToString());
         }
         private void IDtextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -770,7 +768,7 @@ namespace Music_Downloader
         {
             skinTabControl1.SelectedIndex = 0;
             listView1.Items.Clear();
-            listView1.Items.Add("搜索中...");
+            //listView1.Items.Add("搜索中...");
             try
             {
                 metroButton1.Enabled = false;
@@ -783,25 +781,14 @@ namespace Music_Downloader
         }
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            downloadindices.Clear();
-            if (listView1.Items.Count == 0)
+            try
             {
-                MessageBox.Show("未获取歌曲", caption: "警告：");
-                return;
+                List<DownloadList> dl = GetDownloadLists(true, checkBox1.Checked, true);
+                MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
             }
-            for (int i = 0; i < listView1.Items.Count; i++)
+            catch
             {
-                downloadindices.Add(i);
-            }
-            if (Searchresult != null)
-            {
-                List<DownloadList> dl = new List<DownloadList>();
-                for (int i = 0; i < downloadindices.Count; i++)
-                {
-                    dl.Add(SetDownloadMedia(GetApiCode(), Searchresult[(int)downloadindices[i]].id, checkBox1.Checked, true, DownloadPathtextBox.Text, Searchresult[(int)downloadindices[i]].SongName, Searchresult[(int)downloadindices[i]].SingerName, Searchresult[(int)downloadindices[i]].url, Searchresult[(int)downloadindices[i]].lrcurl, Searchresult[(int)downloadindices[i]].Album, GetQuality(), listView3.Items.Count + i));
-                }
-                Thread t = new Thread(new ParameterizedThreadStart(Download));
-                t.Start(dl);
+                MessageBox.Show("下载错误", caption: "警告: ");
             }
         }
         public DownloadList SetDownloadMedia(int Api, string ID, bool IfDownloadlrc, bool IfDownloadSong, string Savepath, string Songname, string Singername, string Url, string LrcUrl, string Album, string DownloadQulity, int Index)
@@ -825,64 +812,38 @@ namespace Music_Downloader
         }
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            List<DownloadList> dl = new List<DownloadList>();
-            downloadindices = GetListViewSelectedIndices();
-            if (Searchresult != null)
+            try
             {
-                for (int i = 0; i < downloadindices.Count; i++)
-                {
-                    listView3.Items.Add(Searchresult[i].SongName);
-                    listView3.Items[listView3.Items.Count - 1].SubItems.Add(Searchresult[i].SingerName);
-                    listView3.Items[listView3.Items.Count - 1].SubItems.Add("准备下载");
-                    dl.Add(SetDownloadMedia(GetApiCode(), Searchresult[(int)downloadindices[i]].id, checkBox1.Checked, true, DownloadPathtextBox.Text, Searchresult[(int)downloadindices[i]].SongName, Searchresult[(int)downloadindices[i]].SingerName, Searchresult[(int)downloadindices[i]].url, Searchresult[(int)downloadindices[i]].lrcurl, Searchresult[(int)downloadindices[i]].Album, GetQuality(), listView3.Items.Count - 1));
-                }
-                if (checkBox3.Checked && dl.Count > 5)
-                {
-                    MultiFilesDownload(dl);
-                }
-                else
-                {
-                    Thread t = new Thread(new ParameterizedThreadStart(Download));
-                    t.Start(dl);
-                }
+                List<DownloadList> dl = GetDownloadLists(true, checkBox1.Checked);
+                MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
             }
-
+            catch
+            {
+                MessageBox.Show("下载错误", caption: "警告: ");
+            }
         }
         private void 下载所有歌词ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            downloadindices.Clear();
-            List<DownloadList> dl = new List<DownloadList>();
-            if (listView1.Items.Count == 0)
+            try
             {
-                MessageBox.Show("未获取歌曲", caption: "警告：");
-                return;
+                List<DownloadList> dl = GetDownloadLists(false, true, true);
+                MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
             }
-            for (int i = 0; i < listView1.Items.Count; i++)
+            catch
             {
-                downloadindices.Add(i);
-            }
-            if (Searchresult != null)
-            {
-                for (int i = 0; i < downloadindices.Count; i++)
-                {
-                    dl.Add(SetDownloadMedia(GetApiCode(), Searchresult[(int)downloadindices[i]].id, true, false, DownloadPathtextBox.Text, Searchresult[(int)downloadindices[i]].SongName, Searchresult[(int)downloadindices[i]].SingerName, Searchresult[(int)downloadindices[i]].url, Searchresult[(int)downloadindices[i]].lrcurl, Searchresult[(int)downloadindices[i]].Album, GetQuality(), listView3.Items.Count + i));
-                }
-                Thread t = new Thread(new ParameterizedThreadStart(Download));
-                t.Start(dl);
+                MessageBox.Show("下载错误", caption: "警告: ");
             }
         }
         private void 下载选中歌词ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<DownloadList> dl = new List<DownloadList>();
-            downloadindices = GetListViewSelectedIndices();
-            if (Searchresult != null)
+            try
             {
-                for (int i = 0; i < downloadindices.Count; i++)
-                {
-                    dl.Add(SetDownloadMedia(GetApiCode(), Searchresult[(int)downloadindices[i]].id, true, false, DownloadPathtextBox.Text, Searchresult[(int)downloadindices[i]].SongName, Searchresult[(int)downloadindices[i]].SingerName, Searchresult[(int)downloadindices[i]].url, Searchresult[(int)downloadindices[i]].lrcurl, Searchresult[(int)downloadindices[i]].Album, GetQuality(), listView3.Items.Count + i));
-                }
-                Thread t = new Thread(new ParameterizedThreadStart(Download));
-                t.Start(dl);
+                List<DownloadList> dl = GetDownloadLists(false, true);
+                MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
+            }
+            catch
+            {
+                MessageBox.Show("下载错误", caption: "警告: ");
             }
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -892,7 +853,8 @@ namespace Music_Downloader
                 SavePath = DownloadPathtextBox.Text,
                 PlayList = pl,
                 DownloadQuality = metroComboBox1.SelectedIndex,
-                Volume = metroTrackBar2.Value
+                Volume = metroTrackBar2.Value,
+                MultiDownload = metroComboBox2.SelectedIndex
             };
             string json = JsonConvert.SerializeObject(s);
             StreamWriter sw = new StreamWriter(Environment.CurrentDirectory + "\\Setting.json");
@@ -1091,8 +1053,8 @@ namespace Music_Downloader
         {
             pl.Add(p);
             listView2.Items.Add(p.SongName);
-            listView2.Items[listView2.Items.Count].SubItems.Add(p.SingerName);
-            listView2.Items[listView2.Items.Count].SubItems.Add(p.Album);
+            listView2.Items[listView2.Items.Count - 1].SubItems.Add(p.SingerName);
+            listView2.Items[listView2.Items.Count - 1].SubItems.Add(p.Album);
             IWMPMedia media = axWindowsMediaPlayer1.newMedia(p.Url);
             axWindowsMediaPlayer1.currentPlaylist.appendItem(media);
         }
@@ -1143,65 +1105,51 @@ namespace Music_Downloader
         }
         private void ToolStripMenuItem5_Click(object sender, EventArgs e)
         {
-            downloadindices.Clear();
-            List<DownloadList> dl = new List<DownloadList>();
-            if (listView2.Items.Count == 0)
+            try
             {
-                MessageBox.Show("未获取歌曲", caption: "警告：");
-                return;
+                List<DownloadList> dl = GetDownloadLists_musiclist(true, checkBox1.Checked, true);
+                MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
             }
-            for (int i = 0; i < listView2.Items.Count; i++)
+            catch
             {
-                downloadindices.Add(i);
+                MessageBox.Show("下载错误", caption: "警告: ");
             }
-            for (int i = 0; i < downloadindices.Count; i++)
-            {
-                dl.Add(SetDownloadMedia(GetApiCode(), pl[i].ID, checkBox1.Checked, true, DownloadPathtextBox.Text, pl[i].SongName, pl[i].SingerName, pl[i].Url, pl[i].LrcUrl, pl[i].Album, GetQuality(), listView3.Items.Count + i));
-            }
-            Thread t = new Thread(new ParameterizedThreadStart(Download));
-            t.Start(dl);
         }
         private void ToolStripMenuItem6_Click(object sender, EventArgs e)
         {
-            List<DownloadList> dl = new List<DownloadList>();
-            downloadindices = GetListViewSelectedIndices_musiclist();
-            for (int i = 0; i < downloadindices.Count; i++)
+            try
             {
-                dl.Add(SetDownloadMedia(GetApiCode(), pl[(int)downloadindices[i]].ID, checkBox1.Checked, true, DownloadPathtextBox.Text, pl[(int)downloadindices[i]].SongName, pl[(int)downloadindices[i]].SingerName, pl[(int)downloadindices[i]].Url, pl[(int)downloadindices[i]].LrcUrl, pl[(int)downloadindices[i]].Album, GetQuality(), listView3.Items.Count + i));
+                List<DownloadList> dl = GetDownloadLists_musiclist(true, checkBox1.Checked);
+                MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
             }
-            Thread t = new Thread(new ParameterizedThreadStart(Download));
-            t.Start(dl);
+            catch
+            {
+                MessageBox.Show("下载错误", caption: "警告: ");
+            }
         }
         private void ToolStripMenuItem7_Click(object sender, EventArgs e)
         {
-            downloadindices.Clear();
-            List<DownloadList> dl = new List<DownloadList>();
-            if (listView2.Items.Count == 0)
+            try
             {
-                MessageBox.Show("未获取歌曲", caption: "警告：");
-                return;
+                List<DownloadList> dl = GetDownloadLists_musiclist(false, true, true);
+                MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
             }
-            for (int i = 0; i < listView2.Items.Count; i++)
+            catch
             {
-                downloadindices.Add(i);
+                MessageBox.Show("下载错误", caption: "警告: ");
             }
-            for (int i = 0; i < downloadindices.Count; i++)
-            {
-                dl.Add(SetDownloadMedia(GetApiCode(), pl[(int)downloadindices[i]].ID, true, false, DownloadPathtextBox.Text, pl[(int)downloadindices[i]].SongName, pl[(int)downloadindices[i]].SingerName, pl[(int)downloadindices[i]].Url, pl[(int)downloadindices[i]].LrcUrl, pl[(int)downloadindices[i]].Album, GetQuality(), listView3.Items.Count + i));
-            }
-            Thread t = new Thread(new ParameterizedThreadStart(Download));
-            t.Start(dl);
         }
         private void ToolStripMenuItem8_Click(object sender, EventArgs e)
         {
-            List<DownloadList> dl = new List<DownloadList>();
-            downloadindices = GetListViewSelectedIndices_musiclist();
-            for (int i = 0; i < downloadindices.Count; i++)
+            try
             {
-                dl.Add(SetDownloadMedia(GetApiCode(), pl[(int)downloadindices[i]].ID, true, false, DownloadPathtextBox.Text, pl[(int)downloadindices[i]].SongName, pl[(int)downloadindices[i]].SingerName, pl[(int)downloadindices[i]].Url, pl[(int)downloadindices[i]].LrcUrl, pl[(int)downloadindices[i]].Album, GetQuality(), listView3.Items.Count + i));
+                List<DownloadList> dl = GetDownloadLists_musiclist(false, true);
+                MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
             }
-            Thread t = new Thread(new ParameterizedThreadStart(Download));
-            t.Start(dl);
+            catch
+            {
+                MessageBox.Show("下载错误", caption: "警告: ");
+            }
         }
         private void ToolStripMenuItem9_Click(object sender, EventArgs e)
         {
@@ -1506,147 +1454,36 @@ namespace Music_Downloader
             info.ID3v2Info.SetTextFrame("TALB", ablum);
             info.Save();
         }
-        private void MultiFilesDownload(List<DownloadList> dl)
+        private void MultiFilesDownload(List<DownloadList> dl, int n)
         {
-            List<DownloadList> dl1 = new List<DownloadList>();
-            List<DownloadList> dl2 = new List<DownloadList>();
-            List<DownloadList> dl3 = new List<DownloadList>();
-            List<DownloadList> dl4 = new List<DownloadList>();
-            List<DownloadList> dl5 = new List<DownloadList>();
-            if (dl.Count > 5)
+            for (int i = 0; i < n; i++)
             {
-                for (int i = 0; i < dl.Count / 5; i++)
+                List<DownloadList> dl_ = new List<DownloadList>();
+                for (int x = 0; x < dl.Count; x++)
                 {
-                    DownloadList dl1_ = new DownloadList()
+                    if (x % n == i)
                     {
-                        Album = dl[0 + 5 * (i)].Album,
-                        Songname = dl[0 + 5 * (i)].Songname,
-                        Singername = dl[0 + 5 * (i)].Singername,
-                        LrcUrl = dl[0 + 5 * (i)].LrcUrl,
-                        Url = dl[0 + 5 * (i)].Url,
-                        ID = dl[0 + 5 * (i)].ID,
-                        IfDownloadlrc = dl[0 + 5 * (i)].IfDownloadlrc,
-                        IfDownloadSong = dl[0 + 5 * (i)].IfDownloadSong,
-                        DownloadQuality = dl[0 + 5 * (i)].DownloadQuality,
-                        Api = dl[0 + 5 * (i)].Api,
-                        index = dl[0 + 5 * (i)].index,
-                        Savepath = dl[0 + 5 * (i)].Savepath
-                    };
-                    DownloadList dl2_ = new DownloadList()
-                    {
-                        Album = dl[1 + 5 * (i)].Album,
-                        Songname = dl[1 + 5 * (i)].Songname,
-                        Singername = dl[1 + 5 * (i)].Singername,
-                        LrcUrl = dl[1 + 5 * (i)].LrcUrl,
-                        Url = dl[1 + 5 * (i)].Url,
-                        ID = dl[1 + 5 * (i)].ID,
-                        IfDownloadlrc = dl[1 + 5 * (i)].IfDownloadlrc,
-                        IfDownloadSong = dl[1 + 5 * (i)].IfDownloadSong,
-                        DownloadQuality = dl[1 + 5 * (i)].DownloadQuality,
-                        Api = dl[1 + 5 * (i)].Api,
-                        index = dl[1 + 5 * (i)].index,
-                        Savepath = dl[1 + 5 * (i)].Savepath
-                    };
-                    DownloadList dl3_ = new DownloadList()
-                    {
-                        Album = dl[2 + 5 * (i)].Album,
-                        Songname = dl[2 + 5 * (i)].Songname,
-                        Singername = dl[2 + 5 * (i)].Singername,
-                        LrcUrl = dl[2 + 5 * (i)].LrcUrl,
-                        Url = dl[2 + 5 * (i)].Url,
-                        ID = dl[2 + 5 * (i)].ID,
-                        IfDownloadlrc = dl[2 + 5 * (i)].IfDownloadlrc,
-                        IfDownloadSong = dl[2 + 5 * (i)].IfDownloadSong,
-                        DownloadQuality = dl[2 + 5 * (i)].DownloadQuality,
-                        Api = dl[2 + 5 * (i)].Api,
-                        index = dl[2 + 5 * (i)].index,
-                        Savepath = dl[2 + 5 * (i)].Savepath
-                    };
-                    DownloadList dl4_ = new DownloadList()
-                    {
-                        Album = dl[3 + 5 * (i)].Album,
-                        Songname = dl[3 + 5 * (i)].Songname,
-                        Singername = dl[3 + 5 * (i)].Singername,
-                        LrcUrl = dl[3 + 5 * (i)].LrcUrl,
-                        Url = dl[3 + 5 * (i)].Url,
-                        ID = dl[3 + 5 * (i)].ID,
-                        IfDownloadlrc = dl[3 + 5 * (i)].IfDownloadlrc,
-                        IfDownloadSong = dl[3 + 5 * (i)].IfDownloadSong,
-                        DownloadQuality = dl[3 + 5 * (i)].DownloadQuality,
-                        Api = dl[3 + 5 * (i)].Api,
-                        index = dl[3 + 5 * (i)].index,
-                        Savepath = dl[3 + 5 * (i)].Savepath
-                    };
-                    DownloadList dl5_ = new DownloadList()
-                    {
-                        Album = dl[4 + 5 * (i)].Album,
-                        Songname = dl[4 + 5 * (i)].Songname,
-                        Singername = dl[4 + 5 * (i)].Singername,
-                        LrcUrl = dl[4 + 5 * (i)].LrcUrl,
-                        Url = dl[4 + 5 * (i)].Url,
-                        ID = dl[4 + 5 * (i)].ID,
-                        IfDownloadlrc = dl[4 + 5 * (i)].IfDownloadlrc,
-                        IfDownloadSong = dl[4 + 5 * (i)].IfDownloadSong,
-                        DownloadQuality = dl[4 + 5 * (i)].DownloadQuality,
-                        Api = dl[4 + 5 * (i)].Api,
-                        index = dl[4 + 5 * (i)].index,
-                        Savepath = dl[4 + 5 * (i)].Savepath
-                    };
-                    dl1.Add(dl1_);
-                    dl2.Add(dl2_);
-                    dl3.Add(dl3_);
-                    dl4.Add(dl4_);
-                    dl5.Add(dl5_);
-                }
-                for (int x = 0; x < dl.Count % 5; x++)
-                {
-                    DownloadList dl_ = new DownloadList()
-                    {
-                        Album = dl[5 * (dl.Count / 5) + x].Album,
-                        Songname = dl[5 * (dl.Count / 5) + x].Songname,
-                        Singername = dl[5 * (dl.Count / 5) + x].Singername,
-                        LrcUrl = dl[5 * (dl.Count / 5) + x].LrcUrl,
-                        Url = dl[5 * (dl.Count / 5) + x].Url,
-                        ID = dl[5 * (dl.Count / 5) + x].ID,
-                        IfDownloadlrc = dl[5 * (dl.Count / 5) + x].IfDownloadlrc,
-                        IfDownloadSong = dl[5 * (dl.Count / 5) + x].IfDownloadSong,
-                        DownloadQuality = dl[5 * (dl.Count / 5) + x].DownloadQuality,
-                        Api = dl[5 * (dl.Count / 5) + x].Api,
-                        index = dl[5 * (dl.Count / 5) + x].index,
-                        Savepath = dl[5 * (dl.Count / 5) + x].Savepath
-                    };
-                    if (x == 0)
-                    {
-                        dl1.Add(dl_);
-                    }
-                    if (x == 1)
-                    {
-                        dl2.Add(dl_);
-                    }
-                    if (x == 2)
-                    {
-                        dl3.Add(dl_);
-                    }
-                    if (x == 3)
-                    {
-                        dl4.Add(dl_);
-                    }
-                    if (x == 4)
-                    {
-                        dl5.Add(dl_);
+                        DownloadList _dl = new DownloadList()
+                        {
+                            Album = dl[x].Album,
+                            Api = dl[x].Api,
+                            DownloadQuality = dl[x].DownloadQuality,
+                            ID = dl[x].ID,
+                            IfDownloadlrc = dl[x].IfDownloadlrc,
+                            IfDownloadSong = dl[x].IfDownloadSong,
+                            index = dl[x].index,
+                            LrcUrl = dl[x].LrcUrl,
+                            Savepath = dl[x].Savepath,
+                            Singername = dl[x].Singername,
+                            Songname = dl[x].Songname,
+                            Url = dl[x].Url
+                        };
+                        dl_.Add(_dl);
                     }
                 }
+                Thread a = new Thread(new ParameterizedThreadStart(Download));
+                a.Start(dl_);
             }
-            Thread a1 = new Thread(new ParameterizedThreadStart(Download));
-            a1.Start(dl1);
-            Thread a2 = new Thread(new ParameterizedThreadStart(Download));
-            a2.Start(dl2);
-            Thread a3 = new Thread(new ParameterizedThreadStart(Download));
-            a3.Start(dl3);
-            Thread a4 = new Thread(new ParameterizedThreadStart(Download));
-            a4.Start(dl4);
-            Thread a5 = new Thread(new ParameterizedThreadStart(Download));
-            a5.Start(dl5);
         }
         private void ToolStripMenuItem12_Click(object sender, EventArgs e)
         {
@@ -1712,6 +1549,88 @@ namespace Music_Downloader
             }
             catch
             {
+            }
+        }
+        private List<DownloadList> GetDownloadLists(bool ifDownloadSong, bool ifDownloadLrc, bool ifDownloadAll = false)
+        {
+            if (!ifDownloadAll)
+            {
+                List<DownloadList> dl = new List<DownloadList>();
+                downloadindices = GetListViewSelectedIndices();
+                if (Searchresult != null)
+                {
+                    for (int i = 0; i < downloadindices.Count; i++)
+                    {
+                        listView3.Items.Add(Searchresult[(int)downloadindices[i]].SongName);
+                        listView3.Items[listView3.Items.Count - 1].SubItems.Add(Searchresult[i].SingerName);
+                        listView3.Items[listView3.Items.Count - 1].SubItems.Add("准备下载");
+                        dl.Add(SetDownloadMedia(GetApiCode(), Searchresult[(int)downloadindices[i]].id, ifDownloadLrc, ifDownloadSong, DownloadPathtextBox.Text, Searchresult[(int)downloadindices[i]].SongName, Searchresult[(int)downloadindices[i]].SingerName, Searchresult[(int)downloadindices[i]].url, Searchresult[(int)downloadindices[i]].lrcurl, Searchresult[(int)downloadindices[i]].Album, GetQuality(), listView3.Items.Count - 1));
+                    }
+                    return dl;
+                }
+                return null;
+            }
+            else
+            {
+                downloadindices.Clear();
+                for (int i = 0; i < listView1.Items.Count; i++)
+                {
+                    downloadindices.Add(i);
+                }
+                if (Searchresult != null)
+                {
+                    List<DownloadList> dl = new List<DownloadList>();
+                    for (int i = 0; i < downloadindices.Count; i++)
+                    {
+                        listView3.Items.Add(Searchresult[(int)downloadindices[i]].SongName);
+                        listView3.Items[listView3.Items.Count - 1].SubItems.Add(Searchresult[i].SingerName);
+                        listView3.Items[listView3.Items.Count - 1].SubItems.Add("准备下载");
+                        dl.Add(SetDownloadMedia(GetApiCode(), Searchresult[(int)downloadindices[i]].id, ifDownloadLrc, ifDownloadSong, DownloadPathtextBox.Text, Searchresult[(int)downloadindices[i]].SongName, Searchresult[(int)downloadindices[i]].SingerName, Searchresult[(int)downloadindices[i]].url, Searchresult[(int)downloadindices[i]].lrcurl, Searchresult[(int)downloadindices[i]].Album, GetQuality(), listView3.Items.Count - 1));
+                    }
+                    return dl;
+                }
+                return null;
+            }
+        }
+        private List<DownloadList> GetDownloadLists_musiclist(bool ifDownloadSong, bool ifDownloadLrc, bool ifDownloadAll = false)
+        {
+            if (!ifDownloadAll)
+            {
+                List<DownloadList> dl = new List<DownloadList>();
+                downloadindices = GetListViewSelectedIndices_musiclist();
+                if (Searchresult != null)
+                {
+                    for (int i = 0; i < downloadindices.Count; i++)
+                    {
+                        listView3.Items.Add(Searchresult[(int)downloadindices[i]].SongName);
+                        listView3.Items[listView3.Items.Count - 1].SubItems.Add(Searchresult[i].SingerName);
+                        listView3.Items[listView3.Items.Count - 1].SubItems.Add("准备下载");
+                        dl.Add(SetDownloadMedia(GetApiCode(), Searchresult[(int)downloadindices[i]].id, ifDownloadLrc, ifDownloadSong, DownloadPathtextBox.Text, Searchresult[(int)downloadindices[i]].SongName, Searchresult[(int)downloadindices[i]].SingerName, Searchresult[(int)downloadindices[i]].url, Searchresult[(int)downloadindices[i]].lrcurl, Searchresult[(int)downloadindices[i]].Album, GetQuality(), listView3.Items.Count - 1));
+                    }
+                    return dl;
+                }
+                return null;
+            }
+            else
+            {
+                downloadindices.Clear();
+                for (int i = 0; i < listView2.Items.Count; i++)
+                {
+                    downloadindices.Add(i);
+                }
+                if (Searchresult != null)
+                {
+                    List<DownloadList> dl = new List<DownloadList>();
+                    for (int i = 0; i < downloadindices.Count; i++)
+                    {
+                        listView3.Items.Add(Searchresult[(int)downloadindices[i]].SongName);
+                        listView3.Items[listView3.Items.Count - 1].SubItems.Add(Searchresult[i].SingerName);
+                        listView3.Items[listView3.Items.Count - 1].SubItems.Add("准备下载");
+                        dl.Add(SetDownloadMedia(GetApiCode(), Searchresult[(int)downloadindices[i]].id, ifDownloadLrc, ifDownloadSong, DownloadPathtextBox.Text, Searchresult[(int)downloadindices[i]].SongName, Searchresult[(int)downloadindices[i]].SingerName, Searchresult[(int)downloadindices[i]].url, Searchresult[(int)downloadindices[i]].lrcurl, Searchresult[(int)downloadindices[i]].Album, GetQuality(), listView3.Items.Count - 1));
+                    }
+                    return dl;
+                }
+                return null;
             }
         }
     }
