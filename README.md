@@ -15,6 +15,9 @@
 ## 运行截图
 <img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/%E6%88%AA%E5%9B%BE1.png" width="212" height="352.5‬"><img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/%E6%88%AA%E5%9B%BE2.png" width="212" height="352.5‬">
 
+## 源码使用说明
+缺少的dll在 MusicPlayer Material 文件中
+
 ## API来源
 https://github.com/messoer
 
