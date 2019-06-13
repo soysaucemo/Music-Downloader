@@ -31,7 +31,7 @@ namespace Music_Downloader
         private string playmode = "shunxu";
         private LrcDetails lrcd = new LrcDetails();
         public string latestversion = "获取中";
-        string ver = "1.3.3";
+        string ver = "1.3.4";
         public List<SearchResult> GetMusiclistJson(string id, int musicapicode)
         {
             string url = null;
