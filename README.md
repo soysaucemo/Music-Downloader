@@ -15,6 +15,9 @@
 ## 运行截图
 <img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/%E6%88%AA%E5%9B%BE1.png" width="212" height="352.5‬"><img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/%E6%88%AA%E5%9B%BE2.png" width="212" height="352.5‬">
 
+## 源码使用说明
+缺少的dll在 MusicPlayer Material 文件中
+
 ## API来源
 https://github.com/messoer
 
@@ -22,6 +25,11 @@ https://github.com/messoer
 <img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/%E6%8D%90%E5%8A%A9.png" width="512" height="256">
 
 ## 更新日志: 
+   * 1.3.4(2019年6月14日):
+      * 增加 多文件同时下载 功能
+      * 增加 复制音乐名/歌手名/专辑名 功能
+      * 修复 降低闪退可能
+   
    * 1.3.3(2019年6月9日)：
       * 修复 下载音质问题
       * 修复 QQ音乐下载错误
