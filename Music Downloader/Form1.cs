@@ -20,6 +20,7 @@ namespace Music_Downloader
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
         //全局变量
         //Music_Downloader.Root1 musiclist;
@@ -481,11 +482,26 @@ namespace Music_Downloader
                     DownloadPathtextBox.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
                     metroComboBox1.SelectedIndex = 4;
                     metroComboBox2.SelectedIndex = 0;
+                    Thread b = new Thread(new ParameterizedThreadStart(WaitUpdate));
+                    b.Start(a);
                 }
             }
             catch
             {
             }
+        }
+        private void WaitUpdate(object thread)
+        {
+            Thread a = (Thread)thread;
+            while (true)
+            {
+                if (!a.IsAlive)
+                {
+                    break;
+                }
+            }
+            About aboutform = new About(ver, latestversion);
+            aboutform.ShowDialog();
         }
         private void IDtextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
