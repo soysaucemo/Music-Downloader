@@ -1482,8 +1482,8 @@ namespace Music_Downloader
             finally
             {
                 info.Save();
-                File.Delete(dir + "\\" + title + " - " + artists + ".jpg");
             }
+            File.Delete(dir + "\\" + title + " - " + artists + ".jpg");
         }
         private void MultiFilesDownload(List<DownloadList> dl, int n)
         {
