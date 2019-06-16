@@ -1,4 +1,5 @@
 ﻿using ID3;
+using ID3.ID3v2Frames.BinaryFrames;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -413,7 +414,7 @@ namespace Music_Downloader
                         if (!File.Exists(downloadpath + "\\" + songname + " - " + singername + ".mp3"))
                         {
                             wb.DownloadFile(url, downloadpath + "\\" + songname + " - " + singername + ".mp3");
-                            AddMusicDetails(downloadpath + "\\" + songname + " - " + singername + ".mp3", dl[i].Songname, dl[i].Singername, dl[i].Album);
+                            AddMusicDetails(downloadpath + "\\" + songname + " - " + singername + ".mp3", dl[i].Songname, dl[i].Singername, dl[i].Album, GetPicUrl(dl[i].ID, dl[i].Api), downloadpath);
                         }
                     }
                     if (dl[i].IfDownloadlrc)
@@ -1462,13 +1463,27 @@ namespace Music_Downloader
             Form2 f2 = new Form2();
             f2.Show();
         }
-        private void AddMusicDetails(string path, string title, string artists, string ablum)
+        private void AddMusicDetails(string path, string title, string artists, string ablum, string picture, string dir)
         {
             ID3Info info = new ID3Info(path, true);
             info.ID3v2Info.SetTextFrame("TIT2", title);
             info.ID3v2Info.SetTextFrame("TPE1", artists);
             info.ID3v2Info.SetTextFrame("TALB", ablum);
-            info.Save();
+            try
+            {
+                WebClient wc = new WebClient();
+                wc.DownloadFile(picture, dir + "\\" + title + " - " + artists + ".jpg");
+                AttachedPictureFrame pic = new AttachedPictureFrame(FrameFlags.Compression, "cover.jpg", TextEncodings.UTF_16, "", AttachedPictureFrame.PictureTypes.Other, new System.IO.MemoryStream(File.ReadAllBytes(dir + "\\" + title + " - " + artists + ".jpg")));
+                info.ID3v2Info.AttachedPictureFrames.Add(pic);
+            }
+            catch
+            {
+            }
+            finally
+            {
+                info.Save();
+                File.Delete(dir + "\\" + title + " - " + artists + ".jpg");
+            }
         }
         private void MultiFilesDownload(List<DownloadList> dl, int n)
         {
@@ -1648,6 +1663,30 @@ namespace Music_Downloader
                 }
                 return null;
             }
+        }
+        private string GetPicUrl(string id, int api)
+        {
+            if (api == 1)
+            {
+                return "https://v1.itooi.cn/netease/pic?id=" + id;
+            }
+            if (api == 2)
+            {
+                return "https://v1.itooi.cn/kugou/pic?id=" + id;
+            }
+            if (api == 3)
+            {
+                return "https://v1.itooi.cn/tencent/pic?id=" + id;
+            }
+            if (api == 4)
+            {
+                return "https://v1.itooi.cn/kuwo/pic?id=" + id;
+            }
+            if (api == 5)
+            {
+                return "https://v1.itooi.cn/baidu/pic?id=" + id;
+            }
+            return "";
         }
     }
 }
