@@ -120,6 +120,9 @@
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.metroComboBox2 = new MetroFramework.Controls.MetroComboBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.toolStripMenuItem18 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.contextMenuStrip3.SuspendLayout();
@@ -476,6 +479,7 @@
             // contextMenuStrip3
             // 
             this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem18,
             this.删除该项ToolStripMenuItem});
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             resources.ApplyResources(this.contextMenuStrip3, "contextMenuStrip3");
@@ -767,10 +771,29 @@
             resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
             // 
+            // checkBox3
+            // 
+            resources.ApplyResources(this.checkBox3, "checkBox3");
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 500;
+            this.timer2.Tick += new System.EventHandler(this.Timer2_Tick);
+            // 
+            // toolStripMenuItem18
+            // 
+            this.toolStripMenuItem18.Name = "toolStripMenuItem18";
+            resources.ApplyResources(this.toolStripMenuItem18, "toolStripMenuItem18");
+            this.toolStripMenuItem18.Click += new System.EventHandler(this.ToolStripMenuItem18_Click);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.metroComboBox2);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.axWindowsMediaPlayer1);
@@ -931,6 +954,9 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem17;
         private MetroFramework.Controls.MetroComboBox metroComboBox2;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem18;
     }
 }
 

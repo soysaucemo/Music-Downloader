@@ -14,6 +14,8 @@ namespace Music_Downloader
         public int DownloadQuality { get; set; }
         public int Volume { get; set; }
         public int MultiDownload { get; set; }
+        public bool ifdownloadpic { set; get; }
+        public bool ifdownloadlrc { set; get; }
     }
 
     public class PlayList
