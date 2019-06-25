@@ -25,6 +25,10 @@ https://github.com/messoer
 <img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/%E6%8D%90%E5%8A%A9.png" width="512" height="256">
 
 ## 更新日志: 
+   * 1.3.6(2019年6月25日):
+      * 修复 取消下载文件后导致部分文件无法下载的问题
+      * 增加自动更新程序
+	  
    * 1.3.5(2019年6月24日):
       * 修复 播放列表播放错误
       * 修复 BUG

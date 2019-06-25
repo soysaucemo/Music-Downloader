@@ -82,6 +82,7 @@
             this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem18 = new System.Windows.Forms.ToolStripMenuItem();
             this.删除该项ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
@@ -122,7 +123,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.toolStripMenuItem18 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.contextMenuStrip3.SuspendLayout();
@@ -484,6 +484,12 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             resources.ApplyResources(this.contextMenuStrip3, "contextMenuStrip3");
             // 
+            // toolStripMenuItem18
+            // 
+            this.toolStripMenuItem18.Name = "toolStripMenuItem18";
+            resources.ApplyResources(this.toolStripMenuItem18, "toolStripMenuItem18");
+            this.toolStripMenuItem18.Click += new System.EventHandler(this.ToolStripMenuItem18_Click);
+            // 
             // 删除该项ToolStripMenuItem
             // 
             this.删除该项ToolStripMenuItem.Name = "删除该项ToolStripMenuItem";
@@ -783,12 +789,6 @@
             this.timer2.Interval = 500;
             this.timer2.Tick += new System.EventHandler(this.Timer2_Tick);
             // 
-            // toolStripMenuItem18
-            // 
-            this.toolStripMenuItem18.Name = "toolStripMenuItem18";
-            resources.ApplyResources(this.toolStripMenuItem18, "toolStripMenuItem18");
-            this.toolStripMenuItem18.Click += new System.EventHandler(this.ToolStripMenuItem18_Click);
-            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -838,6 +838,7 @@
             this.Style = MetroFramework.MetroColorStyle.Lime;
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);

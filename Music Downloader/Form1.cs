@@ -33,9 +33,11 @@ namespace Music_Downloader
         private string playmode = "shunxu";
         private LrcDetails lrcd = new LrcDetails();
         public string latestversion = "获取中";
-        private string ver = "1.3.5";
+        private string ver = "1.3.6";
         private List<Thread> downloadthreadlist = new List<Thread>();
         private ArrayList canceldownloadindex = new ArrayList();
+        private bool ifupdate = false;
+        private string latestversionurl;
         public List<SearchResult> GetMusiclistJson(string id, int musicapicode)
         {
             string url = null;
@@ -410,28 +412,28 @@ namespace Music_Downloader
                 WebClient wb = new WebClient();
                 try
                 {
-                    if (dl[i].IfDownloadSong && !Ifcanceldownload(dl[i].index))
-                    {
-                        listView3.Items[dl[i].index].SubItems[2].Text = "下载歌曲中";
-                        if (!File.Exists(downloadpath + "\\" + songname + " - " + singername + ".mp3"))
-                        {
-                            wb.DownloadFile(url, downloadpath + "\\" + songname + " - " + singername + ".mp3");
-                            AddMusicDetails(downloadpath + "\\" + songname + " - " + singername + ".mp3", dl[i].Songname, dl[i].Singername, dl[i].Album, GetPicUrl(dl[i].ID, dl[i].Api), downloadpath, dl[i].ifdownloadpic);
-                        }
-                    }
-                    if (dl[i].IfDownloadlrc && !Ifcanceldownload(dl[i].index) && dl[i].LrcUrl != null && dl[i].LrcUrl != "")
-                    {
-                        listView3.Items[dl[i].index].SubItems[2].Text = "下载歌词中";
-                        if (!File.Exists(downloadpath + "\\" + songname + " - " + singername + ".lrc"))
-                        {
-                            lrcurl = dl[i].LrcUrl;
-                            s = wb.OpenRead(lrcurl);
-                            StreamReader sr = new StreamReader(s);
-                            File.WriteAllText(downloadpath + "\\" + songname + " - " + singername + ".lrc", sr.ReadToEnd(), Encoding.Default);
-                        }
-                    }
                     if (!Ifcanceldownload(dl[i].index))
                     {
+                        if (dl[i].IfDownloadSong)
+                        {
+                            listView3.Items[dl[i].index].SubItems[2].Text = "下载歌曲中";
+                            if (!File.Exists(downloadpath + "\\" + songname + " - " + singername + ".mp3"))
+                            {
+                                wb.DownloadFile(url, downloadpath + "\\" + songname + " - " + singername + ".mp3");
+                                AddMusicDetails(downloadpath + "\\" + songname + " - " + singername + ".mp3", dl[i].Songname, dl[i].Singername, dl[i].Album, GetPicUrl(dl[i].ID, dl[i].Api), downloadpath, dl[i].ifdownloadpic);
+                            }
+                        }
+                        if (dl[i].IfDownloadlrc && dl[i].LrcUrl != null && dl[i].LrcUrl != "")
+                        {
+                            listView3.Items[dl[i].index].SubItems[2].Text = "下载歌词中";
+                            if (!File.Exists(downloadpath + "\\" + songname + " - " + singername + ".lrc"))
+                            {
+                                lrcurl = dl[i].LrcUrl;
+                                s = wb.OpenRead(lrcurl);
+                                StreamReader sr = new StreamReader(s);
+                                File.WriteAllText(downloadpath + "\\" + songname + " - " + singername + ".lrc", sr.ReadToEnd(), Encoding.Default);
+                            }
+                        }
                         listView3.Items[dl[i].index].SubItems[2].Text = "下载完成";
                     }
                 }
@@ -899,9 +901,11 @@ namespace Music_Downloader
                 latestversion = data.Replace("\n", "");
                 if (ver != data && ver + "\n" != data)
                 {
-                    if (MessageBox.Show("检测到新版本，是否打开更新页面？", caption: "提示：", buttons: MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show("检测到新版本，是否更新？", caption: "提示：", buttons: MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        Process.Start("explorer.exe", "https://github.com/messoer/Music-Downloader");
+                        latestversionurl = "https://github.com/messoer/Music-Downloader/releases/download/" + data.Replace("\n","")+"/MusicDownloader.zip";
+                        ifupdate = true;
+                        Application.Exit();
                     }
                 }
             }
@@ -1230,23 +1234,12 @@ namespace Music_Downloader
                 else
                 {
                     ArrayList a = GetListViewSelectedIndices_downloadlist();
-                    foreach (int r in a)
+                    for (int i_ = 0; i_ < a.Count; i_++)
                     {
-                        listView3.Items[r].Remove();
+                        listView3.Items[(int)a[i_] - i_].Remove();
                     }
                 }
             }
-        }
-        public bool IfAllDownloadFinish()
-        {
-            for (int i = 0; i < listView3.Items.Count; i++)
-            {
-                if (listView3.Items[i].SubItems[2].Text != "下载完成")
-                {
-                    return false;
-                }
-            }
-            return true;
         }
         private void LinkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -1738,15 +1731,25 @@ namespace Music_Downloader
         /// <returns></returns>
         private bool Ifcanceldownload(int index)
         {
-            foreach (int i in canceldownloadindex)
+            for (int a = 0; a < canceldownloadindex.Count; a++)
             {
-                if (i == index)
+                if ((int)canceldownloadindex[a] == index)
                 {
+                    canceldownloadindex.RemoveAt(a);
                     return true;
                 }
             }
             return false;
         }
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (ifupdate)
+            {
+                Process p = new Process();
+                ProcessStartInfo ps = new ProcessStartInfo(Environment.CurrentDirectory + "\\" + "Update.exe", "\"" + latestversionurl + "\" \"" + Path.GetFullPath(Application.ExecutablePath) + "\"");
+                p.StartInfo = ps;
+                p.Start();
+            }
+        }
     }
 }
-//TODO:取消下载
