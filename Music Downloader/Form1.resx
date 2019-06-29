@@ -1205,6 +1205,27 @@
   <data name="&gt;&gt;skinTabPage2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 10pt</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 0</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 20</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>下载列表(总:0已下:0错误:0)</value>
+  </data>
   <data name="&gt;&gt;label7.Name" xml:space="preserve">
     <value>label7</value>
   </data>
@@ -1216,6 +1237,36 @@
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="columnHeader7.Text" xml:space="preserve">
+    <value>歌名</value>
+  </data>
+  <data name="columnHeader7.Width" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <data name="columnHeader8.Text" xml:space="preserve">
+    <value>歌手</value>
+  </data>
+  <data name="columnHeader8.Width" type="System.Int32, mscorlib">
+    <value>125</value>
+  </data>
+  <data name="columnHeader9.Text" xml:space="preserve">
+    <value>下载状态</value>
+  </data>
+  <data name="columnHeader9.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="listView3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="listView3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 23</value>
+  </data>
+  <data name="listView3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>406, 363</value>
+  </data>
+  <data name="listView3.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
   <data name="&gt;&gt;listView3.Name" xml:space="preserve">
     <value>listView3</value>
@@ -1487,81 +1538,6 @@
     <value>skinTabPage2</value>
   </data>
   <data name="&gt;&gt;listView2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 10pt</value>
-  </data>
-  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>194, 0</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 20</value>
-  </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>下载列表</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>skinTabPage3</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="columnHeader7.Text" xml:space="preserve">
-    <value>歌名</value>
-  </data>
-  <data name="columnHeader7.Width" type="System.Int32, mscorlib">
-    <value>200</value>
-  </data>
-  <data name="columnHeader8.Text" xml:space="preserve">
-    <value>歌手</value>
-  </data>
-  <data name="columnHeader8.Width" type="System.Int32, mscorlib">
-    <value>125</value>
-  </data>
-  <data name="columnHeader9.Text" xml:space="preserve">
-    <value>下载状态</value>
-  </data>
-  <data name="columnHeader9.Width" type="System.Int32, mscorlib">
-    <value>75</value>
-  </data>
-  <data name="listView3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
-  </data>
-  <data name="listView3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 23</value>
-  </data>
-  <data name="listView3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>406, 363</value>
-  </data>
-  <data name="listView3.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;listView3.Name" xml:space="preserve">
-    <value>listView3</value>
-  </data>
-  <data name="&gt;&gt;listView3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listView3.Parent" xml:space="preserve">
-    <value>skinTabPage3</value>
-  </data>
-  <data name="&gt;&gt;listView3.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="axWindowsMediaPlayer1.Enabled" type="System.Boolean, mscorlib">

@@ -465,6 +465,7 @@ namespace Music_Downloader
             string settingpath = Environment.CurrentDirectory + "\\Setting.json";
             axWindowsMediaPlayer1.settings.setMode("shuffle", false);
             mainform = this;
+            skinTabControl1.SelectedIndex = 0;
             try
             {
                 if (File.Exists(settingpath))
@@ -1784,6 +1785,20 @@ namespace Music_Downloader
         private void Timer4_Tick(object sender, EventArgs e)
         {
             label7.Left = (this.Width - label7.Width) / 2;
+            int downloaded = 0;
+            int error = 0;
+            for (int i = 0; i < listView3.Items.Count; i++)
+            {
+                if (listView3.Items[i].SubItems[2].Text == "下载完成")
+                {
+                    downloaded++;
+                }
+                if (listView3.Items[i].SubItems[2].Text.IndexOf("错误") != -1)
+                {
+                    error++;
+                }
+            }
+            label7.Text = $"下载列表(总:{listView3.Items.Count}已下:{downloaded}错误:{error})";
         }
     }
 }
