@@ -878,6 +878,17 @@ namespace Music_Downloader
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            for (int i = 0; i < downloadthreadlist.Count; i++)
+            {
+                if (downloadthreadlist[i].IsAlive)
+                {
+                    if (MessageBox.Show("下载未完成,确定关闭?", caption: "提示:", buttons: MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                        return;
+                    }
+                }
+            }
             Setting s = new Setting
             {
                 SavePath = DownloadPathtextBox.Text,
@@ -1658,14 +1669,14 @@ namespace Music_Downloader
             {
                 List<DownloadList> dl = new List<DownloadList>();
                 downloadindices = GetListViewSelectedIndices_musiclist();
-                if (Searchresult != null)
+                if (pl != null)
                 {
                     for (int i = 0; i < downloadindices.Count; i++)
                     {
-                        listView3.Items.Add(Searchresult[(int)downloadindices[i]].SongName);
-                        listView3.Items[listView3.Items.Count - 1].SubItems.Add(Searchresult[i].SingerName);
+                        listView3.Items.Add(pl[(int)downloadindices[i]].SongName);
+                        listView3.Items[listView3.Items.Count - 1].SubItems.Add(pl[i].SingerName);
                         listView3.Items[listView3.Items.Count - 1].SubItems.Add("准备下载");
-                        dl.Add(SetDownloadMedia(GetApiCode(), Searchresult[(int)downloadindices[i]].id, ifDownloadLrc, ifDownloadSong, DownloadPathtextBox.Text, Searchresult[(int)downloadindices[i]].SongName, Searchresult[(int)downloadindices[i]].SingerName, Searchresult[(int)downloadindices[i]].url, Searchresult[(int)downloadindices[i]].lrcurl, Searchresult[(int)downloadindices[i]].Album, GetQuality(), listView3.Items.Count - 1, checkBox3.Checked));
+                        dl.Add(SetDownloadMedia(GetApiCode(), pl[(int)downloadindices[i]].ID, ifDownloadLrc, ifDownloadSong, DownloadPathtextBox.Text, pl[(int)downloadindices[i]].SongName, pl[(int)downloadindices[i]].SingerName, pl[(int)downloadindices[i]].Url, pl[(int)downloadindices[i]].LrcUrl, pl[(int)downloadindices[i]].Album, GetQuality(), listView3.Items.Count - 1, checkBox3.Checked));
                     }
                     return dl;
                 }
@@ -1678,15 +1689,15 @@ namespace Music_Downloader
                 {
                     downloadindices.Add(i);
                 }
-                if (Searchresult != null)
+                if (pl != null)
                 {
                     List<DownloadList> dl = new List<DownloadList>();
                     for (int i = 0; i < downloadindices.Count; i++)
                     {
-                        listView3.Items.Add(Searchresult[(int)downloadindices[i]].SongName);
-                        listView3.Items[listView3.Items.Count - 1].SubItems.Add(Searchresult[i].SingerName);
+                        listView3.Items.Add(pl[(int)downloadindices[i]].SongName);
+                        listView3.Items[listView3.Items.Count - 1].SubItems.Add(pl[i].SingerName);
                         listView3.Items[listView3.Items.Count - 1].SubItems.Add("准备下载");
-                        dl.Add(SetDownloadMedia(GetApiCode(), Searchresult[(int)downloadindices[i]].id, ifDownloadLrc, ifDownloadSong, DownloadPathtextBox.Text, Searchresult[(int)downloadindices[i]].SongName, Searchresult[(int)downloadindices[i]].SingerName, Searchresult[(int)downloadindices[i]].url, Searchresult[(int)downloadindices[i]].lrcurl, Searchresult[(int)downloadindices[i]].Album, GetQuality(), listView3.Items.Count - 1, checkBox3.Checked));
+                        dl.Add(SetDownloadMedia(GetApiCode(), pl[(int)downloadindices[i]].ID, ifDownloadLrc, ifDownloadSong, DownloadPathtextBox.Text, pl[(int)downloadindices[i]].SongName, pl[(int)downloadindices[i]].SingerName, pl[(int)downloadindices[i]].Url, pl[(int)downloadindices[i]].LrcUrl, pl[(int)downloadindices[i]].Album, GetQuality(), listView3.Items.Count - 1, checkBox3.Checked));
                     }
                     return dl;
                 }
@@ -1769,6 +1780,10 @@ namespace Music_Downloader
                 p.StartInfo = ps;
                 p.Start();
             }
+        }
+        private void Timer4_Tick(object sender, EventArgs e)
+        {
+            label7.Left = (this.Width - label7.Width) / 2;
         }
     }
 }

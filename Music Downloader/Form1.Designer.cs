@@ -123,6 +123,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.contextMenuStrip3.SuspendLayout();
@@ -568,7 +569,7 @@
             this.skinTabControl1.PageHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageHover")));
             this.skinTabControl1.PageImagePosition = CCWin.SkinControl.SkinTabControl.ePageImagePosition.Left;
             this.skinTabControl1.PageNorml = null;
-            this.skinTabControl1.SelectedIndex = 0;
+            this.skinTabControl1.SelectedIndex = 2;
             this.skinTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             // 
             // skinTabPage1
@@ -789,6 +790,12 @@
             this.timer2.Interval = 500;
             this.timer2.Tick += new System.EventHandler(this.Timer2_Tick);
             // 
+            // timer4
+            // 
+            this.timer4.Enabled = true;
+            this.timer4.Interval = 1000;
+            this.timer4.Tick += new System.EventHandler(this.Timer4_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -958,6 +965,7 @@
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem18;
+        private System.Windows.Forms.Timer timer4;
     }
 }
 
