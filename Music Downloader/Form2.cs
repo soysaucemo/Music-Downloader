@@ -18,7 +18,10 @@ namespace Music_Downloader
             string newname;
             foreach (string a in files)
             {
-                filesname.Add(Path.GetFileName(a));
+                if (Path.GetFileName(a).IndexOf('-') != -1)
+                {
+                    filesname.Add(Path.GetFileName(a));
+                }
             }
             for (int i = 0; i < filesname.Count; i++)
             {
@@ -48,19 +51,22 @@ namespace Music_Downloader
         {
             string[] files = Directory.GetFiles(dir);
             ArrayList filesname = new ArrayList();
-            string[] b = new string[2];
             string singer;
+            string songname;
             string newdir;
             foreach (string a in files)
             {
-                filesname.Add(Path.GetFileName(a));
+                if (Path.GetFileName(a).IndexOf('-') != -1)
+                {
+                    filesname.Add(Path.GetFileName(a));
+                }
             }
             for (int i = 0; i < filesname.Count; i++)
             {
                 try
                 {
-                    b = filesname[i].ToString().Split('-');
-                    singer = b[1].Replace(".mp3", "");
+                    songname = filesname[i].ToString().Substring(0, filesname[i].ToString().LastIndexOf('-')).Replace(" ", "");
+                    singer = filesname[i].ToString().Substring(filesname[i].ToString().LastIndexOf('-') + 1, filesname[i].ToString().LastIndexOf('.') - filesname[i].ToString().LastIndexOf('-') - 1).Replace(" ", "");
                     if (dir.Substring(dir.Length - 1) == "\\")
                     {
                         newdir = dir + singer;
@@ -116,6 +122,10 @@ namespace Music_Downloader
                 return;
             }
             Classify(textBox2.Text);
+        }
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Music_Downloader.Form1.f2 = null;
         }
     }
 }

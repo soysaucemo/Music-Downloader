@@ -14,5 +14,9 @@ namespace Music_Downloader
         {
             Clipboard.SetText("1024028162");
         }
+        private void About_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form1.about = null;
+        }
     }
 }

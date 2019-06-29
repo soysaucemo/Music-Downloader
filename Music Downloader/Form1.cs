@@ -23,9 +23,6 @@ namespace Music_Downloader
             CheckForIllegalCrossThreadCalls = false;
             this.StartPosition = FormStartPosition.CenterScreen;
         }
-        //全局变量
-        //Music_Downloader.Root1 musiclist;
-        //SearchRoot Searchresult;
         private List<SearchResult> Searchresult;
         private ArrayList downloadindices = new ArrayList();
         private Thread a;
@@ -38,6 +35,8 @@ namespace Music_Downloader
         private ArrayList canceldownloadindex = new ArrayList();
         private bool ifupdate = false;
         private string latestversionurl;
+        public static Form2 f2;
+        public static About about;
         public List<SearchResult> GetMusiclistJson(string id, int musicapicode)
         {
             string url = null;
@@ -451,7 +450,10 @@ namespace Music_Downloader
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.ShowDialog();
-            DownloadPathtextBox.Text = fbd.SelectedPath;
+            if (!string.IsNullOrEmpty(fbd.SelectedPath))
+            {
+                DownloadPathtextBox.Text = fbd.SelectedPath;
+            }
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -903,7 +905,7 @@ namespace Music_Downloader
                 {
                     if (MessageBox.Show("检测到新版本，是否更新？", caption: "提示：", buttons: MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        latestversionurl = "https://github.com/messoer/Music-Downloader/releases/download/" + data.Replace("\n","")+"/MusicDownloader.zip";
+                        latestversionurl = "https://github.com/messoer/Music-Downloader/releases/download/" + data.Replace("\n", "") + "/MusicDownloader.zip";
                         ifupdate = true;
                         Application.Exit();
                     }
@@ -1243,8 +1245,15 @@ namespace Music_Downloader
         }
         private void LinkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            About aboutform = new About(ver, latestversion);
-            aboutform.Show();
+            if (about == null)
+            {
+                about = new About(ver, latestversion);
+                about.Show();
+            }
+            else
+            {
+                about.Activate();
+            }
         }
         private void ListView2_DoubleClick(object sender, EventArgs e)
         {
@@ -1465,8 +1474,15 @@ namespace Music_Downloader
         }
         private void LinkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Form2 f2 = new Form2();
-            f2.Show();
+            if (f2 == null)
+            {
+                f2 = new Form2();
+                f2.Show();
+            }
+            else
+            {
+                f2.Activate();
+            }
         }
         private void AddMusicDetails(string path, string title, string artists, string ablum, string picture, string dir, bool ifdownloadpic)
         {
