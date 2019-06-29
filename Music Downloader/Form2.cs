@@ -127,5 +127,10 @@ namespace Music_Downloader
         {
             Music_Downloader.Form1.f2 = null;
         }
+        private void Form2_Load(object sender, System.EventArgs e)
+        {
+            textBox1.Text = Form1.mainform.Controls["DownloadPathtextBox"].Text;
+            textBox2.Text = Form1.mainform.Controls["DownloadPathtextBox"].Text;
+        }
     }
 }

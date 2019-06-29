@@ -37,6 +37,7 @@ namespace Music_Downloader
         private string latestversionurl;
         public static Form2 f2;
         public static About about;
+        public static Form1 mainform;
         public List<SearchResult> GetMusiclistJson(string id, int musicapicode)
         {
             string url = null;
@@ -463,6 +464,7 @@ namespace Music_Downloader
             axWindowsMediaPlayer1.settings.volume = 50;
             string settingpath = Environment.CurrentDirectory + "\\Setting.json";
             axWindowsMediaPlayer1.settings.setMode("shuffle", false);
+            mainform = this;
             try
             {
                 if (File.Exists(settingpath))
@@ -1232,6 +1234,7 @@ namespace Music_Downloader
                 if (downloadthreadlist[i].IsAlive)
                 {
                     MessageBox.Show("该功能不能用于取消下载，请等待所有下载完成后再试。", caption: "提示：");
+                    return;
                 }
                 else
                 {
