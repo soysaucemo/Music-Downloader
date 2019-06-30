@@ -25,6 +25,14 @@ https://github.com/messoer
 <img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/%E6%8D%90%E5%8A%A9.png" width="512" height="256">
 
 ## 更新日志: 
+   * 1..3.7(2019年6月30日):
+      * 修复 分类程序错误
+	  * 修复 删除下载列表项时重复弹出信息框
+	  * 修复 播放列表中的歌曲无法下载的bug
+	  * 修复 无法保存专辑图片
+	  * 修复 确认更新后程序不退出
+	  * 增加 下载列表数据统计
+	  
    * 1.3.6(2019年6月25日):
       * 修复 取消下载文件后导致部分文件无法下载的问题
       * 增加 自动更新程序

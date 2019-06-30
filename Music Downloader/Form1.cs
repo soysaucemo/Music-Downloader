@@ -30,7 +30,7 @@ namespace Music_Downloader
         private string playmode = "shunxu";
         private LrcDetails lrcd = new LrcDetails();
         public string latestversion = "获取中";
-        private string ver = "1.3.6";
+        private string ver = "1.3.7";
         private List<Thread> downloadthreadlist = new List<Thread>();
         private ArrayList canceldownloadindex = new ArrayList();
         private bool ifupdate = false;
@@ -921,14 +921,6 @@ namespace Music_Downloader
                     {
                         latestversionurl = "https://github.com/messoer/Music-Downloader/releases/download/" + data.Replace("\n", "") + "/MusicDownloader.zip";
                         ifupdate = true;
-                        if (f2 != null)
-                        {
-                            f2.Close();
-                        }
-                        if (about != null)
-                        {
-                            about.Close();
-                        }
                         Application.Exit();
                     }
                 }

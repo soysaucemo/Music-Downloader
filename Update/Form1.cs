@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO.Compression;
-using System.Net;
-using System.Threading;
+using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace Update
 {
@@ -32,6 +25,14 @@ namespace Update
         {
             try
             {
+                Process[] ps = Process.GetProcessesByName("Music Downloader");
+                if (ps.Length > 0)
+                {
+                    foreach (Process p in ps)
+                    {
+                        p.Kill();
+                    }
+                }
                 DownloadFile(args[0], Environment.CurrentDirectory + "\\" + "Update.zip", progressBar1);
                 label1.Text = "创建临时文件夹";
                 if (Directory.Exists(Environment.CurrentDirectory + "\\Update"))
@@ -45,15 +46,18 @@ namespace Update
                 DirectoryInfo d = new DirectoryInfo(Environment.CurrentDirectory + "\\Update");
                 foreach (FileInfo f in d.GetFiles())
                 {
-                    f.CopyTo(Environment.CurrentDirectory + "\\" + Path.GetFileName(f.FullName), true);
+                    if (Path.GetFileName(f.FullName) != "Update.exe")
+                    {
+                        f.CopyTo(Environment.CurrentDirectory + "\\" + Path.GetFileName(f.FullName), true);
+                    }
                 }
                 File.Delete(Environment.CurrentDirectory + "\\" + "Update.zip");
                 Directory.Delete(Environment.CurrentDirectory + "\\Update", true);
                 label1.Text = "更新完成";
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                MessageBox.Show(e.Message+e.InnerException);
+                MessageBox.Show(e.Message + e.InnerException);
             }
         }
         public void DownloadFile(string URL, string filename, System.Windows.Forms.ProgressBar prog)
