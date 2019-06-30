@@ -58,6 +58,7 @@ namespace Update
             catch (Exception e)
             {
                 MessageBox.Show(e.Message + e.InnerException);
+                label1.Text = "更新错误";
             }
         }
         public void DownloadFile(string URL, string filename, System.Windows.Forms.ProgressBar prog)
