@@ -1522,7 +1522,7 @@ namespace Music_Downloader
             {
                 info.Save();
             }
-            File.Delete(dir + "\\" + title + " - " + artists + ".jpg");
+            //File.Delete(dir + "\\" + title + " - " + artists + ".jpg");
         }
         private void MultiFilesDownload(List<DownloadList> dl, int n)
         {
@@ -1546,7 +1546,8 @@ namespace Music_Downloader
                             Savepath = dl[x].Savepath,
                             Singername = dl[x].Singername,
                             Songname = dl[x].Songname,
-                            Url = dl[x].Url
+                            Url = dl[x].Url,
+                            ifdownloadpic = dl[x].ifdownloadpic
                         };
                         dl_.Add(_dl);
                     }
