@@ -921,6 +921,14 @@ namespace Music_Downloader
                     {
                         latestversionurl = "https://github.com/messoer/Music-Downloader/releases/download/" + data.Replace("\n", "") + "/MusicDownloader.zip";
                         ifupdate = true;
+                        if (f2 != null)
+                        {
+                            f2.Close();
+                        }
+                        if (about != null)
+                        {
+                            about.Close();
+                        }
                         Application.Exit();
                     }
                 }
