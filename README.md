@@ -25,7 +25,7 @@ https://github.com/messoer
 <img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/%E6%8D%90%E5%8A%A9.png" width="512" height="256">
 
 ## 更新日志: 
-   * 1..3.7(2019年6月30日):
+   * 1.3.7(2019年6月30日):
       * 修复 分类程序错误
 	  * 修复 程序自动更新错误
 	  * 修复 删除下载列表项时重复弹出信息框
