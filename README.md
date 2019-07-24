@@ -25,6 +25,10 @@ https://github.com/messoer
 <img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/%E6%8D%90%E5%8A%A9.png" width="512" height="256">
 
 ## 更新日志: 
+   * 1.3.8(2019年7月25日):
+      * 修复 播放列表切歌时歌词错误的问题
+	  * 更改 播放列表的歌曲不能重复
+	  
    * 1.3.7(2019年6月30日):
       * 修复 分类程序错误
 	  * 修复 程序自动更新错误
