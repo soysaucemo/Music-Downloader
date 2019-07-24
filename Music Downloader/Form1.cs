@@ -30,7 +30,7 @@ namespace Music_Downloader
         private string playmode = "shunxu";
         private LrcDetails lrcd = new LrcDetails();
         public string latestversion = "获取中";
-        private string ver = "1.3.7";
+        private string ver = "1.3.8";
         private List<Thread> downloadthreadlist = new List<Thread>();
         private ArrayList canceldownloadindex = new ArrayList();
         private bool ifupdate = false;
@@ -779,10 +779,13 @@ namespace Music_Downloader
                 MessageBox.Show("搜索内容不能为空", caption: "警告：");
                 return;
             }
-            Searchresult = SearchMusic(SearchtextBox.Text, GetApiCode(), GetQuality());
-            if (Searchresult == null)
+            try
             {
-                MessageBox.Show("搜索异常", caption: "警告：");
+                Searchresult = SearchMusic(SearchtextBox.Text, GetApiCode(), GetQuality());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("搜索异常:" + e.Message, caption: "警告：");
                 return;
             }
             listView1.Items.Clear();
@@ -1097,6 +1100,13 @@ namespace Music_Downloader
         }
         public void AddMusicToList(PlayList p)
         {
+            for (int i = 0; i < listView2.Items.Count; i++)
+            {
+                if (listView2.Items[i].Text == p.SongName && listView2.Items[i].SubItems[1].Text == p.SingerName)
+                {
+                    return;
+                }
+            }
             pl.Add(p);
             listView2.Items.Add(p.SongName);
             listView2.Items[listView2.Items.Count - 1].SubItems.Add(p.SingerName);
@@ -1403,19 +1413,6 @@ namespace Music_Downloader
                     label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
                     label9.Text = "歌曲名";
                 }
-                if (axWindowsMediaPlayer1.playState == WMPPlayState.wmppsBuffering)
-                {
-                    for (int i = 0; i < listView2.Items.Count; i++)
-                    {
-                        if (axWindowsMediaPlayer1.currentMedia.sourceURL == pl[i].Url)
-                        {
-                            //label8.Text = "加载中";
-                            label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
-                            label9.Text = pl[i].SongName + " - " + pl[i].SingerName;
-                            label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
-                        }
-                    }
-                }
             }
             catch
             {
@@ -1423,12 +1420,18 @@ namespace Music_Downloader
         }
         private void AxWindowsMediaPlayer1_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
-            if (axWindowsMediaPlayer1.playState == WMPPlayState.wmppsMediaEnded)
+            if (axWindowsMediaPlayer1.playState == WMPPlayState.wmppsPlaying)
             {
-                label8.Text = "当前无音乐播放";
-                label9.Text = "歌曲名";
-                label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
-                label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
+                for (int i = 0; i < listView2.Items.Count; i++)
+                {
+                    if (axWindowsMediaPlayer1.currentMedia.sourceURL == pl[i].Url)
+                    {
+                        label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
+                        label9.Text = pl[i].SongName + " - " + pl[i].SingerName;
+                        label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
+                        LrcDetails lrcdd = LrcReader(pl[i].LrcUrl);
+                    }
+                }
             }
         }
         private void MediaEndAndChangeLrc(object i)
