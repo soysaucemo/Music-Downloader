@@ -38,6 +38,7 @@ namespace Music_Downloader
         public static Form2 f2;
         public static About about;
         public static Form1 mainform;
+        //API 1网易云 2酷狗 3QQ 4酷我 5百度
         public List<SearchResult> GetMusiclistJson(string id, int musicapicode)
         {
             string url = null;
@@ -165,8 +166,8 @@ namespace Music_Downloader
                         {
                             id = json.data[0].songlist[i].mid,
                             Album = json.data[0].songlist[i].album.name,
-                            lrcurl = "https://v1.itooi.cn/tencent/lrc?id=" + json.data[0].songlist[i].id.ToString(),
-                            url = "https://v1.itooi.cn/tencent/url?id=" + json.data[0].songlist[i].id.ToString(),
+                            lrcurl = "https://v1.itooi.cn/tencent/lrc?id=" + json.data[0].songlist[i].mid,
+                            url = "https://v1.itooi.cn/tencent/url?id=" + json.data[0].songlist[i].mid,
                             SongName = json.data[0].songlist[i].name,
                             SingerName = sn
                         };
@@ -1552,6 +1553,10 @@ namespace Music_Downloader
                             Url = dl[x].Url,
                             ifdownloadpic = dl[x].ifdownloadpic
                         };
+                        if (dl[x].Api == 1)
+                        {
+
+                        }
                         dl_.Add(_dl);
                     }
                 }
