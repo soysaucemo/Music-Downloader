@@ -36,6 +36,7 @@
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.linkLabel6 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel7 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,11 +138,27 @@
             this.linkLabel6.Text = "免责声明：\r\n此程序为开源项目，仅供学习交流，请勿非法商用\r\n程序发布地址：\r\nhttps://www.52pojie.cn/?471913\r\nhttps://w" +
     "ww.github.com/NiTian1207";
             // 
+            // linkLabel7
+            // 
+            this.linkLabel7.AutoSize = true;
+            this.linkLabel7.Font = new System.Drawing.Font("微软雅黑", 8.5F);
+            this.linkLabel7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.linkLabel7.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabel7.LinkColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.linkLabel7.Location = new System.Drawing.Point(206, 125);
+            this.linkLabel7.Name = "linkLabel7";
+            this.linkLabel7.Size = new System.Drawing.Size(182, 17);
+            this.linkLabel7.TabIndex = 51;
+            this.linkLabel7.TabStop = true;
+            this.linkLabel7.Text = "QQ群:348846978 （点击复制）";
+            this.linkLabel7.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel7_LinkClicked);
+            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(512, 511);
+            this.Controls.Add(this.linkLabel7);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.linkLabel6);
             this.Controls.Add(this.linkLabel5);
@@ -172,5 +189,6 @@
         private System.Windows.Forms.LinkLabel linkLabel4;
         private System.Windows.Forms.LinkLabel linkLabel5;
         private System.Windows.Forms.LinkLabel linkLabel6;
+        private System.Windows.Forms.LinkLabel linkLabel7;
     }
 }

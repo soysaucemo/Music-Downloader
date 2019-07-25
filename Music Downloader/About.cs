@@ -18,5 +18,9 @@ namespace Music_Downloader
         {
             Form1.about = null;
         }
+        private void LinkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Clipboard.SetText("348846978");
+        }
     }
 }
