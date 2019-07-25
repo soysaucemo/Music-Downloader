@@ -3,6 +3,10 @@
 功能：歌曲搜索、歌单读取、在线播放、歌曲下载（包括付费音乐）
 
 作者：NiTian （QQ：1024028162）
+
+## 源码使用说明
+缺少的dll在 MusicPlayer Material 文件中
+
 ## 使用技巧 
 * 列表右键功能菜单
 * 列表可配合Ctrl和Shift键实现多选
@@ -14,9 +18,6 @@
    * 千千音乐：http://music.taihe.com/songlist/566242123
 ## 运行截图
 <img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/%E6%88%AA%E5%9B%BE1.png" width="212" height="352.5‬"><img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/%E6%88%AA%E5%9B%BE2.png" width="212" height="352.5‬">
-
-## 源码使用说明
-缺少的dll在 MusicPlayer Material 文件中
 
 ## API来源
 https://github.com/messoer
