@@ -1053,7 +1053,6 @@ namespace Music_Downloader
                 if (axWindowsMediaPlayer1.currentMedia.duration != 0)
                 {
                     metroTrackBar1.Maximum = (int)axWindowsMediaPlayer1.currentMedia.duration + 2;
-                    //timer2.Enabled = false;
                 }
             }
             catch
@@ -1372,6 +1371,8 @@ namespace Music_Downloader
         {
             try
             {
+                label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
+                label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
                 if (axWindowsMediaPlayer1.playState == WMPPlayState.wmppsPlaying)
                 {
                     for (int i = 0; i < lrcd.LrcWord.Count; i++)
@@ -1382,7 +1383,6 @@ namespace Music_Downloader
                             {
                                 label8.Text = lrcd.LrcWord[i].Ci;
                                 i++;
-                                label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
                             }
                         }
                         catch
@@ -1398,7 +1398,6 @@ namespace Music_Downloader
                 if (axWindowsMediaPlayer1.playState == WMPPlayState.wmppsMediaEnded)
                 {
                     label8.Text = "当前无音乐播放";
-                    label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
                     label9.Text = "歌曲名";
                 }
             }
@@ -1414,9 +1413,7 @@ namespace Music_Downloader
                 {
                     if (axWindowsMediaPlayer1.currentMedia.sourceURL == pl[i].Url)
                     {
-                        label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
                         label9.Text = pl[i].SongName + " - " + pl[i].SingerName;
-                        label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
                         LrcDetails lrcdd = LrcReader(pl[i].LrcUrl);
                     }
                 }
