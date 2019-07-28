@@ -955,10 +955,12 @@ namespace Music_Downloader
         private void PictureBox3_Click(object sender, EventArgs e)
         {
             axWindowsMediaPlayer1.Ctlcontrols.next();
+            label8.Text = "当前音乐无歌词";
         }
         private void PictureBox2_Click(object sender, EventArgs e)
         {
             axWindowsMediaPlayer1.Ctlcontrols.previous();
+            label8.Text = "当前音乐无歌词";
         }
         private void PictureBox1_Click(object sender, EventArgs e)
         {
@@ -992,6 +994,7 @@ namespace Music_Downloader
         {
             try
             {
+                label8.Text = "当前音乐无歌词";
                 ArrayList a = new ArrayList();
                 a = GetListViewSelectedIndices();
                 if (Searchresult != null)
@@ -1026,25 +1029,8 @@ namespace Music_Downloader
             }
             else
             {
-                PlayList p = new PlayList()
-                {
-                    Album = Searchresult[n].Album,
-                    ID = Searchresult[n].id,
-                    LrcUrl = Searchresult[n].lrcurl,
-                    Url = Searchresult[n].url,
-                    SongName = Searchresult[n].SongName,
-                    SingerName = Searchresult[n].SingerName
-                };
-                pl.Add(p);
-                IWMPMedia media = axWindowsMediaPlayer1.newMedia(url);
-                axWindowsMediaPlayer1.currentPlaylist.appendItem(media);
-                axWindowsMediaPlayer1.Ctlcontrols.currentItem = axWindowsMediaPlayer1.currentPlaylist.Item[axWindowsMediaPlayer1.currentPlaylist.count];
-                axWindowsMediaPlayer1.Ctlcontrols.play();
-                pictureBox1.Image = Properties.Resources.pause;
-                listView2.Items.Add(Searchresult[n].SongName);
-                listView2.Items[listView2.Items.Count].SubItems.Add(Searchresult[n].SingerName);
-                listView2.Items[listView2.Items.Count].SubItems.Add(Searchresult[n].Album);
-                //timer2.Enabled = true;
+                ToolStripMenuItem4_Click(this, new EventArgs());
+                Play(url, n);
             }
         }
         public void Volumechange(int num)
@@ -1296,6 +1282,7 @@ namespace Music_Downloader
         {
             try
             {
+                label8.Text = "当前音乐无歌词";
                 ArrayList a = new ArrayList();
                 a = GetListViewSelectedIndices_musiclist();
                 IWMPMedia media = axWindowsMediaPlayer1.newMedia(pl[(int)a[0]].Url);

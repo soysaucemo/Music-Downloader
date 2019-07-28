@@ -110,7 +110,6 @@
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -124,6 +123,7 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer4 = new System.Windows.Forms.Timer(this.components);
+            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.contextMenuStrip3.SuspendLayout();
@@ -136,9 +136,9 @@
             this.skinTabPage1.SuspendLayout();
             this.skinTabPage2.SuspendLayout();
             this.skinTabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
             // IDtextBox
@@ -694,13 +694,6 @@
             // 
             resources.ApplyResources(this.columnHeader9, "columnHeader9");
             // 
-            // axWindowsMediaPlayer1
-            // 
-            resources.ApplyResources(this.axWindowsMediaPlayer1, "axWindowsMediaPlayer1");
-            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
-            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.AxWindowsMediaPlayer1_PlayStateChange);
-            // 
             // pictureBox6
             // 
             resources.ApplyResources(this.pictureBox6, "pictureBox6");
@@ -797,6 +790,13 @@
             this.timer4.Interval = 1000;
             this.timer4.Tick += new System.EventHandler(this.Timer4_Tick);
             // 
+            // axWindowsMediaPlayer1
+            // 
+            resources.ApplyResources(this.axWindowsMediaPlayer1, "axWindowsMediaPlayer1");
+            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
+            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
+            this.axWindowsMediaPlayer1.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.AxWindowsMediaPlayer1_PlayStateChange);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -863,9 +863,9 @@
             this.skinTabPage2.PerformLayout();
             this.skinTabPage3.ResumeLayout(false);
             this.skinTabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
