@@ -481,6 +481,52 @@ namespace Music_Downloader
                     checkBox3.Checked = s.ifdownloadpic;
                     metroComboBox1.SelectedIndex = s.DownloadQuality;
                     metroComboBox2.SelectedIndex = s.MultiDownload;
+                    switch (s.Color)
+                    {
+                        case 0:
+                            this.Style = MetroFramework.MetroColorStyle.Black;
+                            break;
+                        case 1:
+                            this.Style = MetroFramework.MetroColorStyle.White;
+                            break;
+                        case 2:
+                            this.Style = MetroFramework.MetroColorStyle.Silver;
+                            break;
+                        case 3:
+                            this.Style = MetroFramework.MetroColorStyle.Blue;
+                            break;
+                        case 4:
+                            this.Style = MetroFramework.MetroColorStyle.Green;
+                            break;
+                        case 5:
+                            this.Style = MetroFramework.MetroColorStyle.Lime;
+                            break;
+                        case 6:
+                            this.Style = MetroFramework.MetroColorStyle.Teal;
+                            break;
+                        case 7:
+                            this.Style = MetroFramework.MetroColorStyle.Orange;
+                            break;
+                        case 8:
+                            this.Style = MetroFramework.MetroColorStyle.Brown;
+                            break;
+                        case 9:
+                            this.Style = MetroFramework.MetroColorStyle.Pink;
+                            break;
+                        case 10:
+                            this.Style = MetroFramework.MetroColorStyle.Magenta;
+                            break;
+                        case 11:
+                            this.Style = MetroFramework.MetroColorStyle.Purple;
+                            break;
+                        case 12:
+                            this.Style = MetroFramework.MetroColorStyle.Red;
+                            break;
+                        case 13:
+                            this.Style = MetroFramework.MetroColorStyle.Yellow;
+                            break;
+                    }
+                    metroComboBox3.SelectedIndex = s.Color;
                     IWMPPlaylist l = axWindowsMediaPlayer1.currentPlaylist;
                     for (int i = 0; i < s.PlayList.Count; i++)
                     {
@@ -498,6 +544,7 @@ namespace Music_Downloader
                     DownloadPathtextBox.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
                     metroComboBox1.SelectedIndex = 4;
                     metroComboBox2.SelectedIndex = 0;
+                    metroComboBox3.SelectedIndex = 5;
                     Thread b = new Thread(new ParameterizedThreadStart(WaitUpdate));
                     b.Start(a);
                 }
@@ -902,7 +949,8 @@ namespace Music_Downloader
                 Volume = metroTrackBar2.Value,
                 MultiDownload = metroComboBox2.SelectedIndex,
                 ifdownloadpic = checkBox3.Checked,
-                ifdownloadlrc = checkBox1.Checked
+                ifdownloadlrc = checkBox1.Checked,
+                Color = metroComboBox3.SelectedIndex
             };
             string json = JsonConvert.SerializeObject(s);
             StreamWriter sw = new StreamWriter(Environment.CurrentDirectory + "\\Setting.json");
@@ -1792,6 +1840,54 @@ namespace Music_Downloader
                 }
             }
             label7.Text = $"下载列表(总:{listView3.Items.Count}已下:{downloaded}错误:{error})";
+        }
+        private void MetroComboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (metroComboBox3.SelectedIndex)
+            {
+                case 0:
+                    this.Style = MetroFramework.MetroColorStyle.Black;
+                    break;
+                case 1:
+                    this.Style = MetroFramework.MetroColorStyle.White;
+                    break;
+                case 2:
+                    this.Style = MetroFramework.MetroColorStyle.Silver;
+                    break;
+                case 3:
+                    this.Style = MetroFramework.MetroColorStyle.Blue;
+                    break;
+                case 4:
+                    this.Style = MetroFramework.MetroColorStyle.Green;
+                    break;
+                case 5:
+                    this.Style = MetroFramework.MetroColorStyle.Lime;
+                    break;
+                case 6:
+                    this.Style = MetroFramework.MetroColorStyle.Teal;
+                    break;
+                case 7:
+                    this.Style = MetroFramework.MetroColorStyle.Orange;
+                    break;
+                case 8:
+                    this.Style = MetroFramework.MetroColorStyle.Brown;
+                    break;
+                case 9:
+                    this.Style = MetroFramework.MetroColorStyle.Pink;
+                    break;
+                case 10:
+                    this.Style = MetroFramework.MetroColorStyle.Magenta;
+                    break;
+                case 11:
+                    this.Style = MetroFramework.MetroColorStyle.Purple;
+                    break;
+                case 12:
+                    this.Style = MetroFramework.MetroColorStyle.Red;
+                    break;
+                case 13:
+                    this.Style = MetroFramework.MetroColorStyle.Yellow;
+                    break;
+            }
         }
     }
 }

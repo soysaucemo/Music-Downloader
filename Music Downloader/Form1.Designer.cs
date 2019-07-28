@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.IDtextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.DownloadPathtextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SearchtextBox = new System.Windows.Forms.TextBox();
@@ -124,6 +123,8 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.label2 = new System.Windows.Forms.Label();
+            this.metroComboBox3 = new MetroFramework.Controls.MetroComboBox();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.contextMenuStrip3.SuspendLayout();
@@ -151,11 +152,6 @@
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
             // 
             // DownloadPathtextBox
             // 
@@ -569,7 +565,7 @@
             this.skinTabControl1.PageHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageHover")));
             this.skinTabControl1.PageImagePosition = CCWin.SkinControl.SkinTabControl.ePageImagePosition.Left;
             this.skinTabControl1.PageNorml = null;
-            this.skinTabControl1.SelectedIndex = 2;
+            this.skinTabControl1.SelectedIndex = 0;
             this.skinTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             // 
             // skinTabPage1
@@ -798,10 +794,41 @@
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
             this.axWindowsMediaPlayer1.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.AxWindowsMediaPlayer1_PlayStateChange);
             // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // metroComboBox3
+            // 
+            this.metroComboBox3.FormattingEnabled = true;
+            resources.ApplyResources(this.metroComboBox3, "metroComboBox3");
+            this.metroComboBox3.Items.AddRange(new object[] {
+            resources.GetString("metroComboBox3.Items"),
+            resources.GetString("metroComboBox3.Items1"),
+            resources.GetString("metroComboBox3.Items2"),
+            resources.GetString("metroComboBox3.Items3"),
+            resources.GetString("metroComboBox3.Items4"),
+            resources.GetString("metroComboBox3.Items5"),
+            resources.GetString("metroComboBox3.Items6"),
+            resources.GetString("metroComboBox3.Items7"),
+            resources.GetString("metroComboBox3.Items8"),
+            resources.GetString("metroComboBox3.Items9"),
+            resources.GetString("metroComboBox3.Items10"),
+            resources.GetString("metroComboBox3.Items11"),
+            resources.GetString("metroComboBox3.Items12"),
+            resources.GetString("metroComboBox3.Items13")});
+            this.metroComboBox3.Name = "metroComboBox3";
+            this.metroComboBox3.UseSelectable = true;
+            this.metroComboBox3.SelectedIndexChanged += new System.EventHandler(this.MetroComboBox3_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.metroComboBox3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.metroComboBox2);
             this.Controls.Add(this.label10);
@@ -833,10 +860,8 @@
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.DownloadPathtextBox);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.IDtextBox);
             this.Controls.Add(this.skinTabControl1);
@@ -876,7 +901,6 @@
 
         private System.Windows.Forms.TextBox IDtextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox DownloadPathtextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox SearchtextBox;
@@ -968,6 +992,8 @@
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem18;
         private System.Windows.Forms.Timer timer4;
+        private System.Windows.Forms.Label label2;
+        private MetroFramework.Controls.MetroComboBox metroComboBox3;
     }
 }
 
