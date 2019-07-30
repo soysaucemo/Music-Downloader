@@ -1596,7 +1596,6 @@ namespace Music_Downloader
                 Thread a = new Thread(new ParameterizedThreadStart(Download));
                 downloadthreadlist.Add(a);
                 a.Start(dl_);
-
             }
         }
         private void ToolStripMenuItem12_Click(object sender, EventArgs e)
