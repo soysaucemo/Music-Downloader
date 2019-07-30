@@ -125,6 +125,9 @@
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.label2 = new System.Windows.Forms.Label();
             this.metroComboBox3 = new MetroFramework.Controls.MetroComboBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.contextMenuStrip3.SuspendLayout();
@@ -140,6 +143,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.SuspendLayout();
             // 
             // IDtextBox
@@ -822,10 +827,32 @@
             this.metroComboBox3.UseSelectable = true;
             this.metroComboBox3.SelectedIndexChanged += new System.EventHandler(this.MetroComboBox3_SelectedIndexChanged);
             // 
+            // pictureBox8
+            // 
+            resources.ApplyResources(this.pictureBox8, "pictureBox8");
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.TabStop = false;
+            this.pictureBox8.Click += new System.EventHandler(this.PictureBox8_Click);
+            // 
+            // pictureBox9
+            // 
+            resources.ApplyResources(this.pictureBox9, "pictureBox9");
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.TabStop = false;
+            this.pictureBox9.Click += new System.EventHandler(this.PictureBox9_Click);
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.pictureBox9);
+            this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.metroComboBox3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.checkBox1);
@@ -892,6 +919,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -994,6 +1023,9 @@
         private System.Windows.Forms.Timer timer4;
         private System.Windows.Forms.Label label2;
         private MetroFramework.Controls.MetroComboBox metroComboBox3;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.Label label11;
     }
 }
 

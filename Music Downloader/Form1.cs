@@ -38,6 +38,7 @@ namespace Music_Downloader
         public static Form2 f2;
         public static About about;
         public static Form1 mainform;
+        private double Timec = 0; //s
         //API 1网易云 2酷狗 3QQ 4酷我 5百度
         public List<SearchResult> GetMusiclistJson(string id, int musicapicode)
         {
@@ -52,16 +53,16 @@ namespace Music_Downloader
                 {
                     if (id.IndexOf("&userid") != -1)
                     {
-                        url = "https://v1.itooi.cn/netease/songList?id=" + GetMidText(id, left, "&userid") + "&pageSize=100&page=0";
+                        url = "https://v1.itooi.cn/netease/songList?id=" + GetMidText(id, left, "&userid");
                     }
                     else
                     {
-                        url = "https://v1.itooi.cn/netease/songList?id=" + id.Substring(id.IndexOf(left) + left.Length) + "&pageSize=100&page=0";
+                        url = "https://v1.itooi.cn/netease/songList?id=" + id.Substring(id.IndexOf(left) + left.Length);
                     }
                 }
                 else
                 {
-                    url = "https://v1.itooi.cn/netease/songList?id=" + id + "&pageSize=100&page=0";
+                    url = "https://v1.itooi.cn/netease/songList?id=" + id;
                 }
                 try
                 {
@@ -1427,7 +1428,7 @@ namespace Music_Downloader
                     {
                         try
                         {
-                            if (((int)lrcd.LrcWord[i].Time) <= metroTrackBar1.Value && metroTrackBar1.Value <= ((int)lrcd.LrcWord[i + 1].Time))
+                            if (((int)lrcd.LrcWord[i].Time + Timec) <= metroTrackBar1.Value && metroTrackBar1.Value <= ((int)lrcd.LrcWord[i + 1].Time + Timec))
                             {
                                 label8.Text = lrcd.LrcWord[i].Ci;
                                 i++;
@@ -1888,6 +1889,16 @@ namespace Music_Downloader
                     this.Style = MetroFramework.MetroColorStyle.Yellow;
                     break;
             }
+        }
+
+        private void PictureBox8_Click(object sender, EventArgs e)
+        {
+            Timec = Timec + 0.5;
+        }
+
+        private void PictureBox9_Click(object sender, EventArgs e)
+        {
+            Timec = Timec - 0.5;
         }
     }
 }
