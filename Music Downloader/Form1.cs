@@ -699,9 +699,9 @@ namespace Music_Downloader
                             SongName = root.data.list[i].songname,
                             SingerName = sn,
                             Album = root.data.list[i].albumname,
-                            id = root.data.list[i].songmid,
-                            url = "https://v1.itooi.cn/tencent/url?id=" + root.data.list[i].songmid + "&quality=" + quality,
-                            lrcurl = "https://v1.itooi.cn/tencent/lrc?id=" + root.data.list[i].songmid
+                            id = root.data.list[i].media_mid,
+                            url = "https://v1.itooi.cn/tencent/url?id=" + root.data.list[i].media_mid + "&quality=" + quality,
+                            lrcurl = "https://v1.itooi.cn/tencent/lrc?id=" + root.data.list[i].media_mid
                         };
                         sn = "";
                         re.Add(s);
@@ -1005,11 +1005,13 @@ namespace Music_Downloader
         {
             axWindowsMediaPlayer1.Ctlcontrols.next();
             label8.Text = "当前音乐无歌词";
+            label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
         }
         private void PictureBox2_Click(object sender, EventArgs e)
         {
             axWindowsMediaPlayer1.Ctlcontrols.previous();
             label8.Text = "当前音乐无歌词";
+            label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
         }
         private void PictureBox1_Click(object sender, EventArgs e)
         {
@@ -1044,6 +1046,7 @@ namespace Music_Downloader
             try
             {
                 label8.Text = "当前音乐无歌词";
+                label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
                 ArrayList a = new ArrayList();
                 a = GetListViewSelectedIndices();
                 if (Searchresult != null)
@@ -1137,7 +1140,7 @@ namespace Music_Downloader
         {
             for (int i = 0; i < listView2.Items.Count; i++)
             {
-                if (listView2.Items[i].Text == p.SongName && listView2.Items[i].SubItems[1].Text == p.SingerName)
+                if (p.Url == pl[i].Url)
                 {
                     return;
                 }
@@ -1331,6 +1334,7 @@ namespace Music_Downloader
             try
             {
                 label8.Text = "当前音乐无歌词";
+                label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
                 ArrayList a = new ArrayList();
                 a = GetListViewSelectedIndices_musiclist();
                 IWMPMedia media = axWindowsMediaPlayer1.newMedia(pl[(int)a[0]].Url);
@@ -1448,6 +1452,8 @@ namespace Music_Downloader
                 {
                     label8.Text = "当前无音乐播放";
                     label9.Text = "歌曲名";
+                    label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
+                    label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
                 }
             }
             catch
@@ -1463,6 +1469,7 @@ namespace Music_Downloader
                     if (axWindowsMediaPlayer1.currentMedia.sourceURL == pl[i].Url)
                     {
                         label9.Text = pl[i].SongName + " - " + pl[i].SingerName;
+                        label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
                         LrcDetails lrcdd = LrcReader(pl[i].LrcUrl);
                     }
                 }

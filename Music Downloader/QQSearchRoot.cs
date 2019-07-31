@@ -16,6 +16,7 @@ namespace Music_Downloader.QQ
         public string albumname { get; set; }
         public string songmid { get; set; }
         public List<SingerItem> singer { get; set; }
+        public string media_mid { set; get; }
     }
     public class SingerItem
     {
