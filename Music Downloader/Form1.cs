@@ -1420,8 +1420,6 @@ namespace Music_Downloader
         {
             try
             {
-                label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
-                label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
                 if (axWindowsMediaPlayer1.playState == WMPPlayState.wmppsPlaying)
                 {
                     for (int i = 0; i < lrcd.LrcWord.Count; i++)
@@ -1432,6 +1430,8 @@ namespace Music_Downloader
                             {
                                 label8.Text = lrcd.LrcWord[i].Ci;
                                 i++;
+                                label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
+                                label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
                             }
                         }
                         catch
