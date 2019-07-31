@@ -27,6 +27,14 @@ https://github.com/messoer
 <img src="https://github.com/NiTian1207/Music-Downloader/blob/master/MusicPlayer%20Material/%E6%8D%90%E5%8A%A9.png" width="512" height="256">
 
 ## 更新日志: 
+   * 1.3.9(2019年7月31日):
+	  * 修复 QQ音乐下载错误的问题
+	  * 修复 播放列表错误增加歌曲的问题
+	  * 修复 歌词不同步的问题
+	  * 修复 歌词显示的问题
+	  * 增加 切换主题色功能
+	  * 增加 歌词调整功能
+	  
    * 1.3.8(2019年7月25日):
       * 修复 播放列表切歌时歌词错误的问题
 	  * 更改 播放列表的歌曲不能重复
