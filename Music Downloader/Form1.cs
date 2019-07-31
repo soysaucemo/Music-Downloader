@@ -1051,7 +1051,7 @@ namespace Music_Downloader
                 a = GetListViewSelectedIndices();
                 if (Searchresult != null)
                 {
-                    Play(Searchresult[(int)a[0]].url, (int)a[0]);
+                    Play(Searchresult[(int)a[0]].url, (int)a[0], Searchresult[(int)a[0]].SongName, Searchresult[(int)a[0]].SingerName, Searchresult[(int)a[0]].Album);
                 }
                 LrcDetails lrcdd = LrcReader(Searchresult[(int)a[0]].lrcurl);
                 label9.Text = Searchresult[(int)a[0]].SongName + " - " + Searchresult[(int)a[0]].SingerName;
@@ -1067,12 +1067,12 @@ namespace Music_Downloader
             a = GetListViewSelectedIndices();
             if (Searchresult != null)
             {
-                Play(Searchresult[(int)a[0]].url, (int)a[0]);
+                Play(Searchresult[(int)a[0]].url, (int)a[0], Searchresult[(int)a[0]].SongName, Searchresult[(int)a[0]].SingerName, Searchresult[(int)a[0]].Album);
             }
         }
-        public void Play(string url, int n)
+        public void Play(string url, int n, string songname, string singername, string album)
         {
-            int ret = CheckRepeat(url);
+            int ret = CheckRepeat(songname, singername, album);
             if (ret != -1)
             {
                 axWindowsMediaPlayer1.Ctlcontrols.currentItem = axWindowsMediaPlayer1.currentPlaylist.Item[ret];
@@ -1082,7 +1082,7 @@ namespace Music_Downloader
             else
             {
                 ToolStripMenuItem4_Click(this, new EventArgs());
-                Play(url, n);
+                Play(url, n, songname, singername, album);
             }
         }
         public void Volumechange(int num)
@@ -1138,13 +1138,15 @@ namespace Music_Downloader
         }
         public void AddMusicToList(PlayList p)
         {
+            /*
             for (int i = 0; i < listView2.Items.Count; i++)
             {
-                if (p.Url == pl[i].Url)
+                if (p.SongName == pl[i].SongName && p.SingerName == pl[i].SingerName & p.Album == pl[i].Album)
                 {
                     return;
                 }
             }
+            */
             pl.Add(p);
             listView2.Items.Add(p.SongName);
             listView2.Items[listView2.Items.Count - 1].SubItems.Add(p.SingerName);
@@ -1485,11 +1487,11 @@ namespace Music_Downloader
             {
             }
         }
-        public int CheckRepeat(string url)
+        public int CheckRepeat(string songname, string singername, string album)
         {
             for (int i = 0; i < listView2.Items.Count; i++)
             {
-                if (url == pl[i].Url)
+                if (songname == pl[i].SongName && singername == pl[i].SingerName && album == pl[i].Album)
                 {
                     return i;
                 }
