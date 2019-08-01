@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 namespace Music_Downloader
 {
@@ -21,6 +22,14 @@ namespace Music_Downloader
         private void LinkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Clipboard.SetText("348846978");
+        }
+        private void LinkLabel8_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://www.nitian1207.top/2019/08/01/Music-Downloader/");
+        }
+        private void LinkLabel9_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://www.52pojie.cn/thread-983304-1-1.html");
         }
     }
 }

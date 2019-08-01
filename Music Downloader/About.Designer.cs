@@ -37,6 +37,8 @@
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.linkLabel6 = new System.Windows.Forms.LinkLabel();
             this.linkLabel7 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel8 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel9 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,11 +134,10 @@
             this.linkLabel6.LinkColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.linkLabel6.Location = new System.Drawing.Point(23, 148);
             this.linkLabel6.Name = "linkLabel6";
-            this.linkLabel6.Size = new System.Drawing.Size(272, 85);
+            this.linkLabel6.Size = new System.Drawing.Size(272, 51);
             this.linkLabel6.TabIndex = 50;
             this.linkLabel6.TabStop = true;
-            this.linkLabel6.Text = "免责声明：\r\n此程序为开源项目，仅供学习交流，请勿非法商用\r\n程序发布地址：\r\nhttps://www.52pojie.cn/?471913\r\nhttps://w" +
-    "ww.github.com/NiTian1207";
+            this.linkLabel6.Text = "免责声明：\r\n此程序为开源项目，仅供学习交流，请勿非法商用\r\n程序发布地址:";
             // 
             // linkLabel7
             // 
@@ -153,11 +154,43 @@
             this.linkLabel7.Text = "QQ群:348846978 （点击复制）";
             this.linkLabel7.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel7_LinkClicked);
             // 
+            // linkLabel8
+            // 
+            this.linkLabel8.AutoSize = true;
+            this.linkLabel8.Font = new System.Drawing.Font("微软雅黑", 8.5F);
+            this.linkLabel8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.linkLabel8.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabel8.LinkColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.linkLabel8.Location = new System.Drawing.Point(23, 199);
+            this.linkLabel8.Name = "linkLabel8";
+            this.linkLabel8.Size = new System.Drawing.Size(347, 17);
+            this.linkLabel8.TabIndex = 52;
+            this.linkLabel8.TabStop = true;
+            this.linkLabel8.Text = "http://www.nitian1207.top/2019/08/01/Music-Downloader/";
+            this.linkLabel8.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel8_LinkClicked);
+            // 
+            // linkLabel9
+            // 
+            this.linkLabel9.AutoSize = true;
+            this.linkLabel9.Font = new System.Drawing.Font("微软雅黑", 8.5F);
+            this.linkLabel9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.linkLabel9.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabel9.LinkColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.linkLabel9.Location = new System.Drawing.Point(23, 216);
+            this.linkLabel9.Name = "linkLabel9";
+            this.linkLabel9.Size = new System.Drawing.Size(281, 17);
+            this.linkLabel9.TabIndex = 53;
+            this.linkLabel9.TabStop = true;
+            this.linkLabel9.Text = "https://www.52pojie.cn/thread-983304-1-1.html";
+            this.linkLabel9.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel9_LinkClicked);
+            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(512, 511);
+            this.Controls.Add(this.linkLabel9);
+            this.Controls.Add(this.linkLabel8);
             this.Controls.Add(this.linkLabel7);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.linkLabel6);
@@ -190,5 +223,7 @@
         private System.Windows.Forms.LinkLabel linkLabel5;
         private System.Windows.Forms.LinkLabel linkLabel6;
         private System.Windows.Forms.LinkLabel linkLabel7;
+        private System.Windows.Forms.LinkLabel linkLabel8;
+        private System.Windows.Forms.LinkLabel linkLabel9;
     }
 }

@@ -30,7 +30,7 @@ namespace Music_Downloader
         private string playmode = "shunxu";
         private LrcDetails lrcd = new LrcDetails();
         public string latestversion = "获取中";
-        private string ver = "1.3.9";
+        private string ver = "1.4.0";
         private List<Thread> downloadthreadlist = new List<Thread>();
         private ArrayList canceldownloadindex = new ArrayList();
         private bool ifupdate = false;
@@ -325,6 +325,7 @@ namespace Music_Downloader
             if ((string)id == null || (string)id == "")
             {
                 MessageBox.Show("ID不能为空", caption: "警告：");
+                metroButton2.Enabled = true;
                 return;
             }
             if (id.ToString().IndexOf("qq.com") != -1)
@@ -340,6 +341,7 @@ namespace Music_Downloader
             {
                 MessageBox.Show("歌单获取错误", caption: "警告：");
                 listView1.Clear();
+                metroButton2.Enabled = true;
                 return;
             }
             listView1.Items.Clear();
@@ -826,6 +828,7 @@ namespace Music_Downloader
             if (SearchtextBox.Text == null || SearchtextBox.Text == "")
             {
                 MessageBox.Show("搜索内容不能为空", caption: "警告：");
+                metroButton1.Enabled = true;
                 return;
             }
             try
@@ -835,6 +838,7 @@ namespace Music_Downloader
             catch (Exception e)
             {
                 MessageBox.Show("搜索异常:" + e.Message, caption: "警告：");
+                metroButton1.Enabled = true;
                 return;
             }
             listView1.Items.Clear();
