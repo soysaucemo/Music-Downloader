@@ -30,7 +30,7 @@ namespace Music_Downloader
         private string playmode = "shunxu";
         private LrcDetails lrcd = new LrcDetails();
         public string latestversion = "获取中";
-        private string ver = "1.3.9.1";
+        private string ver = "1.4.0";
         private List<Thread> downloadthreadlist = new List<Thread>();
         private ArrayList canceldownloadindex = new ArrayList();
         private string latestversionurl;
@@ -805,6 +805,7 @@ namespace Music_Downloader
         {
             skinTabControl1.SelectedIndex = 0;
             listView1.Items.Clear();
+            listView1.Items.Add("正在搜索...");
             try
             {
                 metroButton1.Enabled = false;

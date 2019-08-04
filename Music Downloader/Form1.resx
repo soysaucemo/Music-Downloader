@@ -3788,9 +3788,6 @@
         AADIBwAAiAcAAIEPAADIDwAAxB8AAOE/AADwHwAA+B8AAP8TAAD/kwAA/4MAAP/HAAA=
 </value>
   </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>WindowsDefaultLocation</value>
-  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Music Downloader</value>
   </data>

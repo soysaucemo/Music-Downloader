@@ -31,5 +31,9 @@ namespace Music_Downloader
         {
             Process.Start("https://www.52pojie.cn/thread-983304-1-1.html");
         }
+        private void MetroButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
