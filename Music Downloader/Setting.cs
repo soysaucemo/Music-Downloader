@@ -7,7 +7,7 @@ namespace Music_Downloader
     {
         public string SavePath { get; set; }
         public List<PlayList> PlayList { get; set; }
-        public int DownloadQuality { get; set; }
+        public string DownloadQuality { get; set; }
         public int Volume { get; set; }
         public int MultiDownload { get; set; }
         public bool ifdownloadpic { set; get; }

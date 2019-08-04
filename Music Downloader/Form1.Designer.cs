@@ -121,7 +121,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.label2 = new System.Windows.Forms.Label();
             this.metroComboBox3 = new MetroFramework.Controls.MetroComboBox();
@@ -129,6 +128,9 @@
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.toolStripMenuItem19 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem20 = new System.Windows.Forms.ToolStripMenuItem();
+            this.label12 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.contextMenuStrip3.SuspendLayout();
@@ -191,7 +193,8 @@
             this.toolStripSeparator6,
             this.toolStripMenuItem12,
             this.toolStripMenuItem13,
-            this.toolStripMenuItem14});
+            this.toolStripMenuItem14,
+            this.toolStripMenuItem19});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             // 
@@ -284,9 +287,7 @@
             // radioButton1
             // 
             resources.ApplyResources(this.radioButton1, "radioButton1");
-            this.radioButton1.Checked = true;
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.TabStop = true;
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // radioButton2
@@ -298,7 +299,9 @@
             // radioButton3
             // 
             resources.ApplyResources(this.radioButton3, "radioButton3");
+            this.radioButton3.Checked = true;
             this.radioButton3.Name = "radioButton3";
+            this.radioButton3.TabStop = true;
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // Musicnumlabel
@@ -406,7 +409,8 @@
             this.toolStripSeparator7,
             this.toolStripMenuItem15,
             this.toolStripMenuItem16,
-            this.toolStripMenuItem17});
+            this.toolStripMenuItem17,
+            this.toolStripMenuItem20});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             resources.ApplyResources(this.contextMenuStrip2, "contextMenuStrip2");
             // 
@@ -571,7 +575,7 @@
             this.skinTabControl1.PageHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageHover")));
             this.skinTabControl1.PageImagePosition = CCWin.SkinControl.SkinTabControl.ePageImagePosition.Left;
             this.skinTabControl1.PageNorml = null;
-            this.skinTabControl1.SelectedIndex = 0;
+            this.skinTabControl1.SelectedIndex = 2;
             this.skinTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             // 
             // skinTabPage1
@@ -724,7 +728,8 @@
             resources.GetString("metroComboBox1.Items1"),
             resources.GetString("metroComboBox1.Items2"),
             resources.GetString("metroComboBox1.Items3"),
-            resources.GetString("metroComboBox1.Items4")});
+            resources.GetString("metroComboBox1.Items4"),
+            resources.GetString("metroComboBox1.Items5")});
             this.metroComboBox1.Name = "metroComboBox1";
             this.metroComboBox1.UseSelectable = true;
             // 
@@ -787,12 +792,6 @@
             this.timer2.Interval = 500;
             this.timer2.Tick += new System.EventHandler(this.Timer2_Tick);
             // 
-            // timer4
-            // 
-            this.timer4.Enabled = true;
-            this.timer4.Interval = 1000;
-            this.timer4.Tick += new System.EventHandler(this.Timer4_Tick);
-            // 
             // axWindowsMediaPlayer1
             // 
             resources.ApplyResources(this.axWindowsMediaPlayer1, "axWindowsMediaPlayer1");
@@ -852,12 +851,30 @@
             resources.ApplyResources(this.webBrowser1, "webBrowser1");
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.ScriptErrorsSuppressed = true;
-            this.webBrowser1.Url = new System.Uri("https://www.nitian1207.top/count", System.UriKind.Absolute);
+            this.webBrowser1.Url = new System.Uri("https://www.nitian1207.top/count/", System.UriKind.Absolute);
+            // 
+            // toolStripMenuItem19
+            // 
+            this.toolStripMenuItem19.Name = "toolStripMenuItem19";
+            resources.ApplyResources(this.toolStripMenuItem19, "toolStripMenuItem19");
+            this.toolStripMenuItem19.Click += new System.EventHandler(this.ToolStripMenuItem19_Click);
+            // 
+            // toolStripMenuItem20
+            // 
+            this.toolStripMenuItem20.Name = "toolStripMenuItem20";
+            resources.ApplyResources(this.toolStripMenuItem20, "toolStripMenuItem20");
+            this.toolStripMenuItem20.Click += new System.EventHandler(this.ToolStripMenuItem20_Click);
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.pictureBox9);
@@ -1029,13 +1046,15 @@
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem18;
-        private System.Windows.Forms.Timer timer4;
         private System.Windows.Forms.Label label2;
         private MetroFramework.Controls.MetroComboBox metroComboBox3;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem19;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem20;
+        private System.Windows.Forms.Label label12;
     }
 }
 
