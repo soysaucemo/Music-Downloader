@@ -867,15 +867,8 @@ namespace Music_Downloader
         }
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                List<DownloadList> dl = GetDownloadLists(true, checkBox1.Checked, true);
-                MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
-            }
-            catch (Exception er)
-            {
-                MessageBox.Show("下载错误:" + er.Message, caption: "警告: ");
-            }
+            List<DownloadList> dl = GetDownloadLists(true, checkBox1.Checked, true);
+            MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
         }
         public DownloadList SetDownloadMedia(int Api, string ID, bool IfDownloadlrc, bool IfDownloadSong, string Savepath, string Songname, string Singername, string Url, string LrcUrl, string Album, string DownloadQulity, int Index, bool Ifdownloadpic)
         {
@@ -899,39 +892,18 @@ namespace Music_Downloader
         }
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            try
-            {
-                List<DownloadList> dl = GetDownloadLists(true, checkBox1.Checked);
-                MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
-            }
-            catch (Exception er)
-            {
-                MessageBox.Show("下载错误:" + er.Message, caption: "警告: ");
-            }
+            List<DownloadList> dl = GetDownloadLists(true, checkBox1.Checked);
+            MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
         }
         private void 下载所有歌词ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                List<DownloadList> dl = GetDownloadLists(false, true, true);
-                MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
-            }
-            catch (Exception er)
-            {
-                MessageBox.Show("下载错误:" + er.Message, caption: "警告: ");
-            }
+            List<DownloadList> dl = GetDownloadLists(false, true, true);
+            MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
         }
         private void 下载选中歌词ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                List<DownloadList> dl = GetDownloadLists(false, true);
-                MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
-            }
-            catch (Exception er)
-            {
-                MessageBox.Show("下载错误:" + er.Message, caption: "警告: ");
-            }
+            List<DownloadList> dl = GetDownloadLists(false, true);
+            MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -1206,51 +1178,23 @@ namespace Music_Downloader
         }
         private void ToolStripMenuItem5_Click(object sender, EventArgs e)
         {
-            try
-            {
-                List<DownloadList> dl = GetDownloadLists_musiclist(true, checkBox1.Checked, true);
-                MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
-            }
-            catch (Exception er)
-            {
-                MessageBox.Show("下载错误:" + er.Message, caption: "警告: ");
-            }
+            List<DownloadList> dl = GetDownloadLists_musiclist(true, checkBox1.Checked, true);
+            MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
         }
         private void ToolStripMenuItem6_Click(object sender, EventArgs e)
         {
-            try
-            {
-                List<DownloadList> dl = GetDownloadLists_musiclist(true, checkBox1.Checked);
-                MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
-            }
-            catch (Exception er)
-            {
-                MessageBox.Show("下载错误:" + er.Message, caption: "警告: ");
-            }
+            List<DownloadList> dl = GetDownloadLists_musiclist(true, checkBox1.Checked);
+            MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
         }
         private void ToolStripMenuItem7_Click(object sender, EventArgs e)
         {
-            try
-            {
-                List<DownloadList> dl = GetDownloadLists_musiclist(false, true, true);
-                MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
-            }
-            catch (Exception er)
-            {
-                MessageBox.Show("下载错误:" + er.Message, caption: "警告: ");
-            }
+            List<DownloadList> dl = GetDownloadLists_musiclist(false, true, true);
+            MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
         }
         private void ToolStripMenuItem8_Click(object sender, EventArgs e)
         {
-            try
-            {
-                List<DownloadList> dl = GetDownloadLists_musiclist(false, true);
-                MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
-            }
-            catch (Exception er)
-            {
-                MessageBox.Show("下载错误:" + er.Message, caption: "警告: ");
-            }
+            List<DownloadList> dl = GetDownloadLists_musiclist(false, true);
+            MultiFilesDownload(dl, metroComboBox2.SelectedIndex + 1);
         }
         private void ToolStripMenuItem9_Click(object sender, EventArgs e)
         {
@@ -1576,6 +1520,10 @@ namespace Music_Downloader
         }
         private void MultiFilesDownload(List<DownloadList> dl, int n)
         {
+            if (dl == null || dl.Count == 0)
+            {
+                return;
+            }
             for (int i = 0; i < n; i++)
             {
                 List<DownloadList> dl_ = new List<DownloadList>();
