@@ -462,8 +462,8 @@ namespace Music_Downloader
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Thread a = new Thread(update);
-            a.Start();
+            Thread thread_update = new Thread(update);
+            thread_update.Start();
             skinTabControl1.ItemSize = new Size(0, 1);
             axWindowsMediaPlayer1.settings.volume = 50;
             string settingpath = Environment.CurrentDirectory + "\\Setting.json";
@@ -1549,7 +1549,6 @@ namespace Music_Downloader
                         };
                         if (dl[x].Api == 1)
                         {
-
                         }
                         dl_.Add(_dl);
                     }
@@ -1850,12 +1849,10 @@ namespace Music_Downloader
                     break;
             }
         }
-
         private void PictureBox8_Click(object sender, EventArgs e)
         {
             Timec = Timec + 0.5;
         }
-
         private void PictureBox9_Click(object sender, EventArgs e)
         {
             Timec = Timec - 0.5;
