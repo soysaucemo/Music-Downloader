@@ -528,26 +528,13 @@ namespace Music_Downloader
                     metroComboBox1.SelectedIndex = 4;
                     metroComboBox2.SelectedIndex = 0;
                     metroComboBox3.SelectedIndex = 5;
-                    Thread b = new Thread(new ParameterizedThreadStart(WaitUpdate));
-                    b.Start(a);
+                    About aboutform = new About(ver, latestversion);
+                    aboutform.ShowDialog();
                 }
             }
             catch
             {
             }
-        }
-        private void WaitUpdate(object thread)
-        {
-            Thread a = (Thread)thread;
-            while (true)
-            {
-                if (!a.IsAlive)
-                {
-                    break;
-                }
-            }
-            About aboutform = new About(ver, latestversion);
-            aboutform.ShowDialog();
         }
         private void IDtextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -681,9 +668,9 @@ namespace Music_Downloader
                             SongName = root.data.list[i].songname,
                             SingerName = sn,
                             Album = root.data.list[i].albumname,
-                            id = root.data.list[i].media_mid,
-                            url = "https://v1.itooi.cn/tencent/url?id=" + root.data.list[i].media_mid,
-                            lrcurl = "https://v1.itooi.cn/tencent/lrc?id=" + root.data.list[i].media_mid
+                            id = root.data.list[i].songmid,
+                            url = "https://v1.itooi.cn/tencent/url?id=" + root.data.list[i].songmid,
+                            lrcurl = "https://v1.itooi.cn/tencent/lrc?id=" + root.data.list[i].songmid
                         };
                         sn = "";
                         re.Add(s);
@@ -877,8 +864,23 @@ namespace Music_Downloader
                 {
                     if (MessageBox.Show("下载未完成,确定关闭?", caption: "提示:", buttons: MessageBoxButtons.YesNo) == DialogResult.No)
                     {
-                        e.Cancel = true;
-                        return;
+                        Setting ss = new Setting
+                        {
+                            SavePath = DownloadPathtextBox.Text,
+                            PlayList = pl,
+                            DownloadQuality = metroComboBox1.SelectedItem.ToString(),
+                            Volume = metroTrackBar2.Value,
+                            MultiDownload = metroComboBox2.SelectedIndex,
+                            ifdownloadpic = checkBox3.Checked,
+                            ifdownloadlrc = checkBox1.Checked,
+                            Color = metroComboBox3.SelectedIndex
+                        };
+                        string json_ = JsonConvert.SerializeObject(ss);
+                        StreamWriter sw_ = new StreamWriter(Environment.CurrentDirectory + "\\Setting.json");
+                        sw_.Write(json_);
+                        sw_.Flush();
+                        sw_.Close();
+                        Environment.Exit(0);
                     }
                 }
             }
