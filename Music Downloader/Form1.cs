@@ -33,7 +33,6 @@ namespace Music_Downloader
         private string ver = "1.3.9.1";
         private List<Thread> downloadthreadlist = new List<Thread>();
         private ArrayList canceldownloadindex = new ArrayList();
-        private bool ifupdate = false;
         private string latestversionurl;
         public static Form2 f2;
         public static About about;
@@ -298,6 +297,7 @@ namespace Music_Downloader
             if ((string)id == null || (string)id == "")
             {
                 MessageBox.Show("ID不能为空", caption: "警告：");
+                metroButton1.Enabled = true;
                 metroButton2.Enabled = true;
                 return;
             }
@@ -314,6 +314,7 @@ namespace Music_Downloader
             {
                 MessageBox.Show("歌单获取错误", caption: "警告：");
                 listView1.Items.Clear();
+                metroButton1.Enabled = true;
                 metroButton2.Enabled = true;
                 return;
             }
@@ -325,10 +326,12 @@ namespace Music_Downloader
                 listView1.Items[i].SubItems.Add(Searchresult[i].Album);
             }
             Musicnumlabel.Text = "歌曲总数：" + listView1.Items.Count;
+            metroButton1.Enabled = true;
             metroButton2.Enabled = true;
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            metroButton1.Enabled = false;
             metroButton2.Enabled = false;
             listView1.Items.Clear();
             listView1.Items.Add("获取中...");
@@ -439,8 +442,8 @@ namespace Music_Downloader
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Thread thread_update = new Thread(update);
-            //thread_update.Start();
+            Thread thread_update = new Thread(update);
+            thread_update.Start();
             skinTabControl1.ItemSize = new Size(0, 1);
             axWindowsMediaPlayer1.settings.volume = 50;
             string settingpath = Environment.CurrentDirectory + "\\Setting.json";
@@ -608,7 +611,7 @@ namespace Music_Downloader
                             SingerName = sn,
                             Album = root.data.songs[i].al.name,
                             id = root.data.songs[i].id.ToString(),
-                            url = "https://v1.itooi.cn/netease/url?id=" + root.data.songs[i].id.ToString() + "&quality=" + quality,
+                            url = "https://v1.itooi.cn/netease/url?id=" + root.data.songs[i].id.ToString(),
                             lrcurl = "https://v1.itooi.cn/netease/lrc?id=" + root.data.songs[i].id.ToString()
                         };
                         sn = "";
@@ -679,7 +682,7 @@ namespace Music_Downloader
                             SingerName = sn,
                             Album = root.data.list[i].albumname,
                             id = root.data.list[i].media_mid,
-                            url = "https://v1.itooi.cn/tencent/url?id=" + root.data.list[i].media_mid + "&quality=" + quality,
+                            url = "https://v1.itooi.cn/tencent/url?id=" + root.data.list[i].media_mid,
                             lrcurl = "https://v1.itooi.cn/tencent/lrc?id=" + root.data.list[i].media_mid
                         };
                         sn = "";
@@ -709,7 +712,7 @@ namespace Music_Downloader
                             SingerName = root.data[i].ARTIST,
                             Album = root.data[i].ALBUM,
                             id = root.data[i].MUSICRID.Replace("MUSIC_", ""),
-                            url = "https://v1.itooi.cn/kuwo/url?id=" + root.data[i].MUSICRID.Replace("MUSIC_", "") + "&quality=" + quality,
+                            url = "https://v1.itooi.cn/kuwo/url?id=" + root.data[i].MUSICRID.Replace("MUSIC_", ""),
                             lrcurl = "https://v1.itooi.cn/kuwo/lrc?id=" + root.data[i].MUSICRID.Replace("MUSIC_", "")
                         };
                         re.Add(s);
@@ -738,7 +741,7 @@ namespace Music_Downloader
                             SingerName = root.data.song_list[i].author,
                             Album = root.data.song_list[i].album_title,
                             id = root.data.song_list[i].song_id,
-                            url = "https://v1.itooi.cn/baidu/url?id=" + root.data.song_list[i].song_id + "&quality=" + quality,
+                            url = "https://v1.itooi.cn/baidu/url?id=" + root.data.song_list[i].song_id,
                             lrcurl = "https://v1.itooi.cn/baidu/lrc?id=" + root.data.song_list[i].song_id
                         };
                         re.Add(s);
@@ -782,6 +785,7 @@ namespace Music_Downloader
             {
                 MessageBox.Show("搜索内容不能为空", caption: "警告：");
                 metroButton1.Enabled = true;
+                metroButton2.Enabled = true;
                 return;
             }
             try
@@ -792,7 +796,12 @@ namespace Music_Downloader
             {
                 MessageBox.Show("搜索异常:" + e.Message, caption: "警告：");
                 metroButton1.Enabled = true;
+                metroButton2.Enabled = true;
                 return;
+            }
+            if (Searchresult == null || Searchresult.Count == 0)
+            {
+                MessageBox.Show("未搜索到相关内容", caption: "提示:");
             }
             listView1.Items.Clear();
             for (int i = 0; i < Searchresult.Count; i++)
@@ -803,6 +812,7 @@ namespace Music_Downloader
             }
             Musicnumlabel.Text = "歌曲总数：" + listView1.Items.Count;
             metroButton1.Enabled = true;
+            metroButton2.Enabled = true;
         }
         private void Searchbutton_Click(object sender, EventArgs e)
         {
@@ -811,6 +821,7 @@ namespace Music_Downloader
             try
             {
                 metroButton1.Enabled = false;
+                metroButton2.Enabled = false;
                 a = new Thread(SearchThread);
                 a.Start();
             }
@@ -893,7 +904,7 @@ namespace Music_Downloader
             try
             {
                 WebClient wb = new WebClient();
-                Stream webdata = wb.OpenRead("https://raw.githubusercontent.com/messoer/Music-Downloader/master/Version");
+                Stream webdata = wb.OpenRead("https://www.nitian1207.top/update/MusicDownloader.txt");
                 StreamReader sr = new StreamReader(webdata);
                 string data = sr.ReadToEnd();
                 latestversion = data.Replace("\n", "");
@@ -901,9 +912,12 @@ namespace Music_Downloader
                 {
                     if (MessageBox.Show("检测到新版本，是否更新？", caption: "提示：", buttons: MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        latestversionurl = "https://github.com/messoer/Music-Downloader/releases/download/" + data.Replace("\n", "") + "/MusicDownloader.zip";
-                        ifupdate = true;
-                        Application.Exit();
+                        latestversionurl = "https://www.nitian1207.top/download//MusicDownloader" + data + ".zip";
+                        Process p = new Process();
+                        ProcessStartInfo ps = new ProcessStartInfo(Environment.CurrentDirectory + "\\" + "Update.exe", "\"" + latestversionurl + "\" \"" + Path.GetFullPath(Application.ExecutablePath) + "\"");
+                        p.StartInfo = ps;
+                        p.Start();
+                        Environment.Exit(0);
                     }
                 }
             }
@@ -980,7 +994,7 @@ namespace Music_Downloader
                 a = GetListViewSelectedIndices();
                 if (Searchresult != null)
                 {
-                    Play(Searchresult[(int)a[0]].url, (int)a[0], Searchresult[(int)a[0]].SongName, Searchresult[(int)a[0]].SingerName, Searchresult[(int)a[0]].Album);
+                    Play(Searchresult[(int)a[0]].url + "&quality=" + metroComboBox1.SelectedItem.ToString(), (int)a[0], Searchresult[(int)a[0]].SongName, Searchresult[(int)a[0]].SingerName, Searchresult[(int)a[0]].Album);
                 }
                 LrcDetails lrcdd = LrcReader(Searchresult[(int)a[0]].lrcurl);
                 label9.Text = Searchresult[(int)a[0]].SongName + " - " + Searchresult[(int)a[0]].SingerName;
@@ -996,7 +1010,7 @@ namespace Music_Downloader
             a = GetListViewSelectedIndices();
             if (Searchresult != null)
             {
-                Play(Searchresult[(int)a[0]].url, (int)a[0], Searchresult[(int)a[0]].SongName, Searchresult[(int)a[0]].SingerName, Searchresult[(int)a[0]].Album);
+                Play(Searchresult[(int)a[0]].url + "&quality=" + metroComboBox1.SelectedItem.ToString(), (int)a[0], Searchresult[(int)a[0]].SongName, Searchresult[(int)a[0]].SingerName, Searchresult[(int)a[0]].Album);
             }
         }
         public void Play(string url, int n, string songname, string singername, string album)
@@ -1011,7 +1025,7 @@ namespace Music_Downloader
             else
             {
                 ToolStripMenuItem4_Click(this, new EventArgs());
-                Play(url, n, songname, singername, album);
+                Play(url + "&quality=" + metroComboBox1.SelectedItem.ToString(), n, songname, singername, album);
             }
         }
         public void Volumechange(int num)
@@ -1726,20 +1740,6 @@ namespace Music_Downloader
             }
             return false;
         }
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (ifupdate)
-            {
-                Process p = new Process();
-                ProcessStartInfo ps = new ProcessStartInfo(Environment.CurrentDirectory + "\\" + "Update.exe", "\"" + latestversionurl + "\" \"" + Path.GetFullPath(Application.ExecutablePath) + "\"");
-                p.StartInfo = ps;
-                p.Start();
-            }
-        }
-        private void Timer4_Tick(object sender, EventArgs e)
-        {
-
-        }
         private void MetroComboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (metroComboBox3.SelectedIndex)
@@ -1812,7 +1812,7 @@ namespace Music_Downloader
             try
             {
                 ArrayList a = GetListViewSelectedIndices_musiclist();
-                Clipboard.SetText(Searchresult[(int)a[0]].id);
+                Clipboard.SetText(pl[(int)a[0]].ID);
             }
             catch
             {
