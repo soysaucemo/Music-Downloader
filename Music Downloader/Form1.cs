@@ -5,7 +5,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -15,7 +14,7 @@ using System.Windows.Forms;
 using WMPLib;
 namespace Music_Downloader
 {
-    public partial class Form1 : MetroFramework.Forms.MetroForm
+    public partial class Form1 : Form
     {
         public Form1()
         {
@@ -30,11 +29,10 @@ namespace Music_Downloader
         private string playmode = "shunxu";
         private LrcDetails lrcd = new LrcDetails();
         public string latestversion = "获取中";
-        private string ver = "1.4.0";
+        private string ver = "1.4.1测试版";
         private List<Thread> downloadthreadlist = new List<Thread>();
         private ArrayList canceldownloadindex = new ArrayList();
         private string latestversionurl;
-        public static Form2 f2;
         public static About about;
         public static Form1 mainform;
         private double Timec = 0; //s
@@ -376,11 +374,25 @@ namespace Music_Downloader
                 StreamReader sr = new StreamReader(s);
                 if (sr.ReadToEnd().IndexOf(".flac") != -1)
                 {
-                    filename = dl[i].Songname + " - " + dl[i].Singername + ".flac";
+                    if (radioButton6.Checked)
+                    {
+                        filename = dl[i].ID + " - " + dl[i].Songname + " - " + dl[i].Singername + ".flac";
+                    }
+                    else
+                    {
+                        filename = dl[i].ID + " - " + dl[i].Singername + " - " + dl[i].Songname + ".flac";
+                    }
                 }
                 else
                 {
-                    filename = dl[i].Songname + " - " + dl[i].Singername + ".mp3";
+                    if (radioButton6.Checked)
+                    {
+                        filename = dl[i].ID + " - " + dl[i].Songname + " - " + dl[i].Singername + ".mp3";
+                    }
+                    else
+                    {
+                        filename = dl[i].ID + " - " + dl[i].Singername + " - " + dl[i].Songname + ".mp3";
+                    }
                 }
                 if (!Ifcanceldownload(dl[i].index))
                 {
@@ -405,28 +417,38 @@ namespace Music_Downloader
                         else
                         {
                             listView3.Items[dl[i].index].SubItems[2].Text = "音乐已存在";
+                            continue;
                         }
                     }
                     if (dl[i].IfDownloadlrc && dl[i].LrcUrl != null && dl[i].LrcUrl != "")
                     {
                         try
                         {
-                            listView3.Items[dl[i].index].SubItems[2].Text += "下载歌词中";
                             if (!File.Exists(downloadpath + "\\" + songname + " - " + singername + ".lrc"))
                             {
-
                                 lrcurl = dl[i].LrcUrl;
                                 s = wb.OpenRead(lrcurl);
                                 StreamReader sr1 = new StreamReader(s);
-                                File.WriteAllText(downloadpath + "\\" + songname + " - " + singername + ".lrc", sr1.ReadToEnd(), Encoding.Default);
-
+                                File.WriteAllText(downloadpath + "\\" + filename.Replace(".flac", "").Replace(".mp3", "") + ".lrc", sr1.ReadToEnd(), Encoding.Default);
                             }
                         }
                         catch (Exception e)
                         {
-                            listView3.Items[dl[i].index].SubItems[2].Text += "歌词下载错误:" + e.Message;
+                            listView3.Items[dl[i].index].SubItems[2].Text += ",歌词下载错误:" + e.Message;
                         }
-                        listView3.Items[dl[i].index].SubItems[2].Text += "歌词下载完成";
+                        listView3.Items[dl[i].index].SubItems[2].Text = "下载完成";
+                        int leftnum = 0;
+                        for (int j = 0; j < downloadthreadlist.Count; j++)
+                        {
+                            if (downloadthreadlist[j].IsAlive)
+                            {
+                                leftnum++;
+                            }
+                        }
+                        if (leftnum <= 1)
+                        {
+                            Exchange(DownloadPathtextBox.Text);
+                        }
                     }
                 }
             }
@@ -442,9 +464,8 @@ namespace Music_Downloader
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Thread thread_update = new Thread(update);
-            thread_update.Start();
-            skinTabControl1.ItemSize = new Size(0, 1);
+            //Thread thread_update = new Thread(update);
+            //thread_update.Start();
             axWindowsMediaPlayer1.settings.volume = 50;
             string settingpath = Environment.CurrentDirectory + "\\Setting.json";
             axWindowsMediaPlayer1.settings.setMode("shuffle", false);
@@ -464,52 +485,14 @@ namespace Music_Downloader
                     checkBox3.Checked = s.ifdownloadpic;
                     metroComboBox1.SelectedItem = s.DownloadQuality;
                     metroComboBox2.SelectedIndex = s.MultiDownload;
-                    switch (s.Color)
+                    if (s.savenamestyle == 0)
                     {
-                        case 0:
-                            this.Style = MetroFramework.MetroColorStyle.Black;
-                            break;
-                        case 1:
-                            this.Style = MetroFramework.MetroColorStyle.White;
-                            break;
-                        case 2:
-                            this.Style = MetroFramework.MetroColorStyle.Silver;
-                            break;
-                        case 3:
-                            this.Style = MetroFramework.MetroColorStyle.Blue;
-                            break;
-                        case 4:
-                            this.Style = MetroFramework.MetroColorStyle.Green;
-                            break;
-                        case 5:
-                            this.Style = MetroFramework.MetroColorStyle.Lime;
-                            break;
-                        case 6:
-                            this.Style = MetroFramework.MetroColorStyle.Teal;
-                            break;
-                        case 7:
-                            this.Style = MetroFramework.MetroColorStyle.Orange;
-                            break;
-                        case 8:
-                            this.Style = MetroFramework.MetroColorStyle.Brown;
-                            break;
-                        case 9:
-                            this.Style = MetroFramework.MetroColorStyle.Pink;
-                            break;
-                        case 10:
-                            this.Style = MetroFramework.MetroColorStyle.Magenta;
-                            break;
-                        case 11:
-                            this.Style = MetroFramework.MetroColorStyle.Purple;
-                            break;
-                        case 12:
-                            this.Style = MetroFramework.MetroColorStyle.Red;
-                            break;
-                        case 13:
-                            this.Style = MetroFramework.MetroColorStyle.Yellow;
-                            break;
+                        radioButton6.Checked = true;
                     }
-                    metroComboBox3.SelectedIndex = s.Color;
+                    else
+                    {
+                        radioButton7.Checked = true;
+                    }
                     IWMPPlaylist l = axWindowsMediaPlayer1.currentPlaylist;
                     for (int i = 0; i < s.PlayList.Count; i++)
                     {
@@ -527,7 +510,6 @@ namespace Music_Downloader
                     DownloadPathtextBox.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
                     metroComboBox1.SelectedIndex = 4;
                     metroComboBox2.SelectedIndex = 0;
-                    metroComboBox3.SelectedIndex = 5;
                     About aboutform = new About(ver, latestversion);
                     aboutform.ShowDialog();
                 }
@@ -859,6 +841,15 @@ namespace Music_Downloader
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            int style = 0;
+            if (radioButton6.Checked)
+            {
+                style = 0;
+            }
+            else
+            {
+                style = 1;
+            }
             for (int i = 0; i < downloadthreadlist.Count; i++)
             {
                 if (downloadthreadlist[i].IsAlive)
@@ -874,7 +865,7 @@ namespace Music_Downloader
                             MultiDownload = metroComboBox2.SelectedIndex,
                             ifdownloadpic = checkBox3.Checked,
                             ifdownloadlrc = checkBox1.Checked,
-                            Color = metroComboBox3.SelectedIndex
+                            savenamestyle = style
                         };
                         string json_ = JsonConvert.SerializeObject(ss);
                         StreamWriter sw_ = new StreamWriter(Environment.CurrentDirectory + "\\Setting.json");
@@ -894,7 +885,7 @@ namespace Music_Downloader
                 MultiDownload = metroComboBox2.SelectedIndex,
                 ifdownloadpic = checkBox3.Checked,
                 ifdownloadlrc = checkBox1.Checked,
-                Color = metroComboBox3.SelectedIndex
+                savenamestyle = style
             };
             string json = JsonConvert.SerializeObject(s);
             StreamWriter sw = new StreamWriter(Environment.CurrentDirectory + "\\Setting.json");
@@ -951,13 +942,13 @@ namespace Music_Downloader
         {
             axWindowsMediaPlayer1.Ctlcontrols.next();
             label8.Text = "当前音乐无歌词";
-            label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
+            //label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
         }
         private void PictureBox2_Click(object sender, EventArgs e)
         {
             axWindowsMediaPlayer1.Ctlcontrols.previous();
             label8.Text = "当前音乐无歌词";
-            label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
+            //label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
         }
         private void PictureBox1_Click(object sender, EventArgs e)
         {
@@ -992,7 +983,7 @@ namespace Music_Downloader
             try
             {
                 label8.Text = "当前音乐无歌词";
-                label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
+                //label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
                 ArrayList a = new ArrayList();
                 a = GetListViewSelectedIndices();
                 if (Searchresult != null)
@@ -1001,7 +992,7 @@ namespace Music_Downloader
                 }
                 LrcDetails lrcdd = LrcReader(Searchresult[(int)a[0]].lrcurl);
                 label9.Text = Searchresult[(int)a[0]].SongName + " - " + Searchresult[(int)a[0]].SingerName;
-                label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
+                //label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
             }
             catch
             {
@@ -1041,7 +1032,6 @@ namespace Music_Downloader
         }
         private void MetroTrackBar2_ValueChanged(object sender, EventArgs e)
         {
-            Volumechange(metroTrackBar2.Value);
         }
         private void Timer1_Tick(object sender, EventArgs e)
         {
@@ -1059,7 +1049,6 @@ namespace Music_Downloader
         }
         private void MetroTrackBar1_Scroll(object sender, ScrollEventArgs e)
         {
-            Positionchange(metroTrackBar1.Value);
         }
         private void ToolStripMenuItem4_Click(object sender, EventArgs e)
         {
@@ -1254,7 +1243,7 @@ namespace Music_Downloader
             try
             {
                 label8.Text = "当前音乐无歌词";
-                label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
+                //label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
                 ArrayList a = new ArrayList();
                 a = GetListViewSelectedIndices_musiclist();
                 IWMPMedia media = axWindowsMediaPlayer1.newMedia(pl[(int)a[0]].Url);
@@ -1263,7 +1252,7 @@ namespace Music_Downloader
                 pictureBox1.Image = Properties.Resources.pause;
                 LrcDetails lrcdd = LrcReader(pl[(int)a[0]].LrcUrl);
                 label9.Text = pl[(int)a[0]].SongName + " - " + pl[(int)a[0]].SingerName;
-                label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
+                //label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
             }
             catch
             {
@@ -1354,8 +1343,8 @@ namespace Music_Downloader
                             {
                                 label8.Text = lrcd.LrcWord[i].Ci;
                                 i++;
-                                label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
-                                label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
+                                //label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
+                                //label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
                             }
                         }
                         catch
@@ -1372,8 +1361,8 @@ namespace Music_Downloader
                 {
                     label8.Text = "当前无音乐播放";
                     label9.Text = "歌曲名";
-                    label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
-                    label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
+                    //label8.Location = new Point((424 - label8.Width) / 2, label8.Location.Y);
+                    //label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
                 }
             }
             catch
@@ -1389,7 +1378,7 @@ namespace Music_Downloader
                     if (axWindowsMediaPlayer1.currentMedia.sourceURL == pl[i].Url)
                     {
                         label9.Text = pl[i].SongName + " - " + pl[i].SingerName;
-                        label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
+                        //label9.Location = new Point((424 - label9.Width) / 2, label9.Location.Y);
                         LrcDetails lrcdd = LrcReader(pl[i].LrcUrl);
                     }
                 }
@@ -1451,6 +1440,7 @@ namespace Music_Downloader
                 }
             }
         }
+        /*
         private void LinkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (f2 == null)
@@ -1463,6 +1453,7 @@ namespace Music_Downloader
                 f2.Activate();
             }
         }
+        */
         private void AddMusicDetails(string path, string title, string artists, string ablum, string picture, string dir, bool ifdownloadpic)
         {
             ID3Info info = new ID3Info(path, true);
@@ -1745,51 +1736,6 @@ namespace Music_Downloader
         }
         private void MetroComboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (metroComboBox3.SelectedIndex)
-            {
-                case 0:
-                    this.Style = MetroFramework.MetroColorStyle.Black;
-                    break;
-                case 1:
-                    this.Style = MetroFramework.MetroColorStyle.White;
-                    break;
-                case 2:
-                    this.Style = MetroFramework.MetroColorStyle.Silver;
-                    break;
-                case 3:
-                    this.Style = MetroFramework.MetroColorStyle.Blue;
-                    break;
-                case 4:
-                    this.Style = MetroFramework.MetroColorStyle.Green;
-                    break;
-                case 5:
-                    this.Style = MetroFramework.MetroColorStyle.Lime;
-                    break;
-                case 6:
-                    this.Style = MetroFramework.MetroColorStyle.Teal;
-                    break;
-                case 7:
-                    this.Style = MetroFramework.MetroColorStyle.Orange;
-                    break;
-                case 8:
-                    this.Style = MetroFramework.MetroColorStyle.Brown;
-                    break;
-                case 9:
-                    this.Style = MetroFramework.MetroColorStyle.Pink;
-                    break;
-                case 10:
-                    this.Style = MetroFramework.MetroColorStyle.Magenta;
-                    break;
-                case 11:
-                    this.Style = MetroFramework.MetroColorStyle.Purple;
-                    break;
-                case 12:
-                    this.Style = MetroFramework.MetroColorStyle.Red;
-                    break;
-                case 13:
-                    this.Style = MetroFramework.MetroColorStyle.Yellow;
-                    break;
-            }
         }
         private void PictureBox8_Click(object sender, EventArgs e)
         {
@@ -1820,6 +1766,68 @@ namespace Music_Downloader
             catch
             {
             }
+        }
+        private void LinkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Exchange(DownloadPathtextBox.Text);
+        }
+        public void Exchange(string dir)
+        {
+            string[] files = Directory.GetFiles(dir);
+            ArrayList filesname = new ArrayList();
+            string[] oldname;
+            string newname;
+            foreach (string a in files)
+            {
+                if (Path.GetFileName(a).IndexOf('-') != -1)
+                {
+                    filesname.Add(Path.GetFileName(a));
+                }
+            }
+            for (int i = 0; i < filesname.Count; i++)
+            {
+                try
+                {
+                    oldname = filesname[i].ToString().Replace(" ", "").Split('-');
+                    newname = oldname[1] + " - " + oldname[2];
+                    if (dir.Substring(dir.Length - 1) == "\\")
+                    {
+                        FileInfo f = new FileInfo(dir + filesname[i].ToString());
+                        f.MoveTo(dir + newname);
+                    }
+                    else
+                    {
+                        FileInfo f = new FileInfo(dir + "\\" + filesname[i].ToString());
+                        f.MoveTo(dir + "\\" + newname);
+                    }
+                }
+                catch
+                {
+                }
+            }
+        }
+        private void TrackBar1_Scroll(object sender, EventArgs e)
+        {
+            Positionchange(metroTrackBar1.Value);
+        }
+        private void TrackBar1_Scroll_1(object sender, EventArgs e)
+        {
+            Volumechange(metroTrackBar2.Value);
+        }
+        private void ListView1_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            this.listView1.ListViewItemSorter = new ListViewItemComparer();
+            listView1.Sort();
+        }
+        private void ListView2_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            this.listView2.ListViewItemSorter = new ListViewItemComparer();
+            listView2.Sort();
+        }
+        private void ListView3_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            this.listView3.ListViewItemSorter = new ListViewItemComparer();
+            listView3.Sort();
         }
     }
 }

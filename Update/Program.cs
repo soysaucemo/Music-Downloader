@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.IO.Compression;
-
 namespace Update
 {
     static class Program

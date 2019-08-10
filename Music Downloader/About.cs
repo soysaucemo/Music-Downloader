@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 namespace Music_Downloader
 {
-    public partial class About : MetroFramework.Forms.MetroForm
+    public partial class About : Form
     {
         public About(string version, string latestversion)
         {

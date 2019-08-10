@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-
 namespace Music_Downloader.Kuwo
 {
     public class KuwoSearchRoot
@@ -13,5 +12,4 @@ namespace Music_Downloader.Kuwo
         public string ALBUM { get; set; }
         public string MUSICRID { get; set; }
     }
-
 }

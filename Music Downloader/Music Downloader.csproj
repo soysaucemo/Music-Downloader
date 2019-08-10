@@ -80,20 +80,8 @@
     <StartupObject>Music_Downloader.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CSkin">
-      <HintPath>..\..\资源\CSkin 4.0\CSkin.dll</HintPath>
-    </Reference>
     <Reference Include="ID3">
       <HintPath>..\..\ID3Class\ID3Class\bin\Debug\ID3.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\资源\Newtonsoft.Json.dll</HintPath>
@@ -125,19 +113,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </Compile>
     <Compile Include="KugouMusicList.cs" />
     <Compile Include="KugouSearchRoot.cs" />
     <Compile Include="KuwoMusicList.cs" />
     <Compile Include="KuwoSearchRoot.cs" />
     <Compile Include="BaiduSearchRoot.cs" />
+    <Compile Include="ListViewItemComparer.cs" />
     <Compile Include="LrcDetails.cs" />
     <Compile Include="NeteaseMusicList.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NeteaseSearchRoot.cs" />
@@ -150,9 +136,11 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\Music_Downloader.About.resources" />
+    <EmbeddedResource Include="obj\Debug\Music_Downloader.Form1.resources" />
+    <EmbeddedResource Include="obj\Debug\Music_Downloader.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\Debug\Netease_Music_Downloader.Form1.resources" />
+    <EmbeddedResource Include="obj\Debug\Netease_Music_Downloader.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -163,7 +151,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="packages.config" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\Music Downloader.csproj.CopyComplete" />
+    <None Include="obj\Debug\Music Downloader.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\Music Downloader.csproj.GenerateResource.cache" />
+    <None Include="obj\Debug\Music Downloader.csproj.ResolveComReference.cache" />
+    <None Include="obj\Debug\Music Downloader.csprojAssemblyReference.cache" />
+    <None Include="obj\Debug\Netease Music Downloader.csproj.CopyComplete" />
+    <None Include="obj\Debug\Netease Music Downloader.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\Netease Music Downloader.csproj.GenerateResource.cache" />
+    <None Include="obj\Debug\Netease Music Downloader.csprojAssemblyReference.cache" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -180,6 +178,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ico.ico" />
+    <Content Include="obj\Debug\AxInterop.WMPLib.dll" />
+    <Content Include="obj\Debug\Interop.Shell32.dll" />
+    <Content Include="obj\Debug\Interop.WMPLib.dll" />
+    <Content Include="obj\Debug\Music Downloader.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Music Downloader.exe" />
+    <Content Include="obj\Debug\Music Downloader.pdb" />
+    <Content Include="obj\Debug\Netease Music Downloader.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Netease Music Downloader.exe" />
+    <Content Include="obj\Debug\Netease Music Downloader.pdb" />
+    <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
     <None Include="Resources\suiji.png" />
     <None Include="Resources\shunxu.png" />
     <None Include="Resources\Newtonsoft.Json.dll" />
@@ -218,6 +226,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\en-GB\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

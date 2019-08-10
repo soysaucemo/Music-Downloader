@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-
 namespace Music_Downloader.KugouMusicList
 {
     public class KugouMusicList

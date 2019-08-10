@@ -6,7 +6,6 @@
         /// 必需的设计器变量。
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// 清理所有正在使用的资源。
         /// </summary>
@@ -19,9 +18,7 @@
             }
             base.Dispose(disposing);
         }
-
         #region Windows 窗体设计器生成的代码
-
         /// <summary>
         /// 设计器支持所需的方法 - 不要修改
         /// 使用代码编辑器修改此方法的内容。
@@ -57,12 +54,7 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.Musicnumlabel = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
-            this.metroButton3 = new MetroFramework.Controls.MetroButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.metroTrackBar1 = new MetroFramework.Controls.MetroTrackBar();
-            this.metroTrackBar2 = new MetroFramework.Controls.MetroTrackBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -91,46 +83,47 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.skinTabControl1 = new CCWin.SkinControl.SkinTabControl();
-            this.skinTabPage1 = new CCWin.SkinControl.SkinTabPage();
-            this.label5 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.skinTabPage2 = new CCWin.SkinControl.SkinTabPage();
-            this.label4 = new System.Windows.Forms.Label();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.skinTabPage3 = new CCWin.SkinControl.SkinTabPage();
-            this.label7 = new System.Windows.Forms.Label();
-            this.listView3 = new System.Windows.Forms.ListView();
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-            this.metroComboBox2 = new MetroFramework.Controls.MetroComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
-            this.label2 = new System.Windows.Forms.Label();
-            this.metroComboBox3 = new MetroFramework.Controls.MetroComboBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.metroButton1 = new System.Windows.Forms.Button();
+            this.metroButton2 = new System.Windows.Forms.Button();
+            this.metroButton3 = new System.Windows.Forms.Button();
+            this.metroComboBox1 = new System.Windows.Forms.ComboBox();
+            this.metroComboBox2 = new System.Windows.Forms.ComboBox();
+            this.skinTabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.listView3 = new System.Windows.Forms.ListView();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.metroTrackBar1 = new System.Windows.Forms.TrackBar();
+            this.metroTrackBar2 = new System.Windows.Forms.TrackBar();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.contextMenuStrip3.SuspendLayout();
@@ -138,16 +131,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.skinTabControl1.SuspendLayout();
-            this.skinTabPage1.SuspendLayout();
-            this.skinTabPage2.SuspendLayout();
-            this.skinTabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.skinTabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroTrackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.metroTrackBar2)).BeginInit();
             this.SuspendLayout();
             // 
             // IDtextBox
@@ -323,57 +316,11 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
             // 
-            // metroButton1
-            // 
-            this.metroButton1.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            resources.ApplyResources(this.metroButton1, "metroButton1");
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.UseCustomBackColor = true;
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.Searchbutton_Click);
-            // 
-            // metroButton2
-            // 
-            this.metroButton2.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            resources.ApplyResources(this.metroButton2, "metroButton2");
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.UseCustomBackColor = true;
-            this.metroButton2.UseSelectable = true;
-            this.metroButton2.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // metroButton3
-            // 
-            this.metroButton3.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            resources.ApplyResources(this.metroButton3, "metroButton3");
-            this.metroButton3.Name = "metroButton3";
-            this.metroButton3.UseCustomBackColor = true;
-            this.metroButton3.UseSelectable = true;
-            this.metroButton3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // radioButton4
             // 
             resources.ApplyResources(this.radioButton4, "radioButton4");
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // metroTrackBar1
-            // 
-            this.metroTrackBar1.BackColor = System.Drawing.Color.Transparent;
-            this.metroTrackBar1.DisplayFocus = true;
-            resources.ApplyResources(this.metroTrackBar1, "metroTrackBar1");
-            this.metroTrackBar1.Name = "metroTrackBar1";
-            this.metroTrackBar1.Style = MetroFramework.MetroColorStyle.Lime;
-            this.metroTrackBar1.Value = 0;
-            this.metroTrackBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.MetroTrackBar1_Scroll);
-            // 
-            // metroTrackBar2
-            // 
-            this.metroTrackBar2.BackColor = System.Drawing.Color.Transparent;
-            this.metroTrackBar2.DisplayFocus = true;
-            resources.ApplyResources(this.metroTrackBar2, "metroTrackBar2");
-            this.metroTrackBar2.Name = "metroTrackBar2";
-            this.metroTrackBar2.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTrackBar2.ValueChanged += new System.EventHandler(this.MetroTrackBar2_ValueChanged);
             // 
             // timer1
             // 
@@ -560,190 +507,10 @@
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Click += new System.EventHandler(this.PictureBox4_Click);
             // 
-            // pictureBox5
-            // 
-            resources.ApplyResources(this.pictureBox5, "pictureBox5");
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.PictureBox5_Click);
-            // 
-            // skinTabControl1
-            // 
-            this.skinTabControl1.AnimatorType = CCWin.SkinControl.AnimationType.HorizSlide;
-            this.skinTabControl1.CloseRect = new System.Drawing.Rectangle(2, 2, 12, 12);
-            this.skinTabControl1.ContextMenuStrip = this.contextMenuStrip1;
-            this.skinTabControl1.Controls.Add(this.skinTabPage1);
-            this.skinTabControl1.Controls.Add(this.skinTabPage2);
-            this.skinTabControl1.Controls.Add(this.skinTabPage3);
-            this.skinTabControl1.HeadBack = null;
-            this.skinTabControl1.ImgTxtOffset = new System.Drawing.Point(0, 0);
-            resources.ApplyResources(this.skinTabControl1, "skinTabControl1");
-            this.skinTabControl1.Name = "skinTabControl1";
-            this.skinTabControl1.PageArrowDown = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageArrowDown")));
-            this.skinTabControl1.PageArrowHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageArrowHover")));
-            this.skinTabControl1.PageCloseHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageCloseHover")));
-            this.skinTabControl1.PageCloseNormal = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageCloseNormal")));
-            this.skinTabControl1.PageDown = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageDown")));
-            this.skinTabControl1.PageHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageHover")));
-            this.skinTabControl1.PageImagePosition = CCWin.SkinControl.SkinTabControl.ePageImagePosition.Left;
-            this.skinTabControl1.PageNorml = null;
-            this.skinTabControl1.SelectedIndex = 2;
-            this.skinTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            // 
-            // skinTabPage1
-            // 
-            this.skinTabPage1.BackColor = System.Drawing.Color.White;
-            this.skinTabPage1.Controls.Add(this.label5);
-            this.skinTabPage1.Controls.Add(this.listView1);
-            resources.ApplyResources(this.skinTabPage1, "skinTabPage1");
-            this.skinTabPage1.Name = "skinTabPage1";
-            this.skinTabPage1.TabItemImage = null;
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader10,
-            this.columnHeader11,
-            this.columnHeader6});
-            this.listView1.ContextMenuStrip = this.contextMenuStrip1;
-            resources.ApplyResources(this.listView1, "listView1");
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.Name = "listView1";
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.DoubleClick += new System.EventHandler(this.ListView1_DoubleClick_1);
-            // 
-            // columnHeader10
-            // 
-            resources.ApplyResources(this.columnHeader10, "columnHeader10");
-            // 
-            // columnHeader11
-            // 
-            resources.ApplyResources(this.columnHeader11, "columnHeader11");
-            // 
-            // columnHeader6
-            // 
-            resources.ApplyResources(this.columnHeader6, "columnHeader6");
-            // 
-            // skinTabPage2
-            // 
-            this.skinTabPage2.BackColor = System.Drawing.Color.White;
-            this.skinTabPage2.Controls.Add(this.label4);
-            this.skinTabPage2.Controls.Add(this.listView2);
-            resources.ApplyResources(this.skinTabPage2, "skinTabPage2");
-            this.skinTabPage2.Name = "skinTabPage2";
-            this.skinTabPage2.TabItemImage = null;
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // listView2
-            // 
-            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader12});
-            this.listView2.ContextMenuStrip = this.contextMenuStrip2;
-            resources.ApplyResources(this.listView2, "listView2");
-            this.listView2.FullRowSelect = true;
-            this.listView2.GridLines = true;
-            this.listView2.Name = "listView2";
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.Details;
-            this.listView2.DoubleClick += new System.EventHandler(this.ListView2_DoubleClick);
-            // 
-            // columnHeader4
-            // 
-            resources.ApplyResources(this.columnHeader4, "columnHeader4");
-            // 
-            // columnHeader5
-            // 
-            resources.ApplyResources(this.columnHeader5, "columnHeader5");
-            // 
-            // columnHeader12
-            // 
-            resources.ApplyResources(this.columnHeader12, "columnHeader12");
-            // 
-            // skinTabPage3
-            // 
-            this.skinTabPage3.BackColor = System.Drawing.Color.White;
-            this.skinTabPage3.Controls.Add(this.label7);
-            this.skinTabPage3.Controls.Add(this.listView3);
-            resources.ApplyResources(this.skinTabPage3, "skinTabPage3");
-            this.skinTabPage3.Name = "skinTabPage3";
-            this.skinTabPage3.TabItemImage = null;
-            // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
-            // 
-            // listView3
-            // 
-            this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader7,
-            this.columnHeader8,
-            this.columnHeader9});
-            this.listView3.ContextMenuStrip = this.contextMenuStrip3;
-            resources.ApplyResources(this.listView3, "listView3");
-            this.listView3.FullRowSelect = true;
-            this.listView3.GridLines = true;
-            this.listView3.Name = "listView3";
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            this.listView3.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader7
-            // 
-            resources.ApplyResources(this.columnHeader7, "columnHeader7");
-            // 
-            // columnHeader8
-            // 
-            resources.ApplyResources(this.columnHeader8, "columnHeader8");
-            // 
-            // columnHeader9
-            // 
-            resources.ApplyResources(this.columnHeader9, "columnHeader9");
-            // 
-            // pictureBox6
-            // 
-            resources.ApplyResources(this.pictureBox6, "pictureBox6");
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.PictureBox6_Click);
-            // 
-            // pictureBox7
-            // 
-            resources.ApplyResources(this.pictureBox7, "pictureBox7");
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.TabStop = false;
-            this.pictureBox7.Click += new System.EventHandler(this.PictureBox7_Click);
-            // 
             // label6
             // 
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            // 
-            // metroComboBox1
-            // 
-            this.metroComboBox1.FormattingEnabled = true;
-            resources.ApplyResources(this.metroComboBox1, "metroComboBox1");
-            this.metroComboBox1.Items.AddRange(new object[] {
-            resources.GetString("metroComboBox1.Items"),
-            resources.GetString("metroComboBox1.Items1"),
-            resources.GetString("metroComboBox1.Items2"),
-            resources.GetString("metroComboBox1.Items3"),
-            resources.GetString("metroComboBox1.Items4"),
-            resources.GetString("metroComboBox1.Items5")});
-            this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.UseSelectable = true;
             // 
             // timer3
             // 
@@ -760,32 +527,6 @@
             // 
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
-            // 
-            // linkLabel3
-            // 
-            resources.ApplyResources(this.linkLabel3, "linkLabel3");
-            this.linkLabel3.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel3_LinkClicked);
-            // 
-            // metroComboBox2
-            // 
-            this.metroComboBox2.FormattingEnabled = true;
-            resources.ApplyResources(this.metroComboBox2, "metroComboBox2");
-            this.metroComboBox2.Items.AddRange(new object[] {
-            resources.GetString("metroComboBox2.Items"),
-            resources.GetString("metroComboBox2.Items1"),
-            resources.GetString("metroComboBox2.Items2"),
-            resources.GetString("metroComboBox2.Items3"),
-            resources.GetString("metroComboBox2.Items4"),
-            resources.GetString("metroComboBox2.Items5"),
-            resources.GetString("metroComboBox2.Items6"),
-            resources.GetString("metroComboBox2.Items7"),
-            resources.GetString("metroComboBox2.Items8"),
-            resources.GetString("metroComboBox2.Items9")});
-            this.metroComboBox2.Name = "metroComboBox2";
-            this.metroComboBox2.UseSelectable = true;
             // 
             // label10
             // 
@@ -810,34 +551,6 @@
             this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
             this.axWindowsMediaPlayer1.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.AxWindowsMediaPlayer1_PlayStateChange);
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // metroComboBox3
-            // 
-            this.metroComboBox3.FormattingEnabled = true;
-            resources.ApplyResources(this.metroComboBox3, "metroComboBox3");
-            this.metroComboBox3.Items.AddRange(new object[] {
-            resources.GetString("metroComboBox3.Items"),
-            resources.GetString("metroComboBox3.Items1"),
-            resources.GetString("metroComboBox3.Items2"),
-            resources.GetString("metroComboBox3.Items3"),
-            resources.GetString("metroComboBox3.Items4"),
-            resources.GetString("metroComboBox3.Items5"),
-            resources.GetString("metroComboBox3.Items6"),
-            resources.GetString("metroComboBox3.Items7"),
-            resources.GetString("metroComboBox3.Items8"),
-            resources.GetString("metroComboBox3.Items9"),
-            resources.GetString("metroComboBox3.Items10"),
-            resources.GetString("metroComboBox3.Items11"),
-            resources.GetString("metroComboBox3.Items12"),
-            resources.GetString("metroComboBox3.Items13")});
-            this.metroComboBox3.Name = "metroComboBox3";
-            this.metroComboBox3.UseSelectable = true;
-            this.metroComboBox3.SelectedIndexChanged += new System.EventHandler(this.MetroComboBox3_SelectedIndexChanged);
             // 
             // pictureBox8
             // 
@@ -870,43 +583,250 @@
             resources.ApplyResources(this.label12, "label12");
             this.label12.Name = "label12";
             // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            // 
+            // panel1
+            // 
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Controls.Add(this.radioButton7);
+            this.panel1.Controls.Add(this.radioButton6);
+            this.panel1.Name = "panel1";
+            // 
+            // radioButton7
+            // 
+            resources.ApplyResources(this.radioButton7, "radioButton7");
+            this.radioButton7.Name = "radioButton7";
+            this.radioButton7.UseVisualStyleBackColor = true;
+            // 
+            // radioButton6
+            // 
+            resources.ApplyResources(this.radioButton6, "radioButton6");
+            this.radioButton6.Checked = true;
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.TabStop = true;
+            this.radioButton6.UseVisualStyleBackColor = true;
+            // 
+            // linkLabel3
+            // 
+            resources.ApplyResources(this.linkLabel3, "linkLabel3");
+            this.linkLabel3.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabel3.Name = "linkLabel3";
+            this.linkLabel3.TabStop = true;
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel3_LinkClicked);
+            // 
+            // metroButton1
+            // 
+            resources.ApplyResources(this.metroButton1, "metroButton1");
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.UseVisualStyleBackColor = true;
+            this.metroButton1.Click += new System.EventHandler(this.Searchbutton_Click);
+            // 
+            // metroButton2
+            // 
+            resources.ApplyResources(this.metroButton2, "metroButton2");
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.UseVisualStyleBackColor = true;
+            this.metroButton2.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // metroButton3
+            // 
+            resources.ApplyResources(this.metroButton3, "metroButton3");
+            this.metroButton3.Name = "metroButton3";
+            this.metroButton3.UseVisualStyleBackColor = true;
+            this.metroButton3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // metroComboBox1
+            // 
+            this.metroComboBox1.FormattingEnabled = true;
+            this.metroComboBox1.Items.AddRange(new object[] {
+            resources.GetString("metroComboBox1.Items"),
+            resources.GetString("metroComboBox1.Items1"),
+            resources.GetString("metroComboBox1.Items2"),
+            resources.GetString("metroComboBox1.Items3"),
+            resources.GetString("metroComboBox1.Items4"),
+            resources.GetString("metroComboBox1.Items5")});
+            resources.ApplyResources(this.metroComboBox1, "metroComboBox1");
+            this.metroComboBox1.Name = "metroComboBox1";
+            // 
+            // metroComboBox2
+            // 
+            this.metroComboBox2.FormattingEnabled = true;
+            this.metroComboBox2.Items.AddRange(new object[] {
+            resources.GetString("metroComboBox2.Items"),
+            resources.GetString("metroComboBox2.Items1"),
+            resources.GetString("metroComboBox2.Items2"),
+            resources.GetString("metroComboBox2.Items3"),
+            resources.GetString("metroComboBox2.Items4"),
+            resources.GetString("metroComboBox2.Items5"),
+            resources.GetString("metroComboBox2.Items6"),
+            resources.GetString("metroComboBox2.Items7"),
+            resources.GetString("metroComboBox2.Items8"),
+            resources.GetString("metroComboBox2.Items9")});
+            resources.ApplyResources(this.metroComboBox2, "metroComboBox2");
+            this.metroComboBox2.Name = "metroComboBox2";
+            // 
+            // skinTabControl1
+            // 
+            this.skinTabControl1.Controls.Add(this.tabPage1);
+            this.skinTabControl1.Controls.Add(this.tabPage2);
+            this.skinTabControl1.Controls.Add(this.tabPage3);
+            resources.ApplyResources(this.skinTabControl1, "skinTabControl1");
+            this.skinTabControl1.Name = "skinTabControl1";
+            this.skinTabControl1.SelectedIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.listView1);
+            resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader10,
+            this.columnHeader11,
+            this.columnHeader6});
+            this.listView1.ContextMenuStrip = this.contextMenuStrip1;
+            resources.ApplyResources(this.listView1, "listView1");
+            this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
+            this.listView1.Name = "listView1";
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.ListView1_ColumnClick);
+            // 
+            // columnHeader10
+            // 
+            resources.ApplyResources(this.columnHeader10, "columnHeader10");
+            // 
+            // columnHeader11
+            // 
+            resources.ApplyResources(this.columnHeader11, "columnHeader11");
+            // 
+            // columnHeader6
+            // 
+            resources.ApplyResources(this.columnHeader6, "columnHeader6");
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.listView2);
+            resources.ApplyResources(this.tabPage2, "tabPage2");
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // listView2
+            // 
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader12});
+            this.listView2.ContextMenuStrip = this.contextMenuStrip2;
+            resources.ApplyResources(this.listView2, "listView2");
+            this.listView2.FullRowSelect = true;
+            this.listView2.GridLines = true;
+            this.listView2.Name = "listView2";
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.Details;
+            this.listView2.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.ListView2_ColumnClick);
+            // 
+            // columnHeader4
+            // 
+            resources.ApplyResources(this.columnHeader4, "columnHeader4");
+            // 
+            // columnHeader5
+            // 
+            resources.ApplyResources(this.columnHeader5, "columnHeader5");
+            // 
+            // columnHeader12
+            // 
+            resources.ApplyResources(this.columnHeader12, "columnHeader12");
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.listView3);
+            resources.ApplyResources(this.tabPage3, "tabPage3");
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // listView3
+            // 
+            this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9});
+            this.listView3.ContextMenuStrip = this.contextMenuStrip3;
+            resources.ApplyResources(this.listView3, "listView3");
+            this.listView3.FullRowSelect = true;
+            this.listView3.GridLines = true;
+            this.listView3.Name = "listView3";
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            this.listView3.View = System.Windows.Forms.View.Details;
+            this.listView3.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.ListView3_ColumnClick);
+            // 
+            // columnHeader7
+            // 
+            resources.ApplyResources(this.columnHeader7, "columnHeader7");
+            // 
+            // columnHeader8
+            // 
+            resources.ApplyResources(this.columnHeader8, "columnHeader8");
+            // 
+            // columnHeader9
+            // 
+            resources.ApplyResources(this.columnHeader9, "columnHeader9");
+            // 
+            // metroTrackBar1
+            // 
+            resources.ApplyResources(this.metroTrackBar1, "metroTrackBar1");
+            this.metroTrackBar1.Name = "metroTrackBar1";
+            this.metroTrackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.metroTrackBar1.Scroll += new System.EventHandler(this.TrackBar1_Scroll);
+            // 
+            // metroTrackBar2
+            // 
+            resources.ApplyResources(this.metroTrackBar2, "metroTrackBar2");
+            this.metroTrackBar2.Name = "metroTrackBar2";
+            this.metroTrackBar2.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.metroTrackBar2.Scroll += new System.EventHandler(this.TrackBar1_Scroll_1);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.label12);
             this.Controls.Add(this.webBrowser1);
+            this.Controls.Add(this.metroTrackBar2);
+            this.Controls.Add(this.axWindowsMediaPlayer1);
+            this.Controls.Add(this.skinTabControl1);
+            this.Controls.Add(this.metroComboBox2);
+            this.Controls.Add(this.metroComboBox1);
+            this.Controls.Add(this.metroButton3);
+            this.Controls.Add(this.metroButton2);
+            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.linkLabel3);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.pictureBox8);
-            this.Controls.Add(this.metroComboBox3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.metroComboBox2);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.axWindowsMediaPlayer1);
-            this.Controls.Add(this.linkLabel3);
-            this.Controls.Add(this.metroTrackBar1);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.metroComboBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.radioButton5);
             this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.metroTrackBar2);
-            this.Controls.Add(this.pictureBox7);
-            this.Controls.Add(this.pictureBox6);
-            this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.radioButton4);
-            this.Controls.Add(this.metroButton3);
-            this.Controls.Add(this.metroButton2);
-            this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.SearchtextBox);
             this.Controls.Add(this.Musicnumlabel);
@@ -917,13 +837,9 @@
             this.Controls.Add(this.DownloadPathtextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.IDtextBox);
-            this.Controls.Add(this.skinTabControl1);
+            this.Controls.Add(this.metroTrackBar1);
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Resizable = false;
-            this.ShadowType = MetroFramework.Forms.MetroFormShadowType.AeroShadow;
-            this.Style = MetroFramework.MetroColorStyle.Lime;
-            this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
@@ -933,26 +849,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.skinTabControl1.ResumeLayout(false);
-            this.skinTabPage1.ResumeLayout(false);
-            this.skinTabPage1.PerformLayout();
-            this.skinTabPage2.ResumeLayout(false);
-            this.skinTabPage2.PerformLayout();
-            this.skinTabPage3.ResumeLayout(false);
-            this.skinTabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.skinTabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.metroTrackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.metroTrackBar2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
-
         #endregion
-
         private System.Windows.Forms.TextBox IDtextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox DownloadPathtextBox;
@@ -970,9 +882,6 @@
         private System.Windows.Forms.Label Musicnumlabel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private MetroFramework.Controls.MetroButton metroButton1;
-        private MetroFramework.Controls.MetroButton metroButton2;
-        private MetroFramework.Controls.MetroButton metroButton3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -980,31 +889,12 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private CCWin.SkinControl.SkinTabControl skinTabControl1;
-        private CCWin.SkinControl.SkinTabPage skinTabPage2;
-        private System.Windows.Forms.ListView listView2;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private MetroFramework.Controls.MetroTrackBar metroTrackBar1;
-        private MetroFramework.Controls.MetroTrackBar metroTrackBar2;
         private System.Windows.Forms.Timer timer1;
-        private CCWin.SkinControl.SkinTabPage skinTabPage3;
-        private System.Windows.Forms.ListView listView3;
-        private System.Windows.Forms.ColumnHeader columnHeader7;
-        private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.ColumnHeader columnHeader9;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
-        private CCWin.SkinControl.SkinTabPage skinTabPage1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader columnHeader10;
-        private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
@@ -1014,24 +904,17 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
         private System.Windows.Forms.ToolStripMenuItem 删除该项ToolStripMenuItem;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.Label label6;
-        private MetroFramework.Controls.MetroComboBox metroComboBox1;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem12;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
@@ -1040,13 +923,10 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem16;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem17;
-        private MetroFramework.Controls.MetroComboBox metroComboBox2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem18;
-        private System.Windows.Forms.Label label2;
-        private MetroFramework.Controls.MetroComboBox metroComboBox3;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.Label label11;
@@ -1054,6 +934,33 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem19;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem20;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton radioButton7;
+        private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.LinkLabel linkLabel3;
+        private System.Windows.Forms.Button metroButton1;
+        private System.Windows.Forms.Button metroButton2;
+        private System.Windows.Forms.Button metroButton3;
+        private System.Windows.Forms.ComboBox metroComboBox1;
+        private System.Windows.Forms.ComboBox metroComboBox2;
+        private System.Windows.Forms.TabControl skinTabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TrackBar metroTrackBar1;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.ListView listView3;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.TrackBar metroTrackBar2;
     }
 }
-

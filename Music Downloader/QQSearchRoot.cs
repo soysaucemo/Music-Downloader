@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-
 namespace Music_Downloader.QQ
 {
     public class QQSearchRoot
@@ -24,21 +23,17 @@ namespace Music_Downloader.QQ
         /// 许嵩
         /// </summary>
         public string name { get; set; }
-
         /// <summary>
         /// 许嵩
         /// </summary>
         public string name_hilight { get; set; }
-
         /// <summary>
         /// 
         /// </summary>
         public string mid { get; set; }
-
         /// <summary>
         /// 
         /// </summary>
         public int id { get; set; }
-
     }
 }

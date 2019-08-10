@@ -6,7 +6,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -19,9 +18,7 @@
             }
             base.Dispose(disposing);
         }
-
         #region Windows Form Designer generated code
-
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -39,7 +36,7 @@
             this.linkLabel7 = new System.Windows.Forms.LinkLabel();
             this.linkLabel8 = new System.Windows.Forms.LinkLabel();
             this.linkLabel9 = new System.Windows.Forms.LinkLabel();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.metroButton1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +47,7 @@
             this.linkLabel2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.linkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel2.LinkColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.linkLabel2.Location = new System.Drawing.Point(23, 104);
+            this.linkLabel2.Location = new System.Drawing.Point(12, 50);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(81, 17);
             this.linkLabel2.TabIndex = 44;
@@ -64,7 +61,7 @@
             this.linkLabel1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel1.LinkColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.linkLabel1.Location = new System.Drawing.Point(23, 125);
+            this.linkLabel1.Location = new System.Drawing.Point(12, 71);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(177, 17);
             this.linkLabel1.TabIndex = 45;
@@ -79,7 +76,7 @@
             this.linkLabel3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.linkLabel3.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel3.LinkColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.linkLabel3.Location = new System.Drawing.Point(23, 245);
+            this.linkLabel3.Location = new System.Drawing.Point(12, 191);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(44, 17);
             this.linkLabel3.TabIndex = 46;
@@ -89,7 +86,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(23, 265);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 211);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(460, 235);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -103,7 +100,7 @@
             this.linkLabel4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.linkLabel4.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel4.LinkColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.linkLabel4.Location = new System.Drawing.Point(23, 62);
+            this.linkLabel4.Location = new System.Drawing.Point(12, 8);
             this.linkLabel4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.linkLabel4.Name = "linkLabel4";
             this.linkLabel4.Size = new System.Drawing.Size(89, 17);
@@ -118,7 +115,7 @@
             this.linkLabel5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.linkLabel5.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel5.LinkColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.linkLabel5.Location = new System.Drawing.Point(23, 83);
+            this.linkLabel5.Location = new System.Drawing.Point(12, 29);
             this.linkLabel5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.linkLabel5.Name = "linkLabel5";
             this.linkLabel5.Size = new System.Drawing.Size(89, 17);
@@ -133,7 +130,7 @@
             this.linkLabel6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.linkLabel6.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel6.LinkColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.linkLabel6.Location = new System.Drawing.Point(23, 148);
+            this.linkLabel6.Location = new System.Drawing.Point(12, 94);
             this.linkLabel6.Name = "linkLabel6";
             this.linkLabel6.Size = new System.Drawing.Size(272, 51);
             this.linkLabel6.TabIndex = 50;
@@ -147,7 +144,7 @@
             this.linkLabel7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.linkLabel7.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel7.LinkColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.linkLabel7.Location = new System.Drawing.Point(206, 125);
+            this.linkLabel7.Location = new System.Drawing.Point(195, 71);
             this.linkLabel7.Name = "linkLabel7";
             this.linkLabel7.Size = new System.Drawing.Size(182, 17);
             this.linkLabel7.TabIndex = 51;
@@ -162,7 +159,7 @@
             this.linkLabel8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.linkLabel8.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel8.LinkColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.linkLabel8.Location = new System.Drawing.Point(23, 199);
+            this.linkLabel8.Location = new System.Drawing.Point(12, 145);
             this.linkLabel8.Name = "linkLabel8";
             this.linkLabel8.Size = new System.Drawing.Size(347, 17);
             this.linkLabel8.TabIndex = 52;
@@ -177,7 +174,7 @@
             this.linkLabel9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.linkLabel9.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel9.LinkColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.linkLabel9.Location = new System.Drawing.Point(23, 216);
+            this.linkLabel9.Location = new System.Drawing.Point(12, 162);
             this.linkLabel9.Name = "linkLabel9";
             this.linkLabel9.Size = new System.Drawing.Size(281, 17);
             this.linkLabel9.TabIndex = 53;
@@ -187,22 +184,20 @@
             // 
             // metroButton1
             // 
-            this.metroButton1.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.metroButton1.Location = new System.Drawing.Point(345, 506);
+            this.metroButton1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.metroButton1.Location = new System.Drawing.Point(361, 452);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(138, 45);
-            this.metroButton1.TabIndex = 54;
+            this.metroButton1.Size = new System.Drawing.Size(111, 40);
+            this.metroButton1.TabIndex = 55;
             this.metroButton1.Text = "我知道了";
-            this.metroButton1.UseCustomBackColor = true;
-            this.metroButton1.UseSelectable = true;
+            this.metroButton1.UseVisualStyleBackColor = true;
             this.metroButton1.Click += new System.EventHandler(this.MetroButton1_Click);
             // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(512, 558);
+            this.ClientSize = new System.Drawing.Size(479, 498);
             this.ControlBox = false;
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.linkLabel9);
@@ -219,20 +214,15 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "About";
-            this.Resizable = false;
-            this.ShadowType = MetroFramework.Forms.MetroFormShadowType.AeroShadow;
             this.ShowIcon = false;
-            this.Style = MetroFramework.MetroColorStyle.Lime;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.About_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
-
         #endregion
-
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel linkLabel3;
@@ -243,6 +233,6 @@
         private System.Windows.Forms.LinkLabel linkLabel7;
         private System.Windows.Forms.LinkLabel linkLabel8;
         private System.Windows.Forms.LinkLabel linkLabel9;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private System.Windows.Forms.Button metroButton1;
     }
 }

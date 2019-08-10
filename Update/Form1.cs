@@ -4,7 +4,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Threading;
 using System.Windows.Forms;
-
 namespace Update
 {
     public partial class Form1 : Form
