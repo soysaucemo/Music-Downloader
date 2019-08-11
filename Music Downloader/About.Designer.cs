@@ -164,7 +164,7 @@
             this.linkLabel8.Size = new System.Drawing.Size(347, 17);
             this.linkLabel8.TabIndex = 52;
             this.linkLabel8.TabStop = true;
-            this.linkLabel8.Text = "http://www.nitian1207.top/2019/08/01/Music-Downloader/";
+            this.linkLabel8.Text = "http://www.nitian1207.top/2019/08/02/Music-Downloader/";
             this.linkLabel8.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel8_LinkClicked);
             // 
             // linkLabel9

@@ -25,7 +25,7 @@ namespace Music_Downloader
         }
         private void LinkLabel8_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://www.nitian1207.top/2019/08/01/Music-Downloader/");
+            Process.Start("http://www.nitian1207.top/2019/08/02/Music-Downloader/");
         }
         private void LinkLabel9_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

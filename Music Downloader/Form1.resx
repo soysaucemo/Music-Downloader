@@ -637,17 +637,8 @@
     <value>30</value>
   </data>
   <metadata name="contextMenuStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>176, 19</value>
+    <value>178, 18</value>
   </metadata>
-  <data name="contextMenuStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 242</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip2.Name" xml:space="preserve">
-    <value>contextMenuStrip2</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="toolStripMenuItem10.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 22</value>
   </data>
@@ -716,6 +707,15 @@
   </data>
   <data name="toolStripMenuItem20.Text" xml:space="preserve">
     <value>复制音乐ID</value>
+  </data>
+  <data name="contextMenuStrip2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 242</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip2.Name" xml:space="preserve">
+    <value>contextMenuStrip2</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="contextMenuStrip3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>341, 19</value>
@@ -1097,9 +1097,6 @@
   <data name="&gt;&gt;checkBox3.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
-  <metadata name="timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>112, 47</value>
-  </metadata>
   <data name="axWindowsMediaPlayer1.Enabled" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1703,6 +1700,42 @@
   <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="columnHeader4.Text" xml:space="preserve">
+    <value>歌名</value>
+  </data>
+  <data name="columnHeader4.Width" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <data name="columnHeader5.Text" xml:space="preserve">
+    <value>歌手</value>
+  </data>
+  <data name="columnHeader5.Width" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="columnHeader12.Text" xml:space="preserve">
+    <value>专辑</value>
+  </data>
+  <data name="columnHeader12.Width" type="System.Int32, mscorlib">
+    <value>113</value>
+  </data>
+  <data name="columnHeader13.Text" xml:space="preserve">
+    <value>编号</value>
+  </data>
+  <data name="listView2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="listView2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="listView2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="listView2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>418, 364</value>
+  </data>
+  <data name="listView2.TabIndex" type="System.Int32, mscorlib">
+    <value>73</value>
+  </data>
   <data name="&gt;&gt;listView2.Name" xml:space="preserve">
     <value>listView2</value>
   </data>
@@ -1741,39 +1774,6 @@
   </data>
   <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="columnHeader7.Text" xml:space="preserve">
-    <value>歌名</value>
-  </data>
-  <data name="columnHeader7.Width" type="System.Int32, mscorlib">
-    <value>200</value>
-  </data>
-  <data name="columnHeader8.Text" xml:space="preserve">
-    <value>歌手</value>
-  </data>
-  <data name="columnHeader8.Width" type="System.Int32, mscorlib">
-    <value>125</value>
-  </data>
-  <data name="columnHeader9.Text" xml:space="preserve">
-    <value>下载状态</value>
-  </data>
-  <data name="columnHeader9.Width" type="System.Int32, mscorlib">
-    <value>200</value>
-  </data>
-  <data name="listView3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="listView3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
-  </data>
-  <data name="listView3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="listView3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>418, 364</value>
-  </data>
-  <data name="listView3.TabIndex" type="System.Int32, mscorlib">
-    <value>74</value>
   </data>
   <data name="&gt;&gt;listView3.Name" xml:space="preserve">
     <value>listView3</value>
@@ -1880,49 +1880,49 @@
   <data name="&gt;&gt;listView1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="columnHeader4.Text" xml:space="preserve">
+  <data name="columnHeader7.Text" xml:space="preserve">
     <value>歌名</value>
   </data>
-  <data name="columnHeader4.Width" type="System.Int32, mscorlib">
+  <data name="columnHeader7.Width" type="System.Int32, mscorlib">
     <value>200</value>
   </data>
-  <data name="columnHeader5.Text" xml:space="preserve">
+  <data name="columnHeader8.Text" xml:space="preserve">
     <value>歌手</value>
   </data>
-  <data name="columnHeader5.Width" type="System.Int32, mscorlib">
-    <value>85</value>
+  <data name="columnHeader8.Width" type="System.Int32, mscorlib">
+    <value>125</value>
   </data>
-  <data name="columnHeader12.Text" xml:space="preserve">
-    <value>专辑</value>
+  <data name="columnHeader9.Text" xml:space="preserve">
+    <value>下载状态</value>
   </data>
-  <data name="columnHeader12.Width" type="System.Int32, mscorlib">
-    <value>113</value>
+  <data name="columnHeader9.Width" type="System.Int32, mscorlib">
+    <value>200</value>
   </data>
-  <data name="listView2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="listView3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="listView2.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="listView3.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
   </data>
-  <data name="listView2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="listView3.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="listView2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="listView3.Size" type="System.Drawing.Size, System.Drawing">
     <value>418, 364</value>
   </data>
-  <data name="listView2.TabIndex" type="System.Int32, mscorlib">
-    <value>73</value>
+  <data name="listView3.TabIndex" type="System.Int32, mscorlib">
+    <value>74</value>
   </data>
-  <data name="&gt;&gt;listView2.Name" xml:space="preserve">
-    <value>listView2</value>
+  <data name="&gt;&gt;listView3.Name" xml:space="preserve">
+    <value>listView3</value>
   </data>
-  <data name="&gt;&gt;listView2.Type" xml:space="preserve">
+  <data name="&gt;&gt;listView3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;listView2.Parent" xml:space="preserve">
-    <value>tabPage2</value>
+  <data name="&gt;&gt;listView3.Parent" xml:space="preserve">
+    <value>tabPage3</value>
   </data>
-  <data name="&gt;&gt;listView2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;listView3.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="metroTrackBar1.Location" type="System.Drawing.Point, System.Drawing">
@@ -3825,12 +3825,6 @@
   <data name="&gt;&gt;timer3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;timer2.Name" xml:space="preserve">
-    <value>timer2</value>
-  </data>
-  <data name="&gt;&gt;timer2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;columnHeader10.Name" xml:space="preserve">
     <value>columnHeader10</value>
   </data>
@@ -3883,6 +3877,12 @@
     <value>columnHeader9</value>
   </data>
   <data name="&gt;&gt;columnHeader9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader13.Name" xml:space="preserve">
+    <value>columnHeader13</value>
+  </data>
+  <data name="&gt;&gt;columnHeader13.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

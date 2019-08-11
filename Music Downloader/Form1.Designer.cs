@@ -89,7 +89,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
@@ -124,6 +123,7 @@
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.metroTrackBar1 = new System.Windows.Forms.TrackBar();
             this.metroTrackBar2 = new System.Windows.Forms.TrackBar();
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.contextMenuStrip3.SuspendLayout();
@@ -539,12 +539,6 @@
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
-            // timer2
-            // 
-            this.timer2.Enabled = true;
-            this.timer2.Interval = 500;
-            this.timer2.Tick += new System.EventHandler(this.Timer2_Tick);
-            // 
             // axWindowsMediaPlayer1
             // 
             resources.ApplyResources(this.axWindowsMediaPlayer1, "axWindowsMediaPlayer1");
@@ -698,6 +692,7 @@
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.ListView1_ColumnClick);
+            this.listView1.DoubleClick += new System.EventHandler(this.ListView1_MouseDoubleClick);
             // 
             // columnHeader10
             // 
@@ -723,7 +718,8 @@
             this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader4,
             this.columnHeader5,
-            this.columnHeader12});
+            this.columnHeader12,
+            this.columnHeader13});
             this.listView2.ContextMenuStrip = this.contextMenuStrip2;
             resources.ApplyResources(this.listView2, "listView2");
             this.listView2.FullRowSelect = true;
@@ -732,6 +728,7 @@
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
             this.listView2.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.ListView2_ColumnClick);
+            this.listView2.DoubleClick += new System.EventHandler(this.ListView2_DoubleClick);
             // 
             // columnHeader4
             // 
@@ -789,9 +786,14 @@
             // metroTrackBar2
             // 
             resources.ApplyResources(this.metroTrackBar2, "metroTrackBar2");
+            this.metroTrackBar2.Maximum = 100;
             this.metroTrackBar2.Name = "metroTrackBar2";
             this.metroTrackBar2.TickStyle = System.Windows.Forms.TickStyle.None;
             this.metroTrackBar2.Scroll += new System.EventHandler(this.TrackBar1_Scroll_1);
+            // 
+            // columnHeader13
+            // 
+            resources.ApplyResources(this.columnHeader13, "columnHeader13");
             // 
             // Form1
             // 
@@ -925,7 +927,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem17;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem18;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox9;
@@ -962,5 +963,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.TrackBar metroTrackBar2;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
     }
 }
