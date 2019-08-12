@@ -29,7 +29,7 @@ namespace Music_Downloader
         private string playmode = "shunxu";
         private LrcDetails lrcd = new LrcDetails();
         public string latestversion = "获取中";
-        private string ver = "1.4.1测试版";
+        private string ver = "1.4.1";
         private List<Thread> downloadthreadlist = new List<Thread>();
         private ArrayList canceldownloadindex = new ArrayList();
         private string latestversionurl;
@@ -376,22 +376,22 @@ namespace Music_Downloader
                 {
                     if (radioButton6.Checked)
                     {
-                        filename = dl[i].ID + " - " + dl[i].Songname + " - " + dl[i].Singername + ".flac";
+                        filename = dl[i].ID + " - " + songname + " - " + singername + ".flac";
                     }
                     else
                     {
-                        filename = dl[i].ID + " - " + dl[i].Singername + " - " + dl[i].Songname + ".flac";
+                        filename = dl[i].ID + " - " + singername + " - " + songname + ".flac";
                     }
                 }
                 else
                 {
                     if (radioButton6.Checked)
                     {
-                        filename = dl[i].ID + " - " + dl[i].Songname + " - " + dl[i].Singername + ".mp3";
+                        filename = dl[i].ID + " - " + songname + " - " + singername + ".mp3";
                     }
                     else
                     {
-                        filename = dl[i].ID + " - " + dl[i].Singername + " - " + dl[i].Songname + ".mp3";
+                        filename = dl[i].ID + " - " + singername + " - " + songname + ".mp3";
                     }
                 }
                 if (!Ifcanceldownload(dl[i].index))
@@ -409,6 +409,8 @@ namespace Music_Downloader
                                     File.Delete(downloadpath + "\\" + filename);
                                 }
                                 listView3.Items[dl[i].index].SubItems[2].Text = "音乐下载错误:" + e.Message;
+                                Thread cdt1 = new Thread(Checkifdelid);
+                                cdt1.Start();
                                 continue;
                             }
                             listView3.Items[dl[i].index].SubItems[2].Text = "音乐下载完成";
@@ -417,6 +419,8 @@ namespace Music_Downloader
                         else
                         {
                             listView3.Items[dl[i].index].SubItems[2].Text = "音乐已存在";
+                            Thread cdt = new Thread(Checkifdelid);
+                            cdt.Start();
                             continue;
                         }
                     }
@@ -435,23 +439,46 @@ namespace Music_Downloader
                         catch (Exception e)
                         {
                             listView3.Items[dl[i].index].SubItems[2].Text += ",歌词下载错误:" + e.Message;
+                            Thread cdt2 = new Thread(Checkifdelid);
+                            cdt2.Start();
+                            continue;
                         }
-                        listView3.Items[dl[i].index].SubItems[2].Text = "下载完成";
-                        int leftnum = 0;
-                        for (int j = 0; j < downloadthreadlist.Count; j++)
-                        {
-                            if (downloadthreadlist[j].IsAlive)
-                            {
-                                leftnum++;
-                            }
-                        }
-                        if (leftnum <= 1)
-                        {
-                            Exchange(DownloadPathtextBox.Text);
-                        }
+
                     }
+                    listView3.Items[dl[i].index].SubItems[2].Text = "下载完成";
+                    Thread cdt3 = new Thread(Checkifdelid);
+                    cdt3.Start();
                 }
             }
+        }
+        private void Checkifdelid()
+        {
+            for (int i = 0; i < downloadthreadlist.Count; i++)
+            {
+                if (!downloadthreadlist[i].IsAlive)
+                {
+                    downloadthreadlist.RemoveAt(i);
+                }
+            }
+            if (downloadthreadlist.Count == 0)
+            {
+                Exchange(DownloadPathtextBox.Text);
+            }
+        }
+        private bool DownloadThreadIfEmpty()
+        {
+            for (int i = 0; i < downloadthreadlist.Count; i++)
+            {
+                if (!downloadthreadlist[i].IsAlive)
+                {
+                    downloadthreadlist.RemoveAt(i);
+                }
+            }
+            if (downloadthreadlist.Count == 0)
+            {
+                return true;
+            }
+            return false;
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -464,8 +491,8 @@ namespace Music_Downloader
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Thread thread_update = new Thread(update);
-            //thread_update.Start();
+            Thread thread_update = new Thread(update);
+            thread_update.Start();
             axWindowsMediaPlayer1.settings.volume = 50;
             axWindowsMediaPlayer1.settings.setMode("shuffle", false);
             mainform = this;
@@ -859,30 +886,31 @@ namespace Music_Downloader
             {
                 style = 1;
             }
-            for (int i = 0; i < downloadthreadlist.Count; i++)
+            if (!DownloadThreadIfEmpty())
             {
-                if (downloadthreadlist[i].IsAlive)
+                if (MessageBox.Show("下载未完成,确定关闭?", caption: "提示:", buttons: MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    if (MessageBox.Show("下载未完成,确定关闭?", caption: "提示:", buttons: MessageBoxButtons.YesNo) == DialogResult.No)
+                    Setting ss = new Setting
                     {
-                        Setting ss = new Setting
-                        {
-                            SavePath = DownloadPathtextBox.Text,
-                            PlayList = pl,
-                            DownloadQuality = metroComboBox1.SelectedItem.ToString(),
-                            Volume = metroTrackBar2.Value,
-                            MultiDownload = metroComboBox2.SelectedIndex,
-                            ifdownloadpic = checkBox3.Checked,
-                            ifdownloadlrc = checkBox1.Checked,
-                            savenamestyle = style
-                        };
-                        string json_ = JsonConvert.SerializeObject(ss);
-                        StreamWriter sw_ = new StreamWriter(Environment.CurrentDirectory + "\\Setting.json");
-                        sw_.Write(json_);
-                        sw_.Flush();
-                        sw_.Close();
-                        Environment.Exit(0);
-                    }
+                        SavePath = DownloadPathtextBox.Text,
+                        PlayList = pl,
+                        DownloadQuality = metroComboBox1.SelectedItem.ToString(),
+                        Volume = metroTrackBar2.Value,
+                        MultiDownload = metroComboBox2.SelectedIndex,
+                        ifdownloadpic = checkBox3.Checked,
+                        ifdownloadlrc = checkBox1.Checked,
+                        savenamestyle = style
+                    };
+                    string json_ = JsonConvert.SerializeObject(ss);
+                    StreamWriter sw_ = new StreamWriter(Environment.CurrentDirectory + "\\Setting.json");
+                    sw_.Write(json_);
+                    sw_.Flush();
+                    sw_.Close();
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    e.Cancel = true;
                 }
             }
             try
@@ -1680,7 +1708,10 @@ namespace Music_Downloader
         }
         private void LinkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Exchange(DownloadPathtextBox.Text);
+            if (DownloadThreadIfEmpty())
+            {
+                Exchange(DownloadPathtextBox.Text);
+            }
         }
         public void Exchange(string dir)
         {
@@ -1700,6 +1731,10 @@ namespace Music_Downloader
                 try
                 {
                     oldname = filesname[i].ToString().Replace(" ", "").Split('-');
+                    if (oldname.Length != 3)
+                    {
+                        continue;
+                    }
                     newname = oldname[1] + " - " + oldname[2];
                     if (dir.Substring(dir.Length - 1) == "\\")
                     {
