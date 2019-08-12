@@ -985,14 +985,6 @@ namespace Music_Downloader
                 pictureBox1.Image = Properties.Resources.pause;
             }
         }
-        private void PictureBox5_Click(object sender, EventArgs e)
-        {
-            skinTabControl1.SelectedIndex = 1;
-        }
-        private void PictureBox6_Click(object sender, EventArgs e)
-        {
-            skinTabControl1.SelectedIndex = 0;
-        }
         private void ToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             try
@@ -1036,9 +1028,6 @@ namespace Music_Downloader
         {
             axWindowsMediaPlayer1.Ctlcontrols.currentPosition = (double)p;
         }
-        private void MetroTrackBar2_ValueChanged(object sender, EventArgs e)
-        {
-        }
         private void Timer1_Tick(object sender, EventArgs e)
         {
             try
@@ -1067,9 +1056,6 @@ namespace Music_Downloader
                 pictureBox1.Image = Properties.Resources.play;
             }
         }
-        private void MetroTrackBar1_Scroll(object sender, ScrollEventArgs e)
-        {
-        }
         private void ToolStripMenuItem4_Click(object sender, EventArgs e)
         {
             ArrayList a = new ArrayList();
@@ -1093,15 +1079,6 @@ namespace Music_Downloader
         }
         public void AddMusicToList(PlayList p)
         {
-            /*
-            for (int i = 0; i < listView2.Items.Count; i++)
-            {
-                if (p.SongName == pl[i].SongName && p.SingerName == pl[i].SingerName & p.Album == pl[i].Album)
-                {
-                    return;
-                }
-            }
-            */
             pl.Add(p);
             ListViewItem i = new ListViewItem();
             i.Text = p.SongName;
@@ -1111,21 +1088,6 @@ namespace Music_Downloader
             listView2.Items.Add(i);
             IWMPMedia media = axWindowsMediaPlayer1.newMedia(p.Url);
             axWindowsMediaPlayer1.currentPlaylist.appendItem(media);
-        }
-        private void PictureBox7_Click(object sender, EventArgs e)
-        {
-            skinTabControl1.SelectedIndex = 2;
-        }
-        private void ListView1_DoubleClick_1(object sender, EventArgs e)
-        {
-            if (checkBox2.Checked)
-            {
-                ToolStripMenuItem3_Click(this, new EventArgs());
-            }
-            else
-            {
-                toolStripMenuItem2_Click(this, new EventArgs());
-            }
         }
         private void PictureBox4_Click(object sender, EventArgs e)
         {
@@ -1182,13 +1144,18 @@ namespace Music_Downloader
         {
             ArrayList a = new ArrayList();
             a = GetListViewSelectedIndices_musiclist();
+            ArrayList b = new ArrayList();
+            for (int i = 0; i < listView2.SelectedIndices.Count; i++)
+            {
+                b.Add(listView2.SelectedIndices[i]);
+            }
             for (int i = 0; i < a.Count; i++)
             {
                 IWMPMedia media = axWindowsMediaPlayer1.currentPlaylist.Item[(int)a[i] - i];
                 axWindowsMediaPlayer1.currentPlaylist.removeItem(media);
-                ListViewItem l = listView2.Items[(int)a[i] - i];
+                ListViewItem l = listView2.Items[(int)b[i] - i];
                 listView2.Items.Remove(l);
-                pl.Remove(pl[(int)a[i] - i]);
+                pl.Remove(pl[(int)b[i] - i]);
             }
         }
         public ArrayList GetListViewSelectedIndices_musiclist()
@@ -1385,16 +1352,6 @@ namespace Music_Downloader
                 }
             }
         }
-        private void MediaEndAndChangeLrc(object i)
-        {
-            try
-            {
-                LrcDetails lrcdd = LrcReader(pl[(int)i].LrcUrl);
-            }
-            catch
-            {
-            }
-        }
         public int CheckRepeat(string songname, string singername, string album)
         {
             for (int i = 0; i < listView2.Items.Count; i++)
@@ -1428,33 +1385,6 @@ namespace Music_Downloader
             Thread a = new Thread(HotMusicList);
             a.Start();
         }
-        private void AxWindowsMediaPlayer1_MediaChange(object sender, AxWMPLib._WMPOCXEvents_MediaChangeEvent e)
-        {
-            for (int i = 0; i < pl.Count; i++)
-            {
-                if (axWindowsMediaPlayer1.currentMedia.sourceURL == pl[i].Url)
-                {
-                    if (pl[i].LrcUrl != lrcd.url)
-                    {
-                        MediaEndAndChangeLrc(i);
-                    }
-                }
-            }
-        }
-        /*
-        private void LinkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            if (f2 == null)
-            {
-                f2 = new Form2();
-                f2.Show();
-            }
-            else
-            {
-                f2.Activate();
-            }
-        }
-        */
         private void AddMusicDetails(string path, string title, string artists, string ablum, string picture, string dir, bool ifdownloadpic)
         {
             ID3Info info = new ID3Info(path, true);
@@ -1692,10 +1622,6 @@ namespace Music_Downloader
             }
             return "";
         }
-        private void Timer2_Tick(object sender, EventArgs e)
-        {
-
-        }
         private void ToolStripMenuItem18_Click(object sender, EventArgs e)
         {
             ArrayList a = GetListViewSelectedIndices_downloadlist();
@@ -1721,9 +1647,6 @@ namespace Music_Downloader
                 }
             }
             return false;
-        }
-        private void MetroComboBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
         }
         private void PictureBox8_Click(object sender, EventArgs e)
         {
@@ -1817,7 +1740,6 @@ namespace Music_Downloader
             //this.listView3.ListViewItemSorter = new ListViewItemComparer();
             //listView3.Sort();
         }
-
         private void ListView1_MouseDoubleClick(object sender, EventArgs e)
         {
             ArrayList a = new ArrayList();

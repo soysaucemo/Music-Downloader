@@ -779,6 +779,7 @@
             // metroTrackBar1
             // 
             resources.ApplyResources(this.metroTrackBar1, "metroTrackBar1");
+            this.metroTrackBar1.Maximum = 1000;
             this.metroTrackBar1.Name = "metroTrackBar1";
             this.metroTrackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
             this.metroTrackBar1.Scroll += new System.EventHandler(this.TrackBar1_Scroll);
@@ -840,6 +841,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.IDtextBox);
             this.Controls.Add(this.metroTrackBar1);
+            this.DoubleBuffered = true;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
