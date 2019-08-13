@@ -29,7 +29,7 @@ namespace Music_Downloader
         private string playmode = "shunxu";
         private LrcDetails lrcd = new LrcDetails();
         public string latestversion = "获取中";
-        private string ver = "1.4.1";
+        private string ver = "1.4.2测试版";
         private List<Thread> downloadthreadlist = new List<Thread>();
         private ArrayList canceldownloadindex = new ArrayList();
         private string latestversionurl;
@@ -370,7 +370,7 @@ namespace Music_Downloader
                 downloadpath = dl[i].Savepath;
                 WebClient wb = new WebClient();
                 url = dl[i].Url + "&quality=" + dl[i].DownloadQuality;
-                s = wb.OpenRead(url + "&isRedirect=0");
+                try { s = wb.OpenRead(url + "&isRedirect=0"); } catch { continue; }
                 StreamReader sr = new StreamReader(s);
                 if (sr.ReadToEnd().IndexOf(".flac") != -1)
                 {
@@ -414,7 +414,7 @@ namespace Music_Downloader
                                 continue;
                             }
                             listView3.Items[dl[i].index].SubItems[2].Text = "音乐下载完成";
-                            try { AddMusicDetails(downloadpath + "\\" + filename, dl[i].Songname, dl[i].Singername, dl[i].Album, GetPicUrl(dl[i].ID, dl[i].Api), downloadpath, dl[i].ifdownloadpic); } catch { }
+                            try { AddMusicDetails(downloadpath + "\\" + filename, dl[i].Songname, dl[i].Singername, dl[i].Album, GetPicUrl(dl[i].ID, dl[i].Api), downloadpath, dl[i].ifdownloadpic, filename.Replace(".flac", "").Replace(".mp3", "")); } catch { }
                         }
                         else
                         {
@@ -491,8 +491,8 @@ namespace Music_Downloader
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Thread thread_update = new Thread(update);
-            thread_update.Start();
+            //Thread thread_update = new Thread(update);
+            //thread_update.Start();
             axWindowsMediaPlayer1.settings.volume = 50;
             axWindowsMediaPlayer1.settings.setMode("shuffle", false);
             mainform = this;
@@ -1218,14 +1218,11 @@ namespace Music_Downloader
                     MessageBox.Show("该功能不能用于取消下载，请等待所有下载完成后再试。", caption: "提示：");
                     return;
                 }
-                else
-                {
-                    ArrayList a = GetListViewSelectedIndices_downloadlist();
-                    for (int i_ = 0; i_ < a.Count; i_++)
-                    {
-                        listView3.Items[(int)a[i_] - i_].Remove();
-                    }
-                }
+            }
+            ArrayList a = GetListViewSelectedIndices_downloadlist();
+            for (int i_ = 0; i_ < a.Count; i_++)
+            {
+                listView3.Items[(int)a[i_] - i_].Remove();
             }
         }
         private void LinkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -1413,7 +1410,7 @@ namespace Music_Downloader
             Thread a = new Thread(HotMusicList);
             a.Start();
         }
-        private void AddMusicDetails(string path, string title, string artists, string ablum, string picture, string dir, bool ifdownloadpic)
+        private void AddMusicDetails(string path, string title, string artists, string ablum, string picture, string dir, bool ifdownloadpic, string filename)
         {
             ID3Info info = new ID3Info(path, true);
             info.ID3v2Info.SetTextFrame("TIT2", title);
@@ -1424,7 +1421,7 @@ namespace Music_Downloader
                 if (ifdownloadpic)
                 {
                     WebClient wc = new WebClient();
-                    wc.DownloadFile(picture, dir + "\\" + title + " - " + artists + ".jpg");
+                    wc.DownloadFile(picture, dir + "\\" + filename + ".jpg");
                     AttachedPictureFrame pic = new AttachedPictureFrame(FrameFlags.Compression, "cover.jpg", TextEncodings.UTF_16, "", AttachedPictureFrame.PictureTypes.Other, new System.IO.MemoryStream(File.ReadAllBytes(dir + "\\" + title + " - " + artists + ".jpg")));
                     info.ID3v2Info.AttachedPictureFrames.Add(pic);
                 }
@@ -1467,15 +1464,15 @@ namespace Music_Downloader
                             Url = dl[x].Url,
                             ifdownloadpic = dl[x].ifdownloadpic
                         };
-                        if (dl[x].Api == 1)
-                        {
-                        }
                         dl_.Add(_dl);
                     }
                 }
-                Thread a = new Thread(new ParameterizedThreadStart(Download));
-                downloadthreadlist.Add(a);
-                a.Start(dl_);
+                if (dl_.Count != 0)
+                {
+                    Thread a = new Thread(new ParameterizedThreadStart(Download));
+                    downloadthreadlist.Add(a);
+                    a.Start(dl_);
+                }
             }
         }
         private void ToolStripMenuItem12_Click(object sender, EventArgs e)
@@ -1713,6 +1710,10 @@ namespace Music_Downloader
                 Exchange(DownloadPathtextBox.Text);
             }
         }
+        /// <summary>
+        /// 删除歌曲名中的ID
+        /// </summary>
+        /// <param name="dir"></param>
         public void Exchange(string dir)
         {
             string[] files = Directory.GetFiles(dir);
@@ -1728,27 +1729,22 @@ namespace Music_Downloader
             }
             for (int i = 0; i < filesname.Count; i++)
             {
-                try
+                oldname = filesname[i].ToString().Replace(" ", "").Split('-');
+                if (oldname.Length < 3)
                 {
-                    oldname = filesname[i].ToString().Replace(" ", "").Split('-');
-                    if (oldname.Length != 3)
-                    {
-                        continue;
-                    }
-                    newname = oldname[1] + " - " + oldname[2];
-                    if (dir.Substring(dir.Length - 1) == "\\")
-                    {
-                        FileInfo f = new FileInfo(dir + filesname[i].ToString());
-                        f.MoveTo(dir + newname);
-                    }
-                    else
-                    {
-                        FileInfo f = new FileInfo(dir + "\\" + filesname[i].ToString());
-                        f.MoveTo(dir + "\\" + newname);
-                    }
+                    continue;
                 }
-                catch
+                newname = filesname[i].ToString().Replace(oldname[0] + " - ", "");
+                if (dir.Substring(dir.Length - 1) == "\\")
                 {
+                    FileInfo f = new FileInfo(dir + filesname[i].ToString());
+                    try { f.MoveTo(dir + "\\" + newname); } catch (Exception e) { MessageBox.Show(e.Message); f.Delete(); }
+
+                }
+                else
+                {
+                    FileInfo f = new FileInfo(dir + "\\" + filesname[i].ToString());
+                    try { f.MoveTo(dir + "\\" + newname); } catch (Exception e) { MessageBox.Show(e.Message); f.Delete(); }
                 }
             }
         }
