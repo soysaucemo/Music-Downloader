@@ -159,8 +159,6 @@
     <EmbeddedResource Include="obj\Debug\Music_Downloader.About.resources" />
     <EmbeddedResource Include="obj\Debug\Music_Downloader.Form1.resources" />
     <EmbeddedResource Include="obj\Debug\Music_Downloader.Properties.Resources.resources" />
-    <EmbeddedResource Include="obj\Debug\Netease_Music_Downloader.Form1.resources" />
-    <EmbeddedResource Include="obj\Debug\Netease_Music_Downloader.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
