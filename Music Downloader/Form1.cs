@@ -1551,8 +1551,9 @@ namespace Music_Downloader
                 {
                     for (int i = 0; i < downloadindices.Count; i++)
                     {
-                        listView3.Items.Add(Searchresult[(int)downloadindices[i]].SongName);
-                        listView3.Items[listView3.Items.Count - 1].SubItems.Add(Searchresult[i].SingerName);
+                        int j = (int)downloadindices[i];
+                        listView3.Items.Add(pl[j].SongName);
+                        listView3.Items[listView3.Items.Count - 1].SubItems.Add(pl[j].SingerName);
                         listView3.Items[listView3.Items.Count - 1].SubItems.Add("准备下载");
                         dl.Add(SetDownloadMedia(GetApiCode(), Searchresult[(int)downloadindices[i]].id, ifDownloadLrc, ifDownloadSong, DownloadPathtextBox.Text, Searchresult[(int)downloadindices[i]].SongName, Searchresult[(int)downloadindices[i]].SingerName, Searchresult[(int)downloadindices[i]].url, Searchresult[(int)downloadindices[i]].lrcurl, Searchresult[(int)downloadindices[i]].Album, metroComboBox1.SelectedItem.ToString(), listView3.Items.Count - 1, checkBox3.Checked));
                     }
